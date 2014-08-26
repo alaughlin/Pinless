@@ -1,0 +1,29 @@
+<%= render partial: "static/header" %>
+
+<h2>Add a Card</h2>
+
+<form action="<%= board_cards_url(@board) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="card[board_id]" value="<%= @board.id %>">
+
+  <label>
+    Title:
+    <input type="text" name="card[title]" value="<%= @card.title %>">
+  </label>
+  <br>
+
+  <label>
+    Board Image URL:
+    <input type="text" name="card[img_url]" value="<%= @card.title %>">
+  </label>
+  <br>
+
+  <label>
+    Description:
+    <textarea name="card[description]"><%= @card.description %></textarea>
+  </label>
+  <br>
+
+  <button>Add Card</button>
+</form>
