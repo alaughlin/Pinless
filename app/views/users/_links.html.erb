@@ -3,8 +3,10 @@
   <% @boards.each do |board| %>
     <a href="<%= board_url(board) %>">
       <li class="board content-list-item">
-        <ul class="board-details">
+        <ul class="board-details content-list-item-details">
           <li><%= board.title %></li>
+          <li><img src="<%= board.img_url %>" width="150"></li>
+        </ul>
         </ul>
       </li>
     </a>
@@ -14,9 +16,9 @@
 <h2>Cards</h2>
 <ul class="group">
   <% @cards.each do |card| %>
-    <a href="#">
+    <a href="<%= card_url(card) %>">
       <li class="card content-list-item">
-        <ul class="card-details">
+        <ul class="card-details content-list-item-details">
           <li><%= card.title %></li>
           <li><img src="<%= card.img_url %>" width="150"></li>
         </ul>
