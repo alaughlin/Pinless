@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     @boards = @user.boards
     @cards = @user.cards
   end
+
+  def new
+    @user = User.new
+  end
 end
