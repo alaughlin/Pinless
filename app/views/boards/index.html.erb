@@ -1,0 +1,15 @@
+<%= render partial: "static/header" %>
+
+<section id="content">
+  <ul class="group">
+  <% @boards.each do |board| %>
+    <a href="<%= board_url(board) %>">
+      <li class="board content-list-item">
+        <ul class="board-details">
+          <li><%= board.title %></li>
+        </ul>
+      </li>
+    </a>
+  <% end %>
+  </ul>
+</section>

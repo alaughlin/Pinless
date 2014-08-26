@@ -1,0 +1,26 @@
+<h2>Boards</h2>
+<ul class="group">
+  <% @boards.each do |board| %>
+    <a href="<%= board_url(board) %>">
+      <li class="board content-list-item">
+        <ul class="board-details">
+          <li><%= board.title %></li>
+        </ul>
+      </li>
+    </a>
+  <% end %>
+</ul>
+
+<h2>Cards</h2>
+<ul class="group">
+  <% @cards.each do |card| %>
+    <a href="#">
+      <li class="card content-list-item">
+        <ul class="card-details">
+          <li><%= card.title %></li>
+          <li><img src="<%= card.img_url %>" width="150"></li>
+        </ul>
+      </li>
+    </a>
+  <% end %>
+</ul>

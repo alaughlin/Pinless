@@ -7,12 +7,16 @@
   <%= csrf_meta_tags %>
 
   <style>
-    html, body, header, h1, h2, ul, li, a {
+    html, body, header, h1, h2, ul, li, a, img {
       margin: 0;
       padding: 0;
       border: 0;
       list-style: none;
       font-family: sans-serif;
+    }
+
+    img {
+      display: block;
     }
 
     .group:after {
@@ -46,7 +50,7 @@
     }
 
     #content {
-      width: 750px;
+      width: 1000px;
       margin: 0 auto;
       padding-top: 20px;
     }
@@ -73,6 +77,12 @@
     .user-info-right {
       float: right;
       padding: 30px 20px;
+    }
+
+    .content-list-item {
+      width: 150px;
+      border: 2px solid #ccc;
+      float: left;
     }
   </style>
 </head>

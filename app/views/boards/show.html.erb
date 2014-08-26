@@ -1,0 +1,16 @@
+<%= render partial: "static/header" %>
+
+<section id="content">
+  <ul class="group">
+  <% @cards.each do |card| %>
+    <a href="#">
+      <li class="card content-list-item">
+        <ul class="card-details">
+          <li><%= card.title %></li>
+          <li><img src="<%= card.img_url %>" width="150"></li>
+        </ul>
+      </li>
+    </a>
+  <% end %>
+  </ul>
+</section>

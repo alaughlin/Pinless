@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def sign_in!(user)
-    session[:sesion_token] = user.session_token
+    puts user.session_token
+    session[:session_token] = user.session_token
+    puts session[:session_token]
     redirect_to user_url(user)
   end
 
