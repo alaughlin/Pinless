@@ -14,13 +14,21 @@ class BoardsController < ApplicationController
   end
 
   def create
-    fail
-
+    @board = Board.new(board_params)
+    @board.user_id = current_user.id
+    
+    if @board.save
+      redirect_to user_url(current_user)
+    else
+      @board = Board.new
+      flash[:errors] = @board.errors.full_messages
+      render :new
+    end
   end
 
   private
 
   def board_params
-    param.require(:board).permit(:title, :description, :img_url, :public)
+    params.require(:board).permit(:title, :description, :img_url, :public)
   end
 end
