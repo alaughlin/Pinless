@@ -10,7 +10,7 @@
       <%= button_to "Logout", session_url, method: :delete %>
     </li>
     <li class="top-header-right">
-      <a href="#" class="user-dropdown">Username</a>
+      <a href="<%= user_url(current_user) %>" class="user-dropdown"><%= current_user.username %></a>
     </li>
     <h2 class="logo">Pinless</h2>
   </ul>
