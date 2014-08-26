@@ -7,10 +7,11 @@
           <li><%= board.title %></li>
           <li><img src="<%= board.img_url %>" width="150"></li>
         </ul>
-        </ul>
       </li>
     </a>
   <% end %>
+
+  <a href="<%= new_user_board_url(current_user) %>">Add A Board!</a>
 </ul>
 
 <h2>Cards</h2>

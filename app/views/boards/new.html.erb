@@ -1,0 +1,41 @@
+<%= render partial: "static/header" %>
+
+<h2>Add a Board</h2>
+
+<form action="<%= user_boards_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+
+  <label>
+    Title:
+    <input type="text" name="board[title]" value="<%= @board.title %>">
+  </label>
+  <br>
+
+  <label>
+    Board Image URL:
+    <input type="text" name="board[img_url]" value="<%= @board.title %>">
+  </label>
+  <br>
+
+  <label>
+    Description:
+    <textarea name="board[description]"><%= @board.description %></textarea>
+  </label>
+  <br>
+
+  <label>
+    Public or Private:
+    <label>
+      Public
+      <input type="radio" name="board[public]" value=true>
+    </label>
+
+    <label>
+      Private
+      <input type="radio" name="board[public]" value=false>
+    </label>
+  </label>
+  <br>
+
+  <button>Add Board</button>
+</form>

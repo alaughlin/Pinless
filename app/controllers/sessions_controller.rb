@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     if @user
       sign_in!(@user)
     else
+      @user = User.new
       flash[:errors] = ["Wrong username/password!"]
       render :new
     end
