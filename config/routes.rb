@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :cards, shallow: true
   end
 
+  resources :boards, only: :index
+
   resource :session, only: [:new, :create, :destroy]
 end

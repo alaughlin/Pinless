@@ -1,7 +1,6 @@
 class BoardsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @boards = @user.boards
+    @boards = Board.where(public: true)
   end
 
   def show
@@ -16,7 +15,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     @board.user_id = current_user.id
-    
+        
     if @board.save
       redirect_to user_url(current_user)
     else
