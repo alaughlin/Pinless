@@ -1,7 +1,7 @@
 <section class="user-info">
   <ul class="group">
-    <li class="user-info-left"><img class="user-info-avatar" src="http://media-cache-ec0.pinimg.com/avatars/adamlaughlin9_1408573923_140.jpg"></li>
-    <li class="user-info-left"><h2 class="user-info-username"><%=@user.username %></h2></li>
+    <li class="user-info-left"><img class="user-info-avatar" src="<%= @user.avatar.url %>"</li>
+    <li class="user-info-left"><h2 class="user-info-username"><%= @user.username %></h2></li>
     <li class="user-info-right"><a href="#">Add As Friend</a></li>
   </ul>
 </section>

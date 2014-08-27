@@ -1,0 +1,12 @@
+<h2>Sign Up</h2>
+
+<form action="<%= users_url %>" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="text" name="user[username]" value="<%= @user.username %>">
+  <input type="password" name="user[password]" value="<%= @user.password %>">
+
+  <input type="file" name="user[avatar]">
+
+  <button>Sign Up</button>
+</form>

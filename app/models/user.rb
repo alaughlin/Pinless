@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :cards, class_name: "Card", foreign_key: :user_id
   has_many :boards, class_name: "Board", foreign_key: :user_id
 
+  after_initialize :ensure_session_token
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)
