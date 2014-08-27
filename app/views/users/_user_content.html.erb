@@ -18,6 +18,7 @@
       <ul class="card-details content-list-item-details">
         <a href="<%= card_url(card) %>"><li><%= card.title %></li>
         <li><img src="<%= card.image.url %>" width="150"></li></a>
+        <li>Posted in: <a href="<%= board_url(card.board) %>"><%= card.board.title %></a>
       </ul>
     </li>
   <% end %>
@@ -30,7 +31,7 @@
       <ul class="board-details content-list-item-details">
         <a href="<%= board_url(board) %>"><li><%= board.title %></li>
         <li><img src="<%= board.avatar.url %>" width="150"></li></a>
-        <li>Owned by: <a href="<%= board.user.username %>"><%= board.user.username %></a>
+        <li>Owned by: <a href="<%= board_url(board.user) %>"><%= board.user.username %></a>
       </ul>
     </li>
   <% end %>
@@ -43,7 +44,8 @@
       <ul class="card-details content-list-item-details">
         <a href="<%= card_url(card) %>"><li><%= card.title %></li>
         <li><img src="<%= card.image.url %>" width="150"></li></a>
-        <li>Posted by: <a href="<%= card.user.username %>"><%= card.user.username %></a>
+        <li>Posted in: <a href="<%= board_url(card.board) %>"><%= card.board.title %></a>
+        <li>Posted by: <a href="<%= user_url(card.user) %>"><%= card.user.username %></a>
       </ul>
     </li>
   <% end %>

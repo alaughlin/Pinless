@@ -1,17 +1,8 @@
 <%= render partial: "static/header" %>
 
-<% @action = @liked.length > 0 ? "delete" : "post" %>
-<% @button = @liked.length > 0 ? "Unlike This Board" : "Like This Board" %>
-
-<form action="<%= board_likes_url %>" method="post">
-  <input type="hidden" name="_method" value="<%= @action %>">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="board_like[user_id]" value="<%= current_user.id %>">
-  <input type="hidden" name="board_like[board_id]" value="<%= @board.id %>">
-  <button><%= @button %></button>
-</form>
-
 <section id="content">
+  <%= render partial: "boards/board_info", locals: { board: @board, liked: @liked } %>
+
   <ul class="group">
     <% @board.cards.each do |card| %>
       <li class="card content-list-item">
