@@ -12,9 +12,9 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    @request = FriendRequest.find(params[:request_id])
+    @request = FriendRequest.find(params[:id])
     @request.destroy
-    
+
     redirect_to user_url(current_user)
   end
 
@@ -23,7 +23,4 @@ class FriendRequestsController < ApplicationController
   def friend_request_params
     params.require(:friend_request).permit(:requester_id, :requestee_id)
   end
-
-  def friendship_params
-    params.require(:friendship).permit(:)
 end

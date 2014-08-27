@@ -51,12 +51,26 @@
   <% end %>
 </ul>
 
+<h2>Friends</h2>
+<ul class="group">
+  <% @user.friends.each do |friend| %>
+    <li><img src="<% friend.avatar.url %>" height="100" width="100"></li>
+    <li><a href="<%= user_url(friend) %>"><%= friend.username %></a></li>
+  <% end %>
+</ul>
+
 <% if @user == current_user && @friend_requests.length > 0 %>
   <h2>Friend Requests</h2>
   <ul>
     <% @friend_requests.each do |request| %>
       <%= request.requester.username %>
-      <%= button_to "Accept", friendships_url, method: :delete, params: { request_id: request.id, friendship: {requester_id: request.requester.id, requestee_id: current_user.id} } %>
+      <form action="<%= friendships_url %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="friendship[user_id]" value="<%= request.requester_id %>">
+        <input type="hidden" name="friendship[friend_id]" value="<%= request.requestee_id %>">
+        <input type="hidden" name="request_id" value="<%= request.id %>">
+        <button>Accept</button>
+      </form>
       <%= button_to "Deny", friend_request_url(request), method: :delete %>
     <% end %>
   </ul>
