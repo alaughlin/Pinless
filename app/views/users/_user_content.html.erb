@@ -50,3 +50,14 @@
     </li>
   <% end %>
 </ul>
+
+<% if @user == current_user && @friend_requests.length > 0 %>
+  <h2>Friend Requests</h2>
+  <ul>
+    <% @friend_requests.each do |request| %>
+      <%= request.requester.username %>
+      <%= button_to "Accept", friendships_url, method: :delete, params: { request_id: request.id, friendship: {requester_id: request.requester.id, requestee_id: current_user.id} } %>
+      <%= button_to "Deny", friend_request_url(request), method: :delete %>
+    <% end %>
+  </ul>
+<% end %>

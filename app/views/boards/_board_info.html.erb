@@ -1,13 +1,14 @@
-<% @action = liked.length > 0 ? "delete" : "post" %>
-<% @button = liked.length > 0 ? "Unlike This Board" : "Like This Board" %>
+<% @method = @liked ? "delete" : "post" %>
+<% @action = @liked ? board_like_url(@liked) : board_likes_url %>
+<% @button = @liked ? "Unlike This Board" : "Like This Board" %>
 
 <section class="info">
   <ul class="group">
     <li class="info-left"><img class="info-avatar" src="<%= board.avatar.url %>"</li>
     <li class="info-left"><h2 class="info-username"><%= board.title %></h2></li>
     <li class="info-right">
-      <form action="<%= board_likes_url %>" method="post">
-        <input type="hidden" name="_method" value="<%= @action %>">
+      <form action="<%= @action %>" method="post">
+        <input type="hidden" name="_method" value="<%= @method %>">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="board_like[user_id]" value="<%= current_user.id %>">
         <input type="hidden" name="board_like[board_id]" value="<%= @board.id %>">

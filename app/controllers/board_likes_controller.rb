@@ -12,8 +12,8 @@ class BoardLikesController < ApplicationController
   end
 
   def destroy
-    @board_like = BoardLike.where("board_id = ? AND user_id = ?", params[:board_like][:board_id], params[:board_like][:user_id]).first
-    @board = Board.find(params[:board_like][:board_id])
+    @board_like = BoardLike.find(params[:id])
+    @board = @board_like.board
     @board_like.destroy
 
     redirect_to board_url(@board)

@@ -11,8 +11,8 @@ class CardLikesController < ApplicationController
   end
 
   def destroy
-    @card_like = CardLike.where("card_id = ? AND user_id = ?", params[:card_like][:card_id], params[:card_like][:user_id]).first
-    @card = Card.find(params[:card_like][:card_id])
+    @card_like = CardLike.find(params[:id])
+    @card = @card_like.card
     @card_like.destroy
 
     redirect_to card_url(@card)

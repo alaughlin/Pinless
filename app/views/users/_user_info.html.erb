@@ -2,13 +2,15 @@
   <ul class="group">
     <li class="info-left"><img class="info-avatar" src="<%= @user.avatar.url %>"</li>
     <li class="info-left"><h2 class="info-username"><%= @user.username %></h2></li>
-    <li class="info-right">
-      <form action="<%= friend_requests_url %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="friend_request[requester_id]" value="<%= current_user.id %>">
-        <input type="hidden" name="friend_request[requestee_id" value="<%= @user.id %>">
-        <button>Add As Friend</button>
-      </form>
-    </li>
+    <% if @user != current_user %>
+      <li class="info-right">
+        <form action="<%= friend_requests_url %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="friend_request[requester_id]" value="<%= current_user.id %>">
+          <input type="hidden" name="friend_request[requestee_id" value="<%= @user.id %>">
+          <button>Add As Friend</button>
+        </form>
+      </li>
+    <% end %>
   </ul>
 </section>
