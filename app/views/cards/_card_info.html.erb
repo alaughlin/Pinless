@@ -1,0 +1,18 @@
+<% @action = @liked.length > 0 ? "delete" : "post" %>
+<% @button = @liked.length > 0 ? "Unlike This Card" : "Like This Card" %>
+
+<section class="info">
+  <ul class="group">
+    <li class="info-left"><img class="info-avatar" src="<%= card.image.url %>"</li>
+    <li class="info-left"><h2 class="info-username"><%= card.title %></h2></li>
+    <li class="info-right">
+      <form action="<%= card_likes_url %>" method="post">
+        <input type="hidden" name="_method" value="<%= @action %>">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="card_like[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="card_like[card_id]" value="<%= @card.id %>">
+        <button><%= @button %></button>
+      </form>
+    </li>
+  </ul>
+</section>

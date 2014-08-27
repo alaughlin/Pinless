@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   resource :board_likes, only: [:create, :destroy]
   resource :card_likes, only: [:create, :destroy]
+  resource :friend_requests, only: [:create, :destroy]
 end
