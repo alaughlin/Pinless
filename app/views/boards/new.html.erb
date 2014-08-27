@@ -2,7 +2,7 @@
 
 <h2>Add a Board</h2>
 
-<form action="<%= user_boards_url %>" method="post">
+<form action="<%= user_boards_url %>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <label>
@@ -12,8 +12,8 @@
   <br>
 
   <label>
-    Board Image URL:
-    <input type="text" name="board[img_url]" value="<%= @board.title %>">
+    Board Image:
+    <input type="file" name="board[avatar]">
   </label>
   <br>
 

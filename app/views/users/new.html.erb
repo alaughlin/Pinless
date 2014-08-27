@@ -3,10 +3,23 @@
 <form action="<%= users_url %>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="text" name="user[username]" value="<%= @user.username %>">
-  <input type="password" name="user[password]" value="<%= @user.password %>">
+  <label>
+    Username
+    <input type="text" name="user[username]" value="<%= @user.username %>">
+  </label>
+  <br>
 
-  <input type="file" name="user[avatar]">
+  <label>
+    Password
+    <input type="password" name="user[password]" value="<%= @user.password %>">
+  </label>
+  <br>
+
+  <label>
+    Avatar
+    <input type="file" name="user[avatar]">
+  </label>
+  <br>
 
   <button>Sign Up</button>
 </form>
