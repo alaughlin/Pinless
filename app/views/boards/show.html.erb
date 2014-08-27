@@ -1,16 +1,25 @@
 <%= render partial: "static/header" %>
 
+<form action="<%= board_likes_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="board_like[user_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="board_like[board_id]" value="<%= @board.id %>">
+
+  <button>Like This Board</button>
+</form>
+
 <section id="content">
   <ul class="group">
   <% @cards.each do |card| %>
-    <a href="<%= card_url(card) %>">
       <li class="card content-list-item">
         <ul class="card-details content-list-item-details">
           <li><%= card.title %></li>
-          <li><img src="<%= card.image.url %>" width="150"></li>
+          <li><a href="<%= card_url(card) %>"><img src="<%= card.image.url %>" width="150"></li></a>
+          <li><%= card.description %></li>
+          <li>Posted on: <a href="<%= board_url(card.board) %>"><%= card.board.title %></a></li>
+          <li>Posted by: <a href="<%= user_url(card.user) %>"><%= card.user.username %></a></li>
         </ul>
       </li>
-    </a>
   <% end %>
   </ul>
 

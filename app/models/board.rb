@@ -6,5 +6,6 @@ class Board < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
-  has_many :cards, class_name: "Card", foreign_key: "board_id"
+  has_many :cards, class_name: "Card", foreign_key: :board_id
+  has_many :board_likes, class_name: "BoardLike", foreign_key: :board_id
 end

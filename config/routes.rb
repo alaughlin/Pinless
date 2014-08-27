@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :boards, only: :index
 
   resource :session, only: [:new, :create, :destroy]
+
+  resource :board_likes, only: [:create, :destroy]
 end
