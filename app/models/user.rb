@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  has_many :cards, class_name: "Card", foreign_key: :user_id
   has_many :boards, class_name: "Board", foreign_key: :user_id
   has_many :board_likes, class_name: "BoardLike", foreign_key: :user_id
+  
+  has_many :liked_boards, through: :board_likes, source: :board
+  has_many :cards, through: :boards, source: :cards
 
   after_initialize :ensure_session_token
 

@@ -1,16 +1,16 @@
 <%= render partial: "static/header" %>
 
+<h2>All Boards</h2>
 <section id="content">
   <ul class="group">
   <% @boards.each do |board| %>
-    <a href="<%= board_url(board) %>">
-      <li class="board content-list-item">
-        <ul class="board-details content-list-item-details">
-          <li><img src="<%= board.avatar.url %>" width="150"></li>
-          <li><%= board.title %></li>
-        </ul>
-      </li>
-    </a>
+    <li class="board content-list-item">
+      <ul class="board-details content-list-item-details">
+        <a href="<%= board_url(board) %>"><li><%= board.title %></li>
+        <li><img src="<%= board.avatar.url %>" width="150"></li></a>
+        <li>Owned by: <a href="<%= board.user.username %>"><%= board.user.username %></a>
+      </ul>
+    </li>
   <% end %>
   </ul>
 </section>

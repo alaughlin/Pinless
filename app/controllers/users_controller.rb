@@ -3,8 +3,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @boards = @user.boards
-    @cards = @user.cards
   end
 
   def new

@@ -1,11 +1,11 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Board.where(public: true)
+    @boards = Board.where(public: true).order(:title)
   end
 
   def show
     @board = Board.find(params[:id])
-    @cards = @board.cards
+    @liked = BoardLike.where("board_id = ? AND user_id = ?", @board.id, current_user.id)
   end
 
   def new
@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     @board.user_id = current_user.id
-        
+
     if @board.save
       redirect_to user_url(current_user)
     else
