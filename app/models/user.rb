@@ -8,9 +8,12 @@ class User < ActiveRecord::Base
 
   has_many :boards, class_name: "Board", foreign_key: :user_id
   has_many :board_likes, class_name: "BoardLike", foreign_key: :user_id
-  
+  has_many :card_likes, class_name: "CardLike", foreign_key: :user_id
+
   has_many :liked_boards, through: :board_likes, source: :board
   has_many :cards, through: :boards, source: :cards
+
+  has_many :liked_cards, through: :card_likes, source: :card
 
   after_initialize :ensure_session_token
 

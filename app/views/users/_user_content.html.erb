@@ -35,3 +35,16 @@
     </li>
   <% end %>
 </ul>
+
+<h2>Liked Cards</h2>
+<ul class="group">
+  <% @user.liked_cards.each do |card| %>
+    <li class="card content-list-item">
+      <ul class="card-details content-list-item-details">
+        <a href="<%= card_url(card) %>"><li><%= card.title %></li>
+        <li><img src="<%= card.image.url %>" width="150"></li></a>
+        <li>Posted by: <a href="<%= card.user.username %>"><%= card.user.username %></a>
+      </ul>
+    </li>
+  <% end %>
+</ul>

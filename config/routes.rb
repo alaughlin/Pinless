@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resource :board_likes, only: [:create, :destroy]
+  resource :card_likes, only: [:create, :destroy]
 end

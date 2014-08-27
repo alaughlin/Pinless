@@ -1,5 +1,16 @@
 <%= render partial: "static/header" %>
 
+<% @action = @liked.length > 0 ? "delete" : "post" %>
+<% @button = @liked.length > 0 ? "Unlike This Card" : "Like This Card" %>
+
+<form action="<%= card_likes_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= @action %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="card_like[user_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="card_like[card_id]" value="<%= @card.id %>">
+  <button><%= @button %></button>
+</form>
+
 <section id="content">
   <li class="card content-list-item">
     <ul class="card-details content-list-item-details">
