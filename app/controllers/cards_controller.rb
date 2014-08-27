@@ -15,7 +15,7 @@ class CardsController < ApplicationController
     @card.user_id = current_user.id
 
     if @card.save
-      redirect_to user_url(current_user)
+      redirect_to card_url(@card)
     else
       @card = Card.new
       flash[:errors] = @card.errors.full_messages
@@ -26,6 +26,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:title, :img_url, :description, :board_id)
+    params.require(:card).permit(:title, :image, :description, :board_id)
   end
 end

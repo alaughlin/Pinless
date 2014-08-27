@@ -2,7 +2,7 @@
 
 <h2>Add a Card</h2>
 
-<form action="<%= board_cards_url(@board) %>" method="post">
+<form action="<%= board_cards_url(@board) %>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="hidden" name="card[board_id]" value="<%= @board.id %>">
@@ -14,8 +14,8 @@
   <br>
 
   <label>
-    Board Image URL:
-    <input type="text" name="card[img_url]" value="<%= @card.title %>">
+    Card Image:
+    <input type="file" name="card[image]">
   </label>
   <br>
 
