@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'static#root'
+
   resources :users do
     resources :boards , shallow: true do
       resources :cards
@@ -16,4 +18,10 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
 
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
+
+  namespace :api, defaults: { format: :json } do
+    resources :users
+    resources :boards
+    resources :cards
+  end
 end

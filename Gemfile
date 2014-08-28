@@ -55,3 +55,4 @@ gem "aws-sdk"
 gem 'omniauth-facebook'
 gem 'rest-client'
 gem 'open_uri_redirections'
+gem 'backbone-on-rails'
