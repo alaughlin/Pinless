@@ -1,4 +1,10 @@
-<h2>My Boards</h2>
+<% if @user == current_user %>
+  <% @prefix = "My " %>
+<% else %>
+  <% @prefix = "#{@user.username}'s " %>
+<% end %>
+
+<h2><%= @prefix %>Boards</h2>
 <a href="<%= new_user_board_url(current_user) %>">Add A Board!</a>
 <ul class="group">
   <% @user.boards.each do |board| %>
@@ -11,7 +17,7 @@
   <% end %>
 </ul>
 
-<h2>My Cards</h2>
+<h2><%= @prefix %>Cards</h2>
 <ul class="group">
   <% @user.cards.each do |card| %>
     <li class="card content-list-item">
@@ -51,7 +57,7 @@
   <% end %>
 </ul>
 
-<h2>Friends</h2>
+<h2><%= @prefix %>Friends</h2>
 <ul class="group">
   <% @user.friends.each do |friend| %>
     <li class="friend content-list-item">
@@ -67,15 +73,15 @@
   <h2>Friend Requests</h2>
   <ul>
     <% @friend_requests.each do |request| %>
-      <%= request.requester.username %>
+      <%= request.user.username %>
       <form action="<%= friendships_url %>" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="friendship[user_id]" value="<%= request.requester_id %>">
-        <input type="hidden" name="friendship[friend_id]" value="<%= request.requestee_id %>">
+        <input type="hidden" name="friendship[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="friendship[friend_id]" value="<%= request.user_id %>">
         <input type="hidden" name="request_id" value="<%= request.id %>">
         <button>Accept</button>
       </form>
-      <%= button_to "Deny", friend_request_url(request), method: :delete %>
+      <%= button_to "Deny", friendship_url(request), method: :delete %>
     <% end %>
   </ul>
 <% end %>

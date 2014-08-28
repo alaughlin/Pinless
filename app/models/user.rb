@@ -57,6 +57,41 @@ class User < ActiveRecord::Base
     self.liked_cards.exists?(card)
   end
 
+  def are_friends?(friend)
+    self.friends.exists?(friend)
+  end
+
+  def friend_requests
+    incoming = Friendship.find_by_sql(<<-SQL)
+      SELECT
+        *
+      FROM
+        friendships
+      WHERE
+        friend_id = #{self.id}
+    SQL
+
+    requests = Friendship.find_by_sql(<<-SQL)
+      SELECT
+        incoming_requests.*
+      FROM
+        (SELECT
+          *
+        FROM
+          friendships
+        WHERE
+          friend_id = #{self.id}) as incoming_requests
+      LEFT OUTER JOIN
+        friendships
+      ON
+        friendships.user_id = incoming_requests.friend_id
+      WHERE
+        friendships.friend_id = incoming_requests.user_id
+    SQL
+
+    incoming - requests
+  end
+
   def self.process_uri(uri)
     open(uri, allow_redirections: :safe) do |r|
       r.base_uri.to_s

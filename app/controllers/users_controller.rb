@@ -4,8 +4,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user == current_user
-      @friend_requests = FriendRequest.where('requestee_id = ? ', @user.id)
+      @friend_requests = @user.friend_requests
     end
+
+    @are_friends = current_user.are_friends?(@user)
+
+    if @are_friends
+      @friendship = Friendship.find_by(user_id: current_user.id, friend_id: @user.id)
+    end
+
+    @pending_request = Friendship.find_by(user_id: current_user.id, friend_id: @user.id) && !(Friendship.find_by(user_id: @user.id, friend_id: current_user.id))
   end
 
   def new

@@ -2,6 +2,10 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
     @liked = current_user.likes_card?(@card)
+
+    if @liked
+      @card_like = CardLike.find_by(card_id: @card.id, user_id: current_user.id)
+    end
   end
 
   def new

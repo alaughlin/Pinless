@@ -17,5 +17,7 @@
     <% end %>
   </ul>
 
-  <a href="<%= new_board_card_url(@board) %>">Add A Card</a>
+  <% if @liked %>
+    <a href="<%= new_board_card_url(@board) %>">Add A Card</a>
+  <% end %>
 </section>

@@ -102,4 +102,4 @@ Friendship.create(user_id: boba_fett.id, friend_id: vader.id)
 Friendship.create(user_id: emperor.id, friend_id: boba_fett.id)
 Friendship.create(user_id: boba_fett.id, friend_id: emperor.id)
 
-# Card.create(user_id:, board_id:, title:, description:, image:)
+Card.create(user_id: luke.id, board_id: tatooine.id, title: "My Home", description: "Never going back", image: File.new("#{Rails.root}/seeds/images/lars_homestead.jpg"))

@@ -1,15 +1,27 @@
+<% @action = @are_friends ? friendship_url(@friendship) : friendships_url %>
+<% @method = @are_friends ? "delete" : "post" %>
+<% @button = @are_friends ? "Unfriend" : "Add Friend" %>
+
 <section class="info">
   <ul class="group">
     <li class="info-left"><img class="info-avatar" src="<%= @user.avatar.url %>"</li>
     <li class="info-left"><h2 class="info-username"><%= @user.username %></h2></li>
     <% if @user != current_user %>
       <li class="info-right">
-        <form action="<%= friend_requests_url %>" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="friend_request[requester_id]" value="<%= current_user.id %>">
-          <input type="hidden" name="friend_request[requestee_id]" value="<%= @user.id %>">
-          <button>Add As Friend</button>
-        </form>
+        <% if @pending_request %>
+          <button disabled="true">Pending Request</button>
+        <% else %>
+          <form action="<%= @action %>" method="post">
+            <input type="hidden" name="_method" value="<%= @method %>">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="friendship[user_id]" value="<%= current_user.id %>">
+            <input type="hidden" name="friendship[friend_id]" value="<%= @user.id %>">
+            <% if @are_friends %>
+              <input type="hidden" name="user_id" value="<%= @user.id %>">
+            <% end %>
+            <button><%= @button %></button>
+          </form>
+        <% end %>
       </li>
     <% end %>
   </ul>
