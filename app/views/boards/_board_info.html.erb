@@ -1,5 +1,5 @@
 <% @method = @liked ? "delete" : "post" %>
-<% @action = @liked ? board_like_url(@liked) : board_likes_url %>
+<% @action = @liked ? board_like_url(@board_like) : board_likes_url %>
 <% @button = @liked ? "Unlike This Board" : "Like This Board" %>
 
 <section class="info">

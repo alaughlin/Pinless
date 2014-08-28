@@ -11,11 +11,8 @@ class User < ActiveRecord::Base
   has_many :card_likes, class_name: "CardLike", foreign_key: :user_id
   has_many :friendships, class_name: "Friendship", foreign_key: :user_id
   has_many :friends, through: :friendships, source: :friend
-
-
   has_many :liked_boards, through: :board_likes, source: :board
   has_many :cards, through: :boards, source: :cards
-
   has_many :liked_cards, through: :card_likes, source: :card
 
   after_initialize :ensure_session_token
@@ -50,6 +47,14 @@ class User < ActiveRecord::Base
   def has_password?(password)
     pw = BCrypt::Password.new(self.password_digest)
     pw.is_password?(password)
+  end
+
+  def likes_board?(board)
+    self.liked_boards.exists?(board)
+  end
+
+  def likes_card?(card)
+    self.liked_cards.exists?(card)
   end
 
   def self.process_uri(uri)

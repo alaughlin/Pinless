@@ -5,7 +5,11 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @liked = BoardLike.where("board_id = ? AND user_id = ?", @board.id, current_user.id).first
+    @liked = current_user.likes_board?(@board)
+
+    if @liked
+      @board_like = BoardLike.find_by(board_id: @board.id, user_id: current_user.id)
+    end
   end
 
   def new

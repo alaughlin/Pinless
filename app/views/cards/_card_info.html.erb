@@ -1,4 +1,4 @@
-<% @action = @liked ? card_like_url(@liked) : card_likes_url %>
+<% @action = @liked ? card_like_url(@card) : card_likes_url %>
 <% @method = @liked ? "delete" : "post" %>
 <% @button = @liked ? "Unlike This Card" : "Like This Card" %>
 

@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
-    @liked = CardLike.where("card_id = ? AND user_id = ?", @card.id, current_user.id).first
+    @liked = current_user.likes_card?(@card)
   end
 
   def new
