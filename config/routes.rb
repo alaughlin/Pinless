@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :card_likes, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
+
+  get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 end

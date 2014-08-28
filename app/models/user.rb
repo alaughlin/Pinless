@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :username, :password_digest, presence: true
-  validates :password, length: {minimum: 6}, allow_nil: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
@@ -50,5 +50,27 @@ class User < ActiveRecord::Base
   def has_password?(password)
     pw = BCrypt::Password.new(self.password_digest)
     pw.is_password?(password)
+  end
+
+  def self.process_uri(uri)
+    open(uri, allow_redirections: :safe) do |r|
+      r.base_uri.to_s
+    end
+  end
+
+  def self.find_or_create_by_fb_auth_hash(auth_hash)
+    user = self.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
+
+    unless user
+      user = self.create!(
+        uid: auth_hash[:uid],
+        provider: auth_hash[:provider],
+        username: auth_hash[:info][:name],
+        password_digest: SecureRandom::urlsafe_base64(16),
+        avatar: self.process_uri(auth_hash[:info][:image])
+      )
+    end
+
+    user
   end
 end
