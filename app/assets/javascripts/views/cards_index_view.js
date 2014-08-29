@@ -13,7 +13,6 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
     var that = this;
 
     this.cards.models.forEach(function (card) {
-      console.log(card);
       view = new Pinless.Views.Card({model: card});
       that.$el.append(view.render().$el);
     });

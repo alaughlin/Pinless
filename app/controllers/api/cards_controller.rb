@@ -11,4 +11,11 @@ class Api::CardsController < ApplicationController
 
     render :index
   end
+
+  def liked_cards
+    @user = User.find(params[:id])
+    @cards = @user.liked_cards
+
+    render :index
+  end
 end

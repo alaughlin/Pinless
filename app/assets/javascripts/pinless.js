@@ -4,7 +4,6 @@ window.Pinless = {
   Views: {},
   Routers: {},
   initialize: function () {
-    console.log("init");
     Pinless.users = new Pinless.Collections.Users();
     Pinless.boards = new Pinless.Collections.Boards();
     Pinless.cards = new Pinless.Collections.Cards();

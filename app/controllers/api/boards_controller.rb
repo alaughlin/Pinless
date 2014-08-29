@@ -11,4 +11,11 @@ class Api::BoardsController < ApplicationController
 
     render :index
   end
+
+  def liked_boards
+    @user = User.find(params[:id])
+    @boards = @user.liked_boards
+
+    render :index
+  end
 end

@@ -27,5 +27,8 @@ Rails.application.routes.draw do
 
       resources :cards, shallow: true
     end
+
+    get '/users/:id/boards/liked', to: 'boards#liked_boards'
+    get '/users/:id/cards/liked', to: 'cards#liked_cards'
   end
 end

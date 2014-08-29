@@ -6,12 +6,22 @@
 $(document).ready(function () {
   $('#content').on('click', '.user-boards-link', function (event) {
     event.preventDefault();
-    Pinless.router.showUserBoards(event.currentTarget.dataset.id);
+    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards", {trigger: true});
   });
 
   $('#content').on('click', '.user-cards-link', function (event) {
     event.preventDefault();
-    Pinless.router.showUserCards(event.currentTarget.dataset.id);
+    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards", {trigger: true});
+  });
+
+  $('#content').on('click', '.user-liked-boards-link', function (event) {
+    event.preventDefault();
+    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards/liked", {trigger: true});
+  });
+
+  $('#content').on('click', '.user-liked-cards-link', function (event) {
+    event.preventDefault();
+    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards/liked", {trigger: true});
   });
 });
 </script>
