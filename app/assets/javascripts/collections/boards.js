@@ -10,6 +10,7 @@ Pinless.Collections.Boards = Backbone.Collection.extend({
     } else {
       board.fetch({
         success: function (data) {
+          Pinless.boards.add(data)
           cb(data);
         }
       });

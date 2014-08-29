@@ -10,6 +10,7 @@ Pinless.Collections.Cards = Backbone.Collection.extend({
     } else {
       card.fetch({
         success: function (data) {
+          Pinless.cards.add(data)
           cb(data);
         }
       });
