@@ -3,7 +3,7 @@ window.Pinless = {
   Collections: {},
   Views: {},
   Routers: {},
-  startup: function () {
+  initialize: function () {
     Pinless.users = new Pinless.Collections.Users();
     Pinless.boards = new Pinless.Collections.Boards();
     Pinless.cards = new Pinless.Collections.Cards();
@@ -13,5 +13,5 @@ window.Pinless = {
 };
 
 $(document).ready(function(){
-  Pinless.startup();
+  Pinless.initialize();
 });
