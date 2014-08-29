@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   $('#content').on('click', '.user-cards-link', function (event) {
     event.preventDefault();
-    console.log("clicked!");
+    Pinless.router.showUserCards(event.currentTarget.dataset.id);
   });
 });
 </script>

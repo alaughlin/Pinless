@@ -1,0 +1,7 @@
+<li class="card content-list-item">
+  <ul class="card-details content-list-item-details">
+    <li><%= card.escape('title') %></li>
+    <li><img src="<%= card.escape('image') %>" width="150"></li></a>
+    <li>Owned by: <a href="#/users/<%= card.escape('user_id') %>"><%= card.escape('user_username') %></a></li>
+  </ul>
+</li>

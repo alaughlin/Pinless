@@ -13,11 +13,10 @@ Pinless.Views.BoardsIndex = Backbone.View.extend({
     var that = this;
 
     this.boards.models.forEach(function (board) {
-      console.log(board);
       view = new Pinless.Views.Board({model: board});
       that.$el.append(view.render().$el);
     });
 
     return this;
   }
-})
+});

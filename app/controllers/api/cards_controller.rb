@@ -4,4 +4,11 @@ class Api::CardsController < ApplicationController
 
     render :show
   end
+
+  def index
+    @user = User.find(params[:user_id])
+    @cards = @user.cards
+
+    render :index
+  end
 end
