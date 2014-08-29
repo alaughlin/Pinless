@@ -97,6 +97,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     var user = Pinless.users.getOrFetch(id, function (data) {
       var view = new Pinless.Views.UserShow({model: data});
       that.$el.html(view.render().$el);
+      that.showUserBoards(data.id);
     });
   },
 

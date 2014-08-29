@@ -20,4 +20,4 @@ Pinless.Views.BoardShow = Backbone.View.extend({
 
     return this;
   }
-})
+});
