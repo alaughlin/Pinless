@@ -2,8 +2,15 @@
 
 <div id="content"></div>
 
+<div class="overlay">
+  <div class="overlay-content">
+  </div>
+</div>
+
 <script>
 $(document).ready(function () {
+  currentUserId = <%= current_user.id %>;
+
   $('#content').on('click', '.user-boards-link', function (event) {
     event.preventDefault();
     Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards", {trigger: true});
@@ -27,6 +34,16 @@ $(document).ready(function () {
   $('#content').on('click', '.user-friends-link', function (event) {
     event.preventDefault();
     Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
+  });
+
+  $('#content').on('click', '.add-card-link', function (event) {
+    event.preventDefault();
+    Pinless.router.addCardModal(event.currentTarget.dataset.id);
+  });
+
+  $('.overlay').on('click', '.close-modal-link', function (event) {
+    event.preventDefault();
+    Pinless.router.hideModal();
   });
 });
 </script>

@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializejson
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require backbone.subset
 //= require pinless
 //= require_tree ../templates
 //= require_tree ./models

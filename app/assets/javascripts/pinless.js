@@ -4,7 +4,9 @@ window.Pinless = {
   Views: {},
   Routers: {},
   initialize: function () {
-    Pinless.users = new Pinless.Collections.Users();
+    subsetClass = Backbone.Subset.extend({});
+
+    Pinless.users = new Pinless.Collections.Users();    
     Pinless.boards = new Pinless.Collections.Boards();
     Pinless.cards = new Pinless.Collections.Cards();
     Pinless.router = new Pinless.Routers.Router({$el: $("#content")});

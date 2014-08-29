@@ -1,6 +1,7 @@
 Pinless.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$el = options.$el;
+    this.$overlayContent = $('.overlay-content');
   },
 
   routes: {
@@ -14,6 +15,19 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "boards/:id":             "showBoard",
     "cards/:id":              "showCard"
 
+  },
+
+  addCardModal: function (id) {
+    var that = this;
+    var board = Pinless.boards.getOrFetch(id, function (data) {
+      var view = new Pinless.Views.CardAdd({model: data});
+      that.$overlayContent.html(view.render().$el);
+      $(".overlay").addClass('overlay-show');
+    });
+  },
+
+  hideModal: function () {
+    $(".overlay").removeClass('overlay-show');
   },
 
   showUserFriends: function (id) {
@@ -106,7 +120,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
     var board = Pinless.boards.getOrFetch(id, function (data) {
       var view = new Pinless.Views.BoardShow({model: data});
       that.$el.html(view.render().$el);
-      that.$el.prepend("<h2>" + data.escape('title') + "</h2>");
+      var view = new Pinless.Views.BoardHeader({model: data});
+      that.$el.prepend(view.render().$el);
     });
   },
 
