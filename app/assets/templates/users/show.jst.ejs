@@ -1,4 +1,5 @@
 <h2><%= user.escape('username') %></h2>
+<img src="<%= user.escape('image') %>" height="100">
 <a href="#" data-id="<%= user.escape('id') %>" class="user-boards-link user-nav-link"><%= user.escape('username') %>'s Boards</a>
 <a href="#" data-id="<%= user.escape('id') %>" class="user-cards-link user-nav-link"><%= user.escape('username') %>'s Cards</a>
 <a href="#" data-id="<%= user.escape('id') %>" class="user-liked-boards-link user-nav-link"><%= user.escape('username') %>'s Liked Boards</a>
