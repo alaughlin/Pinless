@@ -1,9 +1,7 @@
 Pinless.Views.BoardHeader = Backbone.View.extend({
   template: JST['boards/header'],
 
-  initialize: function () {
-    console.log(this.model)
-  },
+  initialize: function () {},
 
   events: {
     'click .add-card-link': 'addCardModal'
@@ -21,7 +19,6 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
     var id = event.currentTarget.dataset.id;
     var that = this;
     var board = Pinless.boards.getOrFetch(id, function (data) {
-      console.log(data.id);
       var view = new Pinless.Views.CardAdd({model: data});
       Pinless.router.$overlayContent.html(view.render().$el);
       $(".overlay").addClass('overlay-show');

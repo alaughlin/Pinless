@@ -7,7 +7,6 @@ Pinless.Views.CardAdd = Backbone.View.extend({
   },
 
   initialize: function () {
-    console.log(this.model.id);
     this.newModel = new Pinless.Models.Card();
   },
 
