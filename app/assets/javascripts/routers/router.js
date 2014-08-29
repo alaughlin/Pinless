@@ -5,6 +5,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "":                       "index",
+    "users/:id/friends":      "showUserFriends",
     "users/:id/boards/liked": "showUserBoardsLiked",
     "users/:id/boards":       "showUserBoards",
     "users/:id/cards/liked":  "showUserCardsLiked",
@@ -13,6 +14,21 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "boards/:id":             "showBoard",
     "cards/:id":              "showCard"
 
+  },
+
+  showUserFriends: function (id) {
+    var that = this;
+    var user = Pinless.users.getOrFetch(id, function (data) {
+      var user = data;
+      data.friends.fetch({
+        reset: true,
+        success: function (data) {
+          var view = new Pinless.Views.UsersIndex({collection: data});
+          that.$el.html(view.render().$el);
+          that.userHeader(user);
+        }
+      });
+    });
   },
 
   showUserBoards: function (id) {

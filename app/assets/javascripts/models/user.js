@@ -17,5 +17,9 @@ Pinless.Models.User = Backbone.Model.extend({
     this.cards_liked = new Pinless.Collections.Cards();
     this.cards_liked.url = '/api/users/' + this.id + '/cards/liked';
     this.cards_liked.on("reset", this.updateCounts);
+
+    this.friends = new Pinless.Collections.Users();
+    this.friends.url = "api/users/" + this.id + "/friends";
+    this.friends.on("reset", this.updateCounts);
   },
 });

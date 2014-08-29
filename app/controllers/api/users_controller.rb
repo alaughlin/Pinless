@@ -17,6 +17,13 @@ before_filter :ensure_signed_in, only: [:show]
     render :show
   end
 
+  def friends
+    @user = User.find(params[:id])
+    @friends = @user.friends
+
+    render :index
+  end
+
   # def new
   #   @user = User.new
   # end

@@ -23,5 +23,10 @@ $(document).ready(function () {
     event.preventDefault();
     Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards/liked", {trigger: true});
   });
+
+  $('#content').on('click', '.user-friends-link', function (event) {
+    event.preventDefault();
+    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
+  });
 });
 </script>
