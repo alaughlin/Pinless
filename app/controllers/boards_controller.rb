@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_filter :ensure_signed_in, only: [:show, :index, :create, :destroy]
+
   def index
     @boards = Board.where(public: true).order(:title)
   end

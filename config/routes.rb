@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 
   namespace :api, defaults: { format: :json } do
-    resources :users
-    resources :boards
-    resources :cards
+    resources :users do
+      resources :boards, shallow: true do
+        resources :cards
+      end
+    end
   end
 end

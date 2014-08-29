@@ -1,3 +1,17 @@
 <%= render partial: "static/header" %>
 
 <div id="content"></div>
+
+<script>
+$(document).ready(function () {
+  $('#content').on('click', '.user-boards-link', function (event) {
+    event.preventDefault();
+    Pinless.router.showUserBoards(event.currentTarget.dataset.id);
+  });
+
+  $('#content').on('click', '.user-cards-link', function (event) {
+    event.preventDefault();
+    console.log("clicked!");
+  });
+});
+</script>

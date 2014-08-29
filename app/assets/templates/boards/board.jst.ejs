@@ -1,0 +1,7 @@
+<li class="board content-list-item">
+  <ul class="board-details content-list-item-details">
+    <a href="#/boards/<%= board.escape('id') %>"><li><%= board.escape('title') %></li>
+    <li><img src="<%= board.escape('image') %>" width="150"></li></a>
+    <li>Owned by: <a href="#/users/<%= board.escape('user_id') %>"><%= board.escape('user_username') %></a></li>
+  </ul>
+</li>

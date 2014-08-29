@@ -14,7 +14,7 @@ before_filter :ensure_signed_in, only: [:show]
     # end
 
     # @pending_request = Friendship.find_by(user_id: current_user.id, friend_id: @user.id) && !(Friendship.find_by(user_id: @user.id, friend_id: current_user.id))
-    render json: @user
+    render :show
   end
 
   # def new

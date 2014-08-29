@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_filter :ensure_signed_in, only: [:show, :create, :destroy]
+  
   def show
     @card = Card.find(params[:id])
     @liked = current_user.likes_card?(@card)

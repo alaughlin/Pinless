@@ -3,7 +3,7 @@ Pinless.Collections.Cards = Backbone.Collection.extend({
   model: Pinless.Models.Card,
 
   getOrFetch: function (id, cb) {
-    var card = Pinless.Models.Card({id: id});
+    var card = new Pinless.Models.Card({id: id});
 
     if (Pinless.cards.get(card)) {
       cb(Pinless.cards.get(card));

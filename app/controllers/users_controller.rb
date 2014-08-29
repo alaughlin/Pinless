@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :ensure_signed_in, only: [:show]
+  before_filter :ensure_signed_in, only: [:show, :create, :destroy]
 
   def show
     @user = User.find(params[:id])

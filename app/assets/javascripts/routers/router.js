@@ -4,16 +4,35 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "":            "index",
-    "users/:id":  "showUser",
-    "boards/:id": "showBoard",
-    "cards/:id":  "showCard"
+    "":                 "index",
+    "users/:id/boards": "showUserBoards",
+    "users/:id":        "showUser",
+    "boards/:id":       "showBoard",
+    "cards/:id":        "showCard"
+
+  },
+
+  showUserBoards: function (id) {
+    var that = this;
+    var user = Pinless.users.getOrFetch(id, function (data) {
+      var user = data;
+      data.boards.fetch({
+        reset: true,
+        success: function (data) {
+          var view = new Pinless.Views.BoardsIndex({collection: data});
+          that.$el.html(view.render().$el);
+          that.userHeader(user);
+        }
+      });
+    });
+
   },
 
   showUser: function (id) {
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
-      that.$el.html(data.username);
+      var view = new Pinless.Views.UserShow({model: data});
+      that.$el.html(view.render().$el);
     });
   },
 
@@ -22,6 +41,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     var board = Pinless.boards.getOrFetch(id, function (data) {
       var view = new Pinless.Views.BoardShow({model: data});
       that.$el.html(view.render().$el);
+      that.$el.prepend("<h2>" + data.escape('title') + "</h2>");
     });
   },
 
@@ -31,5 +51,10 @@ Pinless.Routers.Router = Backbone.Router.extend({
       var view = new Pinless.Views.CardShow({model: data});
       that.$el.html(view.render().$el);
     });
+  },
+
+  userHeader: function (user) {
+    var view = new Pinless.Views.UserShow({model: user});
+    this.$el.prepend(view.render().$el);
   }
 });
