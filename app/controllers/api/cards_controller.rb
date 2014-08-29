@@ -12,10 +12,27 @@ class Api::CardsController < ApplicationController
     render :index
   end
 
+  def create
+    @card = Card.new(card_params)
+    @card.user_id = current_user.id
+
+    puts @card
+
+    if @card.save
+      render json: @card
+    end
+  end
+
   def liked_cards
     @user = User.find(params[:id])
     @cards = @user.liked_cards
 
     render :index
+  end
+
+  private
+
+  def card_params
+    params.require(:card).permit(:title, :image, :description, :board_id)
   end
 end

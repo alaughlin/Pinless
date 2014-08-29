@@ -9,7 +9,7 @@
 
 <script>
 $(document).ready(function () {
-  currentUserId = <%= current_user.id %>;
+  Pinless.currentUserId = <%= current_user.id %>;
 
   $('#content').on('click', '.user-boards-link', function (event) {
     event.preventDefault();
@@ -36,10 +36,7 @@ $(document).ready(function () {
     Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
   });
 
-  $('#content').on('click', '.add-card-link', function (event) {
-    event.preventDefault();
-    Pinless.router.addCardModal(event.currentTarget.dataset.id);
-  });
+  
 
   $('.overlay').on('click', '.close-modal-link', function (event) {
     event.preventDefault();

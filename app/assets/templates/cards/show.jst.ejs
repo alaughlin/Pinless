@@ -1,9 +1,9 @@
 <li class="card content-list-item">
   <ul class="card-details content-list-item-details">
-    <li><%= card.title %></li>
-    <img src="<%= card.image %>" width="150"></li>
-    <li><%= card.description %></li>
-    <li>Posted on: <a href="#/boards/<%= card.board_id %>"><%= card.board_title %></a></li>
-    <li>Posted by: <a href="#/users/<%= card.user_id %>"><%= card.user_username %></li>
+    <li><%= card.escape('title') %></li>
+    <img src="<%= card.escape('image') %>" width="150"></li>
+    <li><%= card.escape('description') %></li>
+    <li>Posted on: <a href="#/boards/<%= card.escape('board_id') %>"><%= card.escape('board_title') %></a></li>
+    <li>Posted by: <a href="#/users/<%= card.escape('user_id') %>"><%= card.escape('user_username') %></li>
   </ul>
 </li>

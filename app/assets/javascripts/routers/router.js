@@ -17,15 +17,6 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   },
 
-  addCardModal: function (id) {
-    var that = this;
-    var board = Pinless.boards.getOrFetch(id, function (data) {
-      var view = new Pinless.Views.CardAdd({model: data});
-      that.$overlayContent.html(view.render().$el);
-      $(".overlay").addClass('overlay-show');
-    });
-  },
-
   hideModal: function () {
     $(".overlay").removeClass('overlay-show');
   },

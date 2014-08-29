@@ -1,22 +1,22 @@
 Adding a card to <%= board.escape('title') %>
 <a href="#" class="close-modal-link">Close</a>
 <form class="add-card-form" enctype="multipart/form-data">
-  <input type="hidden" value="<%= board.escape('id') %>">
+  <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
   <label>
     Title:
-    <input type="text" name="title">
+    <input type="text" name="card[title]">
   </label>
   <br>
 
   <label>
     Description:
-    <textarea name="description"></textarea>
+    <textarea name="card[description]"></textarea>
   </label>
   <br>
 
   <label>
     Image:
-    <input type="file" name="image">
+    <input type="file" name="card[image]" id="image-file-input">
   </label>
   <br>
 

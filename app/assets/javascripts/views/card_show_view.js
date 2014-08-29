@@ -1,7 +1,9 @@
 Pinless.Views.CardShow = Backbone.View.extend({
   template: JST['cards/show'],
 
-  initialize: function (card) {},
+  initialize: function () {
+    console.log(this.model.escape('title'));
+  },
 
   render: function () {
     var content = this.template({card: this.model});
