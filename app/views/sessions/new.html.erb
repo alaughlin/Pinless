@@ -1,23 +1,24 @@
-<h2>Sign In</h2>
-
-<form action="<%= session_url %>" method="post">
+<form class="signin-form" action="<%= session_url %>" method="post">
+  <h2>Sign In</h2>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>
-    Username
-    <input type="text" name="user[username]" value="<%= @user.username %>">
-  </label>
+  <label for="signin-username">Username</label>
+  <br>
+  <input id="signin-username" class="signin-text" type="text" name="user[username]" value="<%= @user.username %>">
   <br>
 
-  <label>
-    Password
-    <input type="password" name="user[password]" value="<%= @user.password %>">
-  </label>
+  <label for="signin-password">Password</label>
+  <br>
+  <input id="signin-password" class="signin-text" type="password" name="user[password]" value="<%= @user.password %>">
   <br>
 
-  <button>Log In</button>
+  <button class="signin-button">Sign In</button>
+  <br>
 
-  OR
+  <div class="line-and-or">
+    <hr>
+    <p class="or">OR</p>
+  </div>
 
-  <a href="/auth/facebook">Login with Facebook</a>
+  <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
 </form>

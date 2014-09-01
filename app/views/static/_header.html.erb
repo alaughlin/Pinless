@@ -1,16 +1,15 @@
-<header class="top-header">
-  <ul class="top-header-list group">
-    <li class="top-header-left">
-      <ul class="top-header-left-list group">
-        <input type="text" class="search-box">
+<header class="top-header group">
+  <li class="header-left"><input type="text" class="search-box"></li>
+
+  <li class="header-right">
+    <ul class="user-stuff group">
+      <li><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
+      <li><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
+      <ul class="dropdown-menu">
+        <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
+        <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
       </ul>
-    </li>
-    <li class="top-header-right">
-      <%= button_to "Logout", session_url, method: :delete %>
-    </li>
-    <li class="top-header-right">
-      <a href="#/users/<%= current_user.id %>" class="user-dropdown"><%= current_user.username %></a>
-    </li>
-    <h2 class="logo">Pinless</h2>
-  </ul>
+    </ul>
+  </li>
+  <h2 class="logo">Pinless</h2>
 </header>

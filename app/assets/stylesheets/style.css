@@ -1,0 +1,256 @@
+html, body, header, h1, h2, ul, li, a, img, hr, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-family: sans-serif;
+}
+
+img {
+  display: block;
+}
+
+input, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+a {
+  text-decoration: none
+}
+
+/* SIGNIN FORM */
+.signin-form {
+  position: absolute;
+  height: 320px;
+  width: 200px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.signin-form h2 {
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.signin-form label {
+  text-align: center;
+  display: block;
+}
+
+.signin-text {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  border: 1px solid blue;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.signin-text:focus {
+  outline: none;
+}
+
+.signin-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;
+  width: 170px;
+  color: #fff;
+  background: blue;
+}
+
+.line-and-or {
+  position: relative;
+}
+
+.line-and-or hr {
+  height: 1px;
+  background: #ccc;
+  margin-bottom: 10px;
+}
+
+.or {
+  display: block;
+  position: absolute;
+  top: -6px;
+  left: 43%;
+  padding: 0 5px;
+  background: #fff;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.fb-signin img {
+  width: 170px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.top-header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.header-left {
+  padding: 10px 0px 10px 20px;
+  float: left;
+}
+
+.header-right {
+  float: right;
+  padding: 10px 20px 10px 0;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  padding-top: 5px
+}
+
+.user-stuff {
+  border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.user-stuff li {
+  float: left;
+}
+
+.user-stuff:hover {
+  border: 1px solid #ccc;
+}
+
+.user-stuff:hover .dropdown-menu {
+  display: block;
+}
+
+.header-avatar {
+  display: block;
+}
+
+.header-username {
+  display: inline-block;
+  padding: 5px 5px 0 5px;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none;
+  right: -1px;
+  top: 30px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.dropdown-menu li {
+  padding: 5px 5px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  width: 100%;
+}
+
+.logout-button {
+  border: none;
+  color: #000;
+  background: #fff;
+  font-size: 12px;
+}
+
+.logout-button:active,
+.logout-button:focus {
+  outline: none;
+}
+
+
+/* CONTENT */
+
+#content {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  position: relative;
+}
+
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+.overlay-show {
+  visibility: visible;
+}
+
+.overlay-content {
+  position: relative;
+  margin: 0 auto;
+  visibility: inherit;
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border: 2px solid black;
+}
+
+.info {
+  width: 100%;
+  background: #ccc;
+}
+
+.info-avatar {
+  padding: 30px 20px;
+  width: auto;
+  height: 100px;
+}
+
+.info-username {
+  padding: 30px 20px;
+}
+
+.info-left {
+  float: left;
+}
+
+.info-right {
+  float: right;
+  padding: 30px 20px;
+}
+
+.content-list-item {
+  width: 170px;
+  border: 2px solid #ccc;
+  float: left;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.content-list-item-details {
+  padding: 10px;
+}

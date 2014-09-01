@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         resources :cards
       end
 
-      resources :cards, shallow: true
+      resources :cards, shallow: true                   
     end
 
     resources :cards, only: [:create, :destroy]

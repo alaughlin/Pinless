@@ -36,8 +36,6 @@ $(document).ready(function () {
     Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
   });
 
-  
-
   $('.overlay').on('click', '.close-modal-link', function (event) {
     event.preventDefault();
     Pinless.router.hideModal();

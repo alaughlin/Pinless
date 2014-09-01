@@ -14,8 +14,6 @@ Pinless.Views.BoardShow = Backbone.View.extend({
   render: function () {
     var that = this;
     this.$el.empty();
-    console.log("rendering");
-    console.log(this.cards);
     this.cards.each(function (card) {
       view = new Pinless.Views.CardShow({model: card});
       that.$el.append(view.render().$el);
