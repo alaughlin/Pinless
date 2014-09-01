@@ -3,7 +3,7 @@ html, body, header, h1, h2, ul, li, a, img, hr, p {
   padding: 0;
   border: 0;
   list-style: none;
-  font-family: sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 img {
@@ -29,7 +29,7 @@ a {
 /* SIGNIN FORM */
 .signin-form {
   position: absolute;
-  height: 320px;
+  height: 260px;
   width: 200px;
   top: 0;
   bottom: 0;
@@ -45,21 +45,20 @@ a {
 .signin-form h2 {
   text-align: center;
   font-size: 24px;
-  padding: 10px;
-}
-
-.signin-form label {
-  text-align: center;
-  display: block;
+  padding: 0 10px 10px 10px;
+  color: #777;
 }
 
 .signin-text {
   display: block;
   margin: 0 auto;
   width: 150px;
-  border: 1px solid blue;
+  border-bottom: 1px solid #60BBD6;
   padding: 5px 10px;
   font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #777;
 }
 
 .signin-text:focus {
@@ -73,7 +72,23 @@ a {
   margin: 0 auto;
   width: 170px;
   color: #fff;
-  background: blue;
+  background: #6BCFED;
+  border: 2px solid transparent;
+  border-radius: 2px;
+}
+
+.signin-button:hover {
+  border: 2px solid #60BBD6;
+}
+
+.signin-button:focus {
+  outline: none;
+  border: 2px solid #60BBD6;
+}
+
+.signin-button:active {
+  position: relative;
+  top: 2px;
 }
 
 .line-and-or {
@@ -83,7 +98,7 @@ a {
 .line-and-or hr {
   height: 1px;
   background: #ccc;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .or {
@@ -95,12 +110,18 @@ a {
   background: #fff;
   font-size: 12px;
   font-style: italic;
+  color: #777;
 }
 
 .fb-signin img {
   width: 170px;
   display: block;
   margin: 0 auto;
+}
+
+.fb-signin img:active {
+  position: relative;
+  top: 2px;
 }
 
 /* HEADER */
