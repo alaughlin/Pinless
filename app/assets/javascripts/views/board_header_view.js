@@ -1,7 +1,13 @@
 Pinless.Views.BoardHeader = Backbone.View.extend({
   template: JST['boards/header'],
 
-  initialize: function () {},
+  tagName: 'section',
+
+  className: 'board-info',
+
+  initialize: function (data) {
+    console.log(this.model);
+  },
 
   events: {
     'click .add-card-link': 'addCardModal'

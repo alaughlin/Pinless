@@ -7,6 +7,7 @@
       <li class="header-right-right"><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
       <ul class="dropdown-menu">
         <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
+        <li><a href="#">Add A Board</a></li>
         <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
       </ul>
     </ul>

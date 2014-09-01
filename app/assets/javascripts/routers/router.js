@@ -118,7 +118,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       var view = new Pinless.Views.BoardShow({model: data});
       that.$el.html(view.render().$el);
       var view = new Pinless.Views.BoardHeader({model: data});
-      that.$el.prepend(view.render().$el);
+      $('#sub-header').html(view.render().$el);
     });
   },
 

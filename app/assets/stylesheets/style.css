@@ -1,4 +1,4 @@
-html, body, header, h1, h2, ul, li, a, img, hr, p {
+html, body, header, h1, h2, h3, ul, li, a, img, hr, p {
   margin: 0;
   padding: 0;
   border: 0;
@@ -10,7 +10,7 @@ img {
   display: block;
 }
 
-input, button {
+input, button, textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -149,6 +149,7 @@ a {
   border: 1px solid #ccc;
   font-size: 14px;
   padding: 5px 5px;
+  border-radius: 3px;
 }
 
 .search-box:focus {
@@ -167,11 +168,11 @@ a {
 }
 
 .user-stuff {
-  border: 1px solid transparent;
   cursor: pointer;
   position: relative;
   border: 1px solid #ccc;
   width: 150px;
+  border-radius: 3px;
 }
 
 .user-stuff:hover .dropdown-menu {
@@ -249,6 +250,7 @@ a {
 }
 
 /* USER INFO */
+
 .user-info {
   text-align: center;
   margin: 0 auto;
@@ -315,6 +317,28 @@ a {
   border-bottom-right-radius: 5px;
 }
 
+/* BOARD INFO */
+
+.board-info {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.board-profile {
+  width: 700px;
+  height: 150px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.board-profile-avatar {
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 
 /* CONTENT */
 
@@ -339,40 +363,6 @@ a {
   visibility: visible;
 }
 
-.overlay-content {
-  position: relative;
-  margin: 0 auto;
-  visibility: inherit;
-  width: 500px;
-  height: 500px;
-  background-color: #fff;
-  border: 2px solid black;
-}
-
-.info {
-  width: 100%;
-  background: #ccc;
-}
-
-.info-avatar {
-  padding: 30px 20px;
-  width: auto;
-  height: 100px;
-}
-
-.info-username {
-  padding: 30px 20px;
-}
-
-.info-left {
-  float: left;
-}
-
-.info-right {
-  float: right;
-  padding: 30px 20px;
-}
-
 .content-list-item {
   width: 170px;
   border: 2px solid #ccc;
@@ -383,4 +373,72 @@ a {
 
 .content-list-item-details {
   padding: 10px;
+}
+
+/* MODAL */
+
+.overlay-content {
+  position: absolute;
+  margin: auto;
+  visibility: inherit;
+  width: 400px;
+  height: 330px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  /*-moz-box-shadow: 3px 3px 3px #777;
+  -webkit-box-shadow: 3px 3px 3px #777;
+  box-shadow: 3px 3px 3px #777;*/
+}
+
+.overlay-content ul {
+  padding: 20px;
+  background: #60BBD6;
+  color: #fff;
+}
+
+.overlay-header-left {
+  float: left;
+}
+
+.overlay-header-right {
+  float: right;
+}
+
+.overlay-form {
+  padding: 20px;
+}
+
+.overlay-form input, textarea {
+  width: 340px;
+  display: block;
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.overlay-form .submit-button {
+  font-size: 16px;
+  display: block;
+  width: 100px;
+  color: #fff;
+  background: #6BCFED;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  float: right;
+}
+
+.close-modal-image {
+  height: 12px;
+  margin-top: 5px;
+  opacity: 0.5;
+}
+
+.close-modal-image:hover {
+  opacity: 1.0;
 }

@@ -1,4 +1,6 @@
-json.(board, :id, :title, :user_id, :created_at, :updated_at)
+json.set!(:close_button, asset_path("close.png"))
+
+json.(board, :id, :title, :avatar, :user_id, :created_at, :updated_at)
 
 json.cards board.cards do |card|
   image = card.image.url

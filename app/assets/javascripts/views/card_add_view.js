@@ -1,6 +1,10 @@
 Pinless.Views.CardAdd = Backbone.View.extend({
   template: JST['cards/add'],
 
+  tagName: 'section',
+
+  className: 'modal-stuff',
+
   events: {
     'submit .add-card-form': 'addCard',
     'change #image-file-input': 'fileSelect'

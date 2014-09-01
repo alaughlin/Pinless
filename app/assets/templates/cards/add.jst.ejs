@@ -1,24 +1,18 @@
-Adding a card to <%= board.escape('title') %>
-<a href="#" class="close-modal-link">Close</a>
-<form class="add-card-form" enctype="multipart/form-data">
+<ul class="group">
+  <li class="overlay-header-left"><h3>Adding a card to <%= board.escape('title') %></h3></li>
+  <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="<%= board.escape('close_button') %>" class="close-modal-image"></a></li>
+</ul>
+<form class="add-card-form overlay-form" enctype="multipart/form-data">
   <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
-  <label>
-    Title:
-    <input type="text" name="card[title]">
-  </label>
+  
+  <input type="text" placeholder="Title" name="card[title]">
   <br>
 
-  <label>
-    Description:
-    <textarea name="card[description]"></textarea>
-  </label>
+  <textarea name="card[description]" placeholder="Description"></textarea>
   <br>
 
-  <label>
-    Image:
-    <input type="file" name="card[image]" id="image-file-input">
-  </label>
+  <input type="file" name="card[image]" id="image-file-input">
   <br>
 
-  <input type="submit" value="Submit">
+  <input type="submit" class="submit-button" value="Submit">
 </form>

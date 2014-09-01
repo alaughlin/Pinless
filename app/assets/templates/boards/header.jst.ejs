@@ -1,2 +1,6 @@
-<h2><%= board.escape('title') %></h2>
+<ul class="board-profile group">
+  <li class="profile-left"><img src="<%= board.escape('avatar') %>" height="100" class="board-profile-avatar"></li>
+  <li class="profile-right"><h2><%= board.escape('title') %></h2></li>
+</ul>
+
 <a href="#" class="add-card-link" data-id="<%= board.escape('id') %>">Add A Card!</a>

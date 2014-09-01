@@ -5,6 +5,7 @@ Pinless.Views.BoardShow = Backbone.View.extend({
     this.id = this.model.escape('id');
     this.cards = this.model.cards();
     this.listenTo(this.model.cards(), 'sync add remove reset', this.render);
+    this.closeButton = this.model.escape('close_button');
   },
 
   el: "<ul>",
