@@ -33,6 +33,7 @@ a {
 }
 
 /* SIGNIN FORM */
+
 .signin-form {
   position: absolute;
   height: 260px;
@@ -147,13 +148,36 @@ a {
 
 .search-box {
   border: 1px solid #ccc;
+  border-right: none;
   font-size: 14px;
   padding: 5px 5px;
   border-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .search-box:focus {
   border: 1px solid #60BBD6;
+  border-right: none;
+}
+
+.search-button {
+  border: 1px solid #ccc;
+  border-left: none;
+  background: #60BBD6;
+  color: #fff;
+  margin-left: -20px;
+  padding: 5px 5px 5px 5px;
+  font-size: 14px;
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  cursor: pointer;
+}
+
+.search-button-focus {
+  border: 1px solid #60BBD6;
+  border-left: none;
 }
 
 .header-right {
@@ -217,7 +241,7 @@ a {
   padding: 5px 5px;
   background: #fff;
   border-bottom: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 14px;
   display: block;
 }
 
@@ -231,7 +255,7 @@ a {
   padding: 5px 5px;
   color: #777;
   background: #fff;
-  font-size: 16px;
+  font-size: 14px;
   border-bottom: 1px solid #ccc;
   display: block;
   cursor: pointer;

@@ -10,7 +10,7 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
   },
 
   events: {
-    'click .add-card-link': 'addCardModal'
+    'click .add-card-link': 'addCardModal',
   },
 
   render: function () {
