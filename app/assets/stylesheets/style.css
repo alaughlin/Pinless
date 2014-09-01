@@ -6,6 +6,10 @@ html, body, header, h1, h2, h3, ul, li, a, img, hr, p {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+body {
+  background: #eee;
+}
+
 img {
   display: block;
 }
@@ -82,10 +86,11 @@ a {
   background: #6BCFED;
   border: 2px solid transparent;
   border-radius: 2px;
+  font-weight: bold;
 }
 
 .signin-button:hover {
-  border: 2px solid #60BBD6;
+  background: #60BBD6;
 }
 
 .signin-button:focus {
@@ -150,7 +155,7 @@ a {
   border: 1px solid #ccc;
   border-right: none;
   font-size: 14px;
-  padding: 5px 5px;
+  padding: 5px 10px;
   border-radius: 3px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -164,7 +169,7 @@ a {
 .search-button {
   border: 1px solid #ccc;
   border-left: none;
-  background: #60BBD6;
+  background: #6BCFED;
   color: #fff;
   margin-left: -20px;
   padding: 5px 5px 5px 5px;
@@ -173,6 +178,10 @@ a {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
+}
+
+.search-button:hover {
+  background: #60BBD6;
 }
 
 .search-button-focus {
@@ -218,6 +227,7 @@ a {
 .header-username {
   display: inline-block;
   padding: 5px 5px 0 5px;
+  color: #777;
 }
 
 .dropdown-menu {
@@ -282,6 +292,7 @@ a {
 }
 
 .user-profile {
+  background: #fff;
   width: 700px;
   height: 150px;
   margin: 0 auto;
@@ -290,19 +301,18 @@ a {
   margin-bottom: 20px;
 }
 
-.profile-left {
+.user-profile li {
   float: left;
-}
-
-.profile-right {
-  float: right;
-  padding: 5px 10px;
 }
 
 .user-profile-avatar {
   height: 150px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+.profile-title {
+  padding: 5px 10px;
 }
 
 .user-links {
@@ -313,15 +323,16 @@ a {
 .user-links > li {
   float: left;
   text-align: center;
-  border-right: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
 }
 
 .user-links > li > a {
   padding: 10px 15px 10px 15px;
   display: block;
   color: #777;
+  background: #fff;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .user-links > li > a:hover,
@@ -330,13 +341,13 @@ a {
   color: #fff;
 }
 
-.user-links > li:first-child {
+.user-links > li:first-child a {
   border-left: 1px solid #ccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.user-links > li:last-child {
+.user-links > li:last-child a {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -350,12 +361,17 @@ a {
 }
 
 .board-profile {
+  background: #fff;
   width: 700px;
   height: 150px;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.board-profile > li {
+  float: left;
 }
 
 .board-profile-avatar {
@@ -388,8 +404,9 @@ a {
 }
 
 .content-list-item {
+  background: #fff;
   width: 170px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   float: left;
   border-radius: 3px;
   margin: 10px;
@@ -406,7 +423,7 @@ a {
   margin: auto;
   visibility: inherit;
   width: 400px;
-  height: 330px;
+  height: 380px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -446,6 +463,10 @@ a {
   border: 1px solid #ccc;
 }
 
+.overlay-form input:focus, textarea:focus {
+  border: 1px solid #60BBD6;
+}
+
 .overlay-form .submit-button {
   font-size: 16px;
   display: block;
@@ -455,6 +476,11 @@ a {
   border: 2px solid transparent;
   border-radius: 2px;
   float: right;
+  font-weight: bold;
+}
+
+.overlay-form .submit-button:hover {
+  background: #60BBD6;
 }
 
 .close-modal-image {
