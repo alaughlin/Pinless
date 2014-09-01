@@ -3,8 +3,8 @@
 
   <li class="header-right">
     <ul class="user-stuff group">
-      <li><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
-      <li><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
+      <li class="header-right-left"><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
+      <li class="header-right-right"><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
       <ul class="dropdown-menu">
         <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
         <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
