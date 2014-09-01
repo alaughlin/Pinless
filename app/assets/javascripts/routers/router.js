@@ -30,7 +30,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.UsersIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
+          //that.userHeader(user);
         }
       });
     });
@@ -45,7 +45,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
+          //that.userHeader(user);
         }
       });
     });
@@ -60,7 +60,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
+          //that.userHeader(user);
         }
       });
     });
@@ -75,7 +75,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
+          //that.userHeader(user);
         }
       });
     });
@@ -90,18 +90,19 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
+          //that.userHeader(user);
         }
       });
     });
   },
 
   showUser: function (id) {
+    console.log("hi");
     this.$el.html("");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var view = new Pinless.Views.UserShow({model: data});
-      that.$el.html(view.render().$el);
+      $("#sub-header").html(view.render().$el);
       that.showUserBoards(data.id);
     });
   },
@@ -126,6 +127,6 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
-    this.$el.prepend(view.render().$el);
+    $('#sub-header').html(view.render().$el);
   }
 });

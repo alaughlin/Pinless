@@ -1,7 +1,14 @@
-<h2><%= user.escape('username') %></h2>
-<img src="<%= user.escape('image') %>" height="100">
-<a href="#" data-id="<%= user.escape('id') %>" class="user-boards-link user-nav-link"><%= user.escape('username') %>'s Boards</a>
-<a href="#" data-id="<%= user.escape('id') %>" class="user-cards-link user-nav-link"><%= user.escape('username') %>'s Cards</a>
-<a href="#" data-id="<%= user.escape('id') %>" class="user-liked-boards-link user-nav-link"><%= user.escape('username') %>'s Liked Boards</a>
-<a href="#" data-id="<%= user.escape('id') %>" class="user-liked-cards-link user-nav-link"><%= user.escape('username') %>'s Liked Cards</a>
-<a href="#" data-id="<%= user.escape('id') %>" class="user-friends-link user-nav-link"><%= user.escape('username') %>'s Friends</a>
+<ul class="user-profile group">
+  <li class="profile-left"><img src="<%= user.escape('image') %>" height="100" class="user-profile-avatar"></li>
+  <li class="profile-right"><h2><%= user.escape('username') %></h2></li>
+</ul>
+
+<ul class="user-links group">
+  <li><a href="#" data-id="<%= user.escape('id') %>" class="user-boards-link user-nav-link"><%= user.escape('username') %>'s Boards</a></li>
+  <li><a href="#" data-id="<%= user.escape('id') %>" class="user-cards-link user-nav-link"><%= user.escape('username') %>'s Cards</a></li>
+  <li><a href="#" data-id="<%= user.escape('id') %>" class="user-liked-boards-link user-nav-link"><%= user.escape('username') %>'s Liked Boards</a></li>
+  <li><a href="#" data-id="<%= user.escape('id') %>" class="user-liked-cards-link user-nav-link"><%= user.escape('username') %>'s Liked Cards</a></li>
+  <li><a href="#" data-id="<%= user.escape('id') %>" class="user-friends-link user-nav-link"><%= user.escape('username') %>'s Friends</a></li>
+</ul>
+
+<section class="content"></section>

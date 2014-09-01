@@ -14,6 +14,8 @@ input, button {
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  outline: none;
 }
 
 .group:after {
@@ -24,6 +26,10 @@ input, button {
 
 a {
   text-decoration: none
+}
+
+#sub-header {
+  margin-top: 20px;
 }
 
 /* SIGNIN FORM */
@@ -83,7 +89,6 @@ a {
 
 .signin-button:focus {
   outline: none;
-  border: 2px solid #60BBD6;
 }
 
 .signin-button:active {
@@ -117,6 +122,9 @@ a {
   width: 170px;
   display: block;
   margin: 0 auto;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .fb-signin img:active {
@@ -135,6 +143,16 @@ a {
 .header-left {
   padding: 10px 0px 10px 20px;
   float: left;
+}
+
+.search-box {
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 5px 5px;
+}
+
+.search-box:focus {
+  border: 1px solid #60BBD6;
 }
 
 .header-right {
@@ -204,6 +222,73 @@ a {
 .logout-button:active,
 .logout-button:focus {
   outline: none;
+}
+
+/* USER INFO */
+.user-info {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.user-profile {
+  width: 700px;
+  height: 150px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.profile-left {
+  float: left;
+}
+
+.profile-right {
+  float: right;
+  padding: 5px 10px;
+}
+
+.user-profile-avatar {
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.user-links {
+  display: inline-block;
+  text-align: center;
+}
+
+.user-links > li {
+  float: left;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-links > li > a {
+  padding: 10px 15px 10px 15px;
+  display: block;
+  color: #777;
+}
+
+.user-links > li > a:hover,
+.user-links > li > a.user-links-selected {
+  background: #60BBD6;
+  color: #fff;
+}
+
+.user-links > li:first-child {
+  border-left: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.user-links > li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 
