@@ -5,9 +5,9 @@ Pinless.Views.UserShow = Backbone.View.extend({
 
   className: 'user-info',
 
-  events: {
-    'click .user-nav-link': 'setBackground'
-  },
+  // events: {
+  //   'click .user-nav-link': 'setBackground'
+  // },
 
   initialize: function (user) {
     console.log(user);
@@ -20,8 +20,8 @@ Pinless.Views.UserShow = Backbone.View.extend({
     return this;
   },
 
-  setBackground: function (event) {
-    $('.user-nav-link').removeClass('user-links-selected');
-    $(event.currentTarget).addClass('user-links-selected');
-  }
+  // setBackground: function (event) {
+  //   $('.user-nav-link').removeClass('user-links-selected');
+  //   $(event.currentTarget).addClass('user-links-selected');
+  // }
 });

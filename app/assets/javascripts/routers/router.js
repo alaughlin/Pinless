@@ -30,7 +30,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.UsersIndex({collection: data});
           that.$el.html(view.render().$el);
-          //that.userHeader(user);
+          that.userHeader(user);
+          $('.user-friends-link').addClass('user-links-selected');
         }
       });
     });
@@ -45,7 +46,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          //that.userHeader(user);
+          that.userHeader(user);
+          $('.user-boards-link').addClass('user-links-selected');
         }
       });
     });
@@ -60,7 +62,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          //that.userHeader(user);
+          that.userHeader(user);
+          $('.user-liked-boards-link').addClass('user-links-selected');
         }
       });
     });
@@ -75,7 +78,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          //that.userHeader(user);
+          that.userHeader(user);
+          $('.user-cards-link').addClass('user-links-selected');
         }
       });
     });
@@ -90,7 +94,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          //that.userHeader(user);
+          that.userHeader(user);
+          $('.user-liked-cards-link').addClass('user-links-selected');
         }
       });
     });
