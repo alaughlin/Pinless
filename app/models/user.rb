@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def are_friends?(friend)
-    self.friends.exists?(friend)
+    self.friends.exists?(friend) && friend.friends.exists?(self)
   end
 
   def friend_requests
