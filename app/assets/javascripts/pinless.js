@@ -9,6 +9,10 @@ window.Pinless = {
     Pinless.users = new Pinless.Collections.Users();
     Pinless.boards = new Pinless.Collections.Boards();
     Pinless.cards = new Pinless.Collections.Cards();
+    Pinless.feed = new Pinless.Collections.Cards();
+    Pinless.feed.comparator = function(card) {
+      return -card.get('created_at');
+    }
     Pinless.router = new Pinless.Routers.Router({$el: $("#content")});
     Backbone.history.start();
   },

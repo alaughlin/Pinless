@@ -1,6 +1,12 @@
 Pinless.Models.Board = Backbone.Model.extend({
   urlRoot: "/api/boards",
 
+  initialize: function () {
+    this.childCards = new Pinless.Collections.Cards();
+    this.childCards.url = '/api/boards/' + this.id + '/cards';
+    this.childCards.on("reset", this.updateCounts);
+  },
+
   cards: function () {
     if (!this._cards) {
       this._cards = new Pinless.Collections.Cards();

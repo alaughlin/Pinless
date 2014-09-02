@@ -54,10 +54,26 @@ Pinless.Views.UserShow = Backbone.View.extend({
       }
 
     });
-
   },
 
   deleteFriend: function (event) {
-    console.log(event);
+    var userId = Pinless.currentUser.escape('id');
+    var friendId = event.currentTarget.dataset.id;
+
+    $.ajax({
+      url: '/api/friendships',
+      type: 'DELETE',
+      data: {
+        friendship: {
+          user_id: userId,
+          friend_id: friendId
+        }
+      },
+      success: function (data) {
+        $('.friend-button').html("Pending Request");
+        $('.friend-button').addClass('pending-friend-button');
+      }
+
+    });
   }
 });

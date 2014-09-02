@@ -12,6 +12,13 @@ class Api::CardsController < ApplicationController
     render :index
   end
 
+  def board_cards
+    @board = Board.find(params[:id])
+    @cards = @board.cards.take(10)
+
+    render :index
+  end
+
   def create
     @card = Card.new(card_params)
     @card.user_id = current_user.id

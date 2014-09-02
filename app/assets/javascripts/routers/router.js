@@ -14,8 +14,30 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id/cards":        "showUserCards",
     "users/:id":              "showUser",
     "boards/:id":             "showBoard",
-    //"cards/:id":              "showCard"
+  },
 
+  index: function () {
+    var that = this;
+    var user = Pinless.users.getOrFetch(window.currentUserId, function (data) {
+      var user = data;
+      data.boards_liked.fetch({
+        reset: true,
+        success: function (data) {
+          _.each(data.models, function(board) {
+            board.childCards.fetch({
+              reset: true,
+              success: function (data) {
+                _.each(data.models, function (card) {
+                  Pinless.feed.add(card);
+                });
+              }
+            });
+          });
+        }
+      });
+      var view = new Pinless.Views.Index({collection: Pinless.feed});
+      that.$el.html(view.render().$el);
+    });
   },
 
   hideModal: function () {
@@ -42,8 +64,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
     console.log("getting user boards");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
-      $('.user-boards-link').addClass('user-links-selected');
       that.userHeader(data);
+      $('.user-boards-link').addClass('user-links-selected');
       data.boards.fetch({
         reset: true,
         success: function (data) {

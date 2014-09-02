@@ -21,16 +21,14 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users do
-      resources :boards, shallow: true do
-        resources :cards
-      end
-
+      resources :boards, shallow: true
       resources :cards, shallow: true                   
     end
 
     resources :cards, only: [:create, :destroy]
     resources :friendships, only: [:create, :destroy]
 
+    get '/boards/:id/cards', to: 'cards#board_cards'
     get '/users/:id/boards/liked', to: 'boards#liked_boards'
     get '/users/:id/cards/liked', to: 'cards#liked_cards'
     get '/users/:id/friends', to: 'users#friends'
