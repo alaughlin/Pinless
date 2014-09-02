@@ -4,42 +4,41 @@
 <div id="content" class="group"></div>
 
 <div class="overlay">
-  <div class="overlay-content">
-  </div>
+  <div class="overlay-content"></div>
 </div>
 
 <script>
-$(document).ready(function () {
-  Pinless.currentUserId = <%= current_user.id %>;
+  window.currentUserId = <%= current_user.id %>;
+  
+  $(document).ready(function () {
+    $('#sub-header').on('click', '.user-boards-link', function (event) {
+      event.preventDefault();
+      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards", {trigger: true});
+    });
 
-  $('#sub-header').on('click', '.user-boards-link', function (event) {
-    event.preventDefault();
-    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards", {trigger: true});
-  });
+    $('#sub-header').on('click', '.user-cards-link', function (event) {
+      event.preventDefault();
+      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards", {trigger: true});
+    });
 
-  $('#sub-header').on('click', '.user-cards-link', function (event) {
-    event.preventDefault();
-    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards", {trigger: true});
-  });
+    $('#sub-header').on('click', '.user-liked-boards-link', function (event) {
+      event.preventDefault();
+      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards/liked", {trigger: true});
+    });
 
-  $('#sub-header').on('click', '.user-liked-boards-link', function (event) {
-    event.preventDefault();
-    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards/liked", {trigger: true});
-  });
+    $('#sub-header').on('click', '.user-liked-cards-link', function (event) {
+      event.preventDefault();
+      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards/liked", {trigger: true});
+    });
 
-  $('#sub-header').on('click', '.user-liked-cards-link', function (event) {
-    event.preventDefault();
-    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards/liked", {trigger: true});
-  });
+    $('#sub-header').on('click', '.user-friends-link', function (event) {
+      event.preventDefault();
+      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
+    });
 
-  $('#sub-header').on('click', '.user-friends-link', function (event) {
-    event.preventDefault();
-    Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
+    $('.overlay').on('click', '.close-modal-link', function (event) {
+      event.preventDefault();
+      Pinless.router.hideModal();
+    });
   });
-
-  $('.overlay').on('click', '.close-modal-link', function (event) {
-    event.preventDefault();
-    Pinless.router.hideModal();
-  });
-});
 </script>

@@ -6,7 +6,7 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
   className: 'board-info',
 
   initialize: function (data) {
-    console.log(this.model);
+    this.listenTo(Pinless.boards, 'sync add remove reset', this.render);
   },
 
   events: {

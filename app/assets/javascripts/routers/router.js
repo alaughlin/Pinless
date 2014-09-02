@@ -2,6 +2,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$el = options.$el;
     this.$overlayContent = $('.overlay-content');
+    this.$subHeader = $('#sub-header');
   },
 
   routes: {
@@ -13,7 +14,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id/cards":        "showUserCards",
     "users/:id":              "showUser",
     "boards/:id":             "showBoard",
-    "cards/:id":              "showCard"
+    //"cards/:id":              "showCard"
 
   },
 
@@ -38,16 +39,16 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserBoards: function (id) {
+    console.log("getting user boards");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
-      var user = data;
+      $('.user-boards-link').addClass('user-links-selected');
+      that.userHeader(data);
       data.boards.fetch({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
           that.$el.html(view.render().$el);
-          that.userHeader(user);
-          $('.user-boards-link').addClass('user-links-selected');
         }
       });
     });
@@ -102,13 +103,18 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function (id) {
-    console.log("hi");
     this.$el.html("");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
-      var view = new Pinless.Views.UserShow({model: data});
-      $("#sub-header").html(view.render().$el);
-      that.showUserBoards(data.id);
+      var user = data;
+      user.friends.fetch({
+        success: function (data) {
+          var view = new Pinless.Views.UserShow({model: user});
+          window.content = view.render().$el
+          that.$subHeader.html(content);
+          //that.showUserBoards(data.id);
+        }
+      });
     });
   },
 
@@ -118,20 +124,20 @@ Pinless.Routers.Router = Backbone.Router.extend({
       var view = new Pinless.Views.BoardShow({model: data});
       that.$el.html(view.render().$el);
       var view = new Pinless.Views.BoardHeader({model: data});
-      $('#sub-header').html(view.render().$el);
+      that.$subHeader.html(view.render().$el);
     });
   },
 
-  showCard: function (id) {
-    var that = this;
-    var card = Pinless.cards.getOrFetch(id, function (data) {
-      var view = new Pinless.Views.CardShow({model: data});
-      that.$el.html(view.render().$el);
-    });
-  },
+  // showCard: function (id) {
+  //   var that = this;
+  //   var card = Pinless.cards.getOrFetch(id, function (data) {
+  //     var view = new Pinless.Views.CardShow({model: data});
+  //     that.$el.html(view.render().$el);
+  //   });
+  // },
 
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
-    $('#sub-header').html(view.render().$el);
+    this.$subHeader.html(view.render().$el);
   }
 });

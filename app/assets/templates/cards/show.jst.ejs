@@ -1,7 +1,7 @@
 <li class="card content-list-item">
   <ul class="card-details content-list-item-details">
     <li><%= card.escape('title') %></li>
-    <img src="<%= card.escape('image') %>" width="150"></li>
+    <li><img src="<%= card.escape('image') %>" width="150" class="card-image" data-id="<%= card.escape('id') %>"></li>
     <li><%= card.escape('description') %></li>
     <li>Posted on: <a href="#/boards/<%= card.escape('board_id') %>"><%= card.escape('board_title') %></a></li>
     <li>Posted by: <a href="#/users/<%= card.escape('user_id') %>"><%= card.escape('user_username') %></li>

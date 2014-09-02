@@ -197,7 +197,7 @@ a {
 .logo {
   position: absolute;
   left: 50%;
-  padding-top: 5px
+  padding-top: 5px;
 }
 
 .user-stuff {
@@ -294,11 +294,11 @@ a {
 .user-profile {
   background: #fff;
   width: 700px;
-  height: 150px;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .user-profile li {
@@ -312,7 +312,28 @@ a {
 }
 
 .profile-title {
+  padding: 10px 20px;
+}
+
+.friend-button-li{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.friend-button,
+.unfriend-button {
   padding: 5px 10px;
+  font-size: 12px;
+  color: #fff;
+  background: #6BCFED;
+  border: 1px solid #ccc;
+}
+
+.friend-button:hover,
+.unfriend-button:hover,
+.pending-request {
+  background: #60BBD6;
 }
 
 .user-links {
@@ -363,11 +384,15 @@ a {
 .board-profile {
   background: #fff;
   width: 700px;
-  height: 150px;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.board-profile > li > ul {
+  text-align: left;
+  padding: 10px 20px;
 }
 
 .board-profile > li {
@@ -385,7 +410,6 @@ a {
 #content {
   width: 1200px;
   margin: 0 auto;
-  padding-top: 20px;
   position: relative;
 }
 
@@ -416,7 +440,15 @@ a {
   padding: 10px;
 }
 
-/* MODAL */
+/* CARD THUMB */
+
+.card-image:hover {
+  opacity: 0.85;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+}
+
+/* MODALS */
 
 .overlay-content {
   position: absolute;

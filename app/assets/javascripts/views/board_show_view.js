@@ -4,11 +4,17 @@ Pinless.Views.BoardShow = Backbone.View.extend({
   initialize: function () {
     this.id = this.model.escape('id');
     this.cards = this.model.cards();
-    this.listenTo(this.model.cards(), 'sync add remove reset', this.render);
-    this.closeButton = this.model.escape('close_button');
+    this.listenTo(this.cards, 'sync add remove reset', function() {
+      console.log("fired");
+      this.render();
+    });
   },
 
   el: "<ul>",
+
+  events: {
+    'click .card-image': 'cardModal'
+  },
 
   className: "cards-list group",
 
@@ -21,5 +27,18 @@ Pinless.Views.BoardShow = Backbone.View.extend({
     });
 
     return this;
+  },
+
+  cardModal: function (event) {
+    console.log(event);
+    event.preventDefault();
+    var id = event.currentTarget.dataset.id;
+    var that = this;
+    console.log(id);
+    var card = Pinless.cards.getOrFetch(id, function (data) {
+      var view = new Pinless.Views.Card({model: data});
+      Pinless.router.$overlayContent.html(view.render().$el);
+      $(".overlay").addClass('overlay-show');
+    });
   },
 });

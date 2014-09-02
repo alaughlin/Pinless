@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
 before_filter :ensure_signed_in, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:boards).find(params[:id])
     # if @user == current_user
     #   @friend_requests = @user.friend_requests
     # end
@@ -22,6 +22,11 @@ before_filter :ensure_signed_in, only: [:show]
     @friends = @user.friends
 
     render :index
+  end
+
+  def get_current_user
+    @user = current_user
+    render :show
   end
 
   # def new
