@@ -29,6 +29,23 @@ before_filter :ensure_signed_in, only: [:show]
     render :show
   end
 
+  def friend_requests
+    
+  end
+
+  def check_for_request
+    requested_yet = false
+    @user = User.find(params[:id])
+    @requests = @user.friend_requests
+    @requests.each { |request| requested_yet = true if request.user_id == current_user.id }
+    
+    if requested_yet
+      render json: true
+    else
+      render json: false
+    end
+  end
+
   # def new
   #   @user = User.new
   # end

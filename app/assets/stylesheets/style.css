@@ -322,7 +322,8 @@ a {
 }
 
 .friend-button,
-.unfriend-button {
+.unfriend-button,
+.pending-friend-button {
   padding: 5px 10px;
   font-size: 12px;
   color: #fff;
@@ -332,7 +333,7 @@ a {
 
 .friend-button:hover,
 .unfriend-button:hover,
-.pending-request {
+.pending-friend-button {
   background: #60BBD6;
 }
 

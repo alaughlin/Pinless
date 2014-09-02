@@ -10,13 +10,29 @@ Pinless.Views.UserShow = Backbone.View.extend({
     'click .unfriend-button': 'deleteFriend'
   },
 
-  initialize: function (user) {},
+  initialize: function (user) {
+    this.requestedFriendYet = false;
+    this.checkForRequest(this.model.escape('id'));
+  },
 
   render: function () {
-    var content = this.template({user: this.model});
+    var content = this.template({user: this.model, requestedFriendYet: this.requestedFriendYet});
     this.$el.html(content);
 
     return this;
+  },
+
+  checkForRequest: function (id) {
+    var that = this;
+
+    $.ajax({
+      url: '/api/checkforrequest/' + id,
+      type: 'GET',
+      success: function (data) {
+        that.requestedFriendYet = data;
+        that.render();
+      }
+    })
   },
 
   addFriend: function (event) {
@@ -34,7 +50,7 @@ Pinless.Views.UserShow = Backbone.View.extend({
       },
       success: function (data) {
         $('.friend-button').html("Pending Request");
-        $('.friend-button').addClass('pending-request');
+        $('.friend-button').addClass('pending-friend-button');
       }
 
     });

@@ -110,7 +110,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       user.friends.fetch({
         success: function (data) {
           var view = new Pinless.Views.UserShow({model: user});
-          window.content = view.render().$el
+          var content = view.render().$el
           that.$subHeader.html(content);
           //that.showUserBoards(data.id);
         }

@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     get '/users/:id/boards/liked', to: 'boards#liked_boards'
     get '/users/:id/cards/liked', to: 'cards#liked_cards'
     get '/users/:id/friends', to: 'users#friends'
+    get '/users/:id/friendrequests', to: 'users#friend_requests'
+    get '/checkforrequest/:id', to: 'users#check_for_request'
     get '/currentuser', to: 'users#get_current_user'
   end
 end

@@ -2,18 +2,23 @@
   <li><img src="<%= user.escape('image') %>" height="100" class="user-profile-avatar"></li>
   <li><h2 class="profile-title"><%= user.escape('username') %></h2></li>
   
-  <% var alreadyFriends = false; %>
-  <% user.friends.forEach(function(friend) { %>
-    <% if(friend.escape('id') === Pinless.currentUser.escape('id')) { %>
-      <% alreadyFriends = true; %>
-      <% return; %>
+  <% if (user.escape('id') !== Pinless.currentUser.escape('id')) { %>
+    <% var alreadyFriends = false; %>
+    <% user.friends.forEach(function(friend) { %>
+      <% console.log(user.friends); %>
+      <% if (friend.escape('id') === Pinless.currentUser.escape('id')) { %>
+        <% alreadyFriends = true; %>
+        <% return; %>
+      <% } %>
+    <% }); %>
+    
+    <% if (requestedFriendYet) { %>
+        <li class="friend-button-li"><button class="pending-friend-button">Pending Request</button></li>
+    <% } else if (!alreadyFriends) { %>
+        <li class="friend-button-li"><button class="friend-button" data-id="<%= user.escape('id') %>">Add As Friend</button></li>
+    <% } else { %>
+      <li class="friend-button-li"><button class="unfriend-button" data-id="<%= user.escape('id') %>">Remove as Friends</button></li>
     <% } %>
-  <% }); %>
-  
-  <% if(!alreadyFriends) { %>
-    <li class="friend-button-li"><button class="friend-button" data-id="<%= user.escape('id') %>">Add As Friend</button></li>
-  <% } else { %>
-    <li class="friend-button-li"><button class="unfriend-button" data-id="<%= user.escape('id') %>">Remove as Friends</button></li>
   <% } %>
 </ul>
 
