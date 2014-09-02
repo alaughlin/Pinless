@@ -11,7 +11,7 @@ window.Pinless = {
     Pinless.cards = new Pinless.Collections.Cards();
     Pinless.feed = new Pinless.Collections.Cards();
     Pinless.feed.comparator = function(card) {
-      return -card.get('created_at');
+      return -card.get('id');
     }
     Pinless.router = new Pinless.Routers.Router({$el: $("#content")});
     Backbone.history.start();

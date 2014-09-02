@@ -1,7 +1,10 @@
+friendship_status = current_user.friendship_status(user.id)
+
 json.(user, :id, :username, :created_at, :updated_at)
 json.set!(:image, user.avatar.url)
+json.set!(:friendship_status, friendship_status)
 
-# json.boards user.boards do |board|
+# sjson.boards user.boards do |board|
 #   image = board.avatar.url
 #   user_username = board.user.username
 

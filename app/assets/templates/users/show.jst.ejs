@@ -12,9 +12,10 @@
       <% } %>
     <% }); %>
     
-    <% if (requestedFriendYet) { %>
+    <% console.log(user.escape('friendship_status')); %>
+    <% if (user.escape('friendship_status') === "pending") { %>
         <li class="friend-button-li"><button class="pending-friend-button">Pending Request</button></li>
-    <% } else if (!alreadyFriends) { %>
+    <% } else if (user.escape('friendship_status') === "not_friends") { %>
         <li class="friend-button-li"><button class="friend-button" data-id="<%= user.escape('id') %>">Add As Friend</button></li>
     <% } else { %>
       <li class="friend-button-li"><button class="unfriend-button" data-id="<%= user.escape('id') %>">Remove as Friends</button></li>

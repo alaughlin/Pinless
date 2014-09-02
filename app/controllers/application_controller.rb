@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def sign_in!(user)
     session[:session_token] = user.session_token
     puts session[:session_token]
-    redirect_to "#"
+    redirect_to "#/"
   end
 
   def current_user

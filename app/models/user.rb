@@ -113,4 +113,17 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def friendship_status(id)
+    user = User.find(id)
+
+    if self.are_friends?(user)
+      return "friends"
+    else
+      requests = user.friend_requests
+      requests.each { |request| return "pending" if request.user_id == self.id }
+    end
+
+    "not_friends"
+  end
 end

@@ -17,6 +17,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
+    this.$el.html("");
+    this.$subHeader.html("");
     var that = this;
     var user = Pinless.users.getOrFetch(window.currentUserId, function (data) {
       var user = data;
@@ -29,6 +31,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
               success: function (data) {
                 _.each(data.models, function (card) {
                   Pinless.feed.add(card);
+                  console.log(Pinless.feed);
                 });
               }
             });
@@ -131,9 +134,9 @@ Pinless.Routers.Router = Backbone.Router.extend({
       var user = data;
       user.friends.fetch({
         success: function (data) {
+          console.log("firing");
           var view = new Pinless.Views.UserShow({model: user});
-          var content = view.render().$el
-          that.$subHeader.html(content);
+          that.$subHeader.html(view.render().$el);
           //that.showUserBoards(data.id);
         }
       });
