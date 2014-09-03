@@ -12,7 +12,6 @@
       <% } %>
     <% }); %>
     
-    <% console.log(user.escape('friendship_status')); %>
     <% if (user.escape('friendship_status') === "pending") { %>
         <li class="friend-button-li"><button class="pending-friend-button">Pending Request</button></li>
     <% } else if (user.escape('friendship_status') === "not_friends") { %>
