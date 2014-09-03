@@ -49,5 +49,11 @@
       var terms = $('.search-box').val();
       Pinless.router.navigate("#/search?q=" + terms, {trigger: true});
     });
+
+    $(".search-box").keyup(function(event){
+      if (event.keyCode == 13) {
+        $(".search-button").click();
+      }
+    });
   });
 </script>
