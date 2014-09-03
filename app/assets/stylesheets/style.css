@@ -451,11 +451,15 @@ a {
   visibility: visible;
 }
 
+.cols > ul {
+  float: left;
+}
+
 .content-list-item {
   background: #fff;
   width: 170px;
   border: 1px solid #ccc;
-  float: left;
+  /*float: left;*/
   border-radius: 5px;
   margin: 10px;
 }
