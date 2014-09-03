@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :friendships, class_name: "Friendship", foreign_key: :user_id
   has_many :friends, through: :friendships, source: :friend
   has_many :liked_boards, through: :board_likes, source: :board
-  has_many :cards, through: :boards, source: :cards
+  has_many :cards, class_name: "Card", foreign_key: :user_id
   has_many :liked_cards, through: :card_likes, source: :card
 
   after_initialize :ensure_session_token
