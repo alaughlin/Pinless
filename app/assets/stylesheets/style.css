@@ -18,7 +18,7 @@ input, button, textarea {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, sans-serif;
   outline: none;
 }
 
@@ -198,8 +198,9 @@ a {
   position: absolute;
   left: 50%;
   margin-left: -41px;
-  padding-top: 5px;
   color: #333;
+  margin-top: 10px;
+  font-weight: 100;
 }
 
 .user-stuff {

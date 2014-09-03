@@ -16,7 +16,7 @@ class Api::FriendshipsController < ApplicationController
     puts @friendship_reverse
 
     if @friendship.destroy && @friendship_reverse.destroy
-      render json: "destroyed"
+      render json: {}
     end
   end
 

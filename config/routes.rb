@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     end
 
     resources :cards, only: [:create, :destroy]
-    resources :friendships, only: [:create, :destroy]
+    resources :friendships, only: :create
 
+    delete '/friendships', to: 'friendships#destroy'
     get '/boards/:id/cards', to: 'cards#board_cards'
     get '/users/:id/boards/liked', to: 'boards#liked_boards'
     get '/users/:id/cards/liked', to: 'cards#liked_cards'

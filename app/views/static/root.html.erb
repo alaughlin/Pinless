@@ -9,7 +9,7 @@
 
 <script>
   window.currentUserId = <%= current_user.id %>;
-  
+
   $(document).ready(function () {
     $('#sub-header').on('click', '.user-boards-link', function (event) {
       event.preventDefault();
@@ -39,6 +39,10 @@
     $('.overlay').on('click', '.close-modal-link', function (event) {
       event.preventDefault();
       Pinless.router.hideModal();
+    });
+
+    $('#content').on('click', '.card-image', function (event) {
+      console.log("clicked");
     });
   });
 </script>
