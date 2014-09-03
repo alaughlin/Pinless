@@ -5,7 +5,6 @@
   <% if (user.escape('id') !== Pinless.currentUser.escape('id')) { %>
     <% var alreadyFriends = false; %>
     <% user.friends.forEach(function(friend) { %>
-      <% console.log(user.friends); %>
       <% if (friend.escape('id') === Pinless.currentUser.escape('id')) { %>
         <% alreadyFriends = true; %>
         <% return; %>
@@ -13,11 +12,11 @@
     <% }); %>
     
     <% if (user.escape('friendship_status') === "pending") { %>
-        <li class="friend-button-li"><button class="pending-friend-button">Pending Request</button></li>
+        <li class="friend-button-li"><button class="pending-friend-button friend-btn">Pending Request</button></li>
     <% } else if (user.escape('friendship_status') === "not_friends") { %>
-        <li class="friend-button-li"><button class="friend-button" data-id="<%= user.escape('id') %>">Add As Friend</button></li>
+        <li class="friend-button-li"><button class="friend-button friend-btn" data-id="<%= user.escape('id') %>">Add As Friend</button></li>
     <% } else { %>
-      <li class="friend-button-li"><button class="unfriend-button" data-id="<%= user.escape('id') %>">Remove as Friends</button></li>
+      <li class="friend-button-li"><button class="unfriend-button friend-btn" data-id="<%= user.escape('id') %>">Remove as Friends</button></li>
     <% } %>
   <% } %>
 </ul>

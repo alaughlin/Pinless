@@ -33,8 +33,9 @@ Pinless.Views.UserShow = Backbone.View.extend({
         }
       },
       success: function (data) {
-        $('.friend-button').html("Pending Request");
-        $('.friend-button').addClass('pending-friend-button');
+        $('.friend-btn').html("Pending Request");
+        $('.friend-btn').removeClass('friend-button');
+        $('.friend-btn').addClass('pending-friend-button');
       }
     });
   },
@@ -49,8 +50,9 @@ Pinless.Views.UserShow = Backbone.View.extend({
         friend_id: friendId
       },
       success: function (data) {
-        $('.friend-button').html("Add As Friend");
-        $('.friend-button').addClass('add-friend-button');
+        $('.friend-btn').html("Add As Friend");
+        $('.friend-btn').removeClass('unfriend-button');
+        $('.friend-btn').addClass('friend-button');
       }
 
     });

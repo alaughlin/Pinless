@@ -12,8 +12,8 @@ class Api::FriendshipsController < ApplicationController
   def destroy
     @friendship = current_user.friendships.where(friend_id = params[friend_id]).first
     puts @friendship
-    @friend = @friendship.friend
     @friendship_reverse = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
+    puts @friendship_reverse
 
     if @friendship.destroy && @friendship_reverse.destroy
       render json: "destroyed"

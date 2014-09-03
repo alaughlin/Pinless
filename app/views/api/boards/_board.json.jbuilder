@@ -5,6 +5,9 @@ board = Board.find(board.id)
 likes_board = current_user.likes_board?(board)
 json.set!(:likes_board, likes_board)
 
+username = board.user.username
+json.set!(:username, username)
+
 json.(board, :id, :title, :avatar, :description, :user_id, :created_at, :updated_at)
 json.set!(:username, username);
 

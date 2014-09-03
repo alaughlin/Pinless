@@ -3,11 +3,7 @@ Pinless.Views.BoardShow = Backbone.View.extend({
 
   initialize: function () {
     this.id = this.model.escape('id');
-    this.cards = this.model.cards();
-    this.listenTo(this.cards, 'sync add remove reset', function() {
-      console.log("fired");
-      this.render();
-    });
+    console.log(this.model);
   },
 
   tagName: 'ul',
@@ -37,7 +33,7 @@ Pinless.Views.BoardShow = Backbone.View.extend({
     var $col5 = $("<ul class='col5'>");
     var counter = 1;
 
-    this.cards.forEach(function (card) {
+    this.model.childCards.forEach(function (card) {
       if (counter > 5) {
         counter = 1;
       }
