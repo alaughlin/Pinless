@@ -9,4 +9,5 @@ json.array! @boards do |board|
   json.set!(:user_username, user_username)
   json.set!(:likes_board, likes_board)
   json.set!(:username, username)
+  json.set!(:close_button, asset_path("close.png"))
 end

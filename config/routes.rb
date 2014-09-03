@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :cards, shallow: true                   
     end
 
+    resources :boards, only: [:create, :destroy]
     resources :cards, only: [:create, :destroy]
     resources :friendships, only: :create
 
