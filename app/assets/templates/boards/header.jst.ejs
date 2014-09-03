@@ -5,6 +5,11 @@
       <li><h2 class="board-profile-title"><%= board.escape('title') %></h2></li>
       <li><p><%= board.escape('description') %></p></li>
       <li class="board-profile-owner"><p>Owned by: <a href="/#/users/<%= board.escape('user_id') %>"><%= board.escape('username') %></a></p></li>
+      <% if (board.escape('likes_board') === 'true') { %>
+        <li class="like-button-li"><button class="unlike-button">Unlike This Board<button></li>
+      <% } else { %> 
+        <li class="like-button-li"><button class="like-button">Like This Board<button></li>
+      <% } %>
     </ul>
   </li>
 </ul>

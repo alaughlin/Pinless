@@ -10,8 +10,6 @@ Pinless.Views.BoardShow = Backbone.View.extend({
     });
   },
 
-  el: "<ul>",
-
   events: {
     'click .card-image': 'cardModal'
   },

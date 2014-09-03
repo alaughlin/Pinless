@@ -1,6 +1,10 @@
 json.set!(:close_button, asset_path("close.png"))
 username = board.user.username
 
+board = Board.find(board.id)
+likes_board = current_user.likes_board?(board)
+json.set!(:likes_board, likes_board)
+
 json.(board, :id, :title, :avatar, :description, :user_id, :created_at, :updated_at)
 json.set!(:username, username);
 

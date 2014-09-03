@@ -317,7 +317,8 @@ a {
   padding: 10px 20px;
 }
 
-.friend-button-li{
+.friend-button-li,
+.like-button-li {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -325,17 +326,22 @@ a {
 
 .friend-button,
 .unfriend-button,
-.pending-friend-button {
+.pending-friend-button,
+.like-button,
+.unlike-button {
   padding: 5px 10px;
   font-size: 12px;
   color: #fff;
   background: #6BCFED;
   border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .friend-button:hover,
 .unfriend-button:hover,
-.pending-friend-button {
+.pending-friend-button,
+.like-button:hover {
   background: #60BBD6;
 }
 

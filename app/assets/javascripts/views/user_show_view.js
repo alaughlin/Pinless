@@ -40,21 +40,17 @@ Pinless.Views.UserShow = Backbone.View.extend({
   },
 
   deleteFriend: function (event) {
-    var userId = Pinless.currentUser.escape('id');
     var friendId = event.currentTarget.dataset.id;
 
     $.ajax({
-      url: '/api/friendships',
+      url: '/api/friendships/' + friendId,
       type: 'DELETE',
       data: {
-        friendship: {
-          user_id: userId,
-          friend_id: friendId
-        }
+        friend_id: friendId
       },
       success: function (data) {
-        $('.friend-button').html("Pending Request");
-        $('.friend-button').addClass('pending-friend-button');
+        $('.friend-button').html("Add As Friend");
+        $('.friend-button').addClass('add-friend-button');
       }
 
     });
