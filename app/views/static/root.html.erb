@@ -44,5 +44,10 @@
     $('#content').on('click', '.card-image', function (event) {
       console.log("clicked");
     });
+
+    $('.search-button').on('click', function (event) { 
+      var terms = $('.search-box').val();
+      Pinless.router.navigate("#/search?q=" + terms, {trigger: true});
+    });
   });
 </script>

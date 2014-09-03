@@ -1,4 +1,7 @@
 class Card < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:title, :description]
+
   validates :title, :board_id, :user_id, :image, presence: true
 
   has_attached_file :image

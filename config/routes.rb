@@ -36,5 +36,6 @@ Rails.application.routes.draw do
     get '/users/:id/friendrequests', to: 'users#friend_requests'
     get '/checkforrequest/:id', to: 'users#check_for_request'
     get '/currentuser', to: 'users#get_current_user'
+    get '/search', to: 'search#search'
   end
 end

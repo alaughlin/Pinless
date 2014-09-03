@@ -438,6 +438,13 @@ a {
   position: relative;
 }
 
+.search-header {
+  font-weight: 100;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
 .overlay {
   visibility: hidden;
   position: absolute;

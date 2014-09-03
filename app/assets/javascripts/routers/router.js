@@ -14,6 +14,24 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id/cards":        "showUserCards",
     "users/:id":              "showUser",
     "boards/:id":             "showBoard",
+    "search?q=:terms":        "search"
+  },
+
+  search: function (terms) {
+    var that = this;
+    $.ajax({
+      url: '/api/search',
+      type: 'GET',
+      data: {
+        q: terms
+      },
+      success: function (data) {
+        that.$subHeader.html("<h2 class='search-header'>Showing results for: " + terms + "</h2>");
+        that.$el.html("");
+        var view = new Pinless.Views.CardsSearch({collection: data});
+        that.$el.html(view.render().$el);
+      }
+    });
   },
 
   index: function () {

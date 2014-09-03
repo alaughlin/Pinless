@@ -1,8 +1,9 @@
-Pinless.Views.CardsIndex = Backbone.View.extend({
-  template: JST['cards/index'],
+Pinless.Views.CardsSearch = Backbone.View.extend({
+  template: JST['cards/search'],
 
   initialize: function () {
     this.cards = this.collection;
+    console.log(this.cards);
   },
 
   tagName: 'ul',
@@ -10,6 +11,7 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
+    var that = this;
     this.$el.empty();
 
     var $col1 = $("<ul class='col1'>");
@@ -19,7 +21,8 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
     var $col5 = $("<ul class='col5'>");
     var counter = 1;
 
-    this.cards.models.forEach(function (card) {
+    this.cards.forEach(function (card) {
+      console.log(card.title);
       if (counter > 5) {
         counter = 1;
       }
@@ -42,8 +45,8 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
           break;
       }
 
-      view = new Pinless.Views.CardShow({model: card});
-      col.append(view.render().$el);
+      content = that.template({card: card});
+      col.append(content);
 
       counter++;
     });

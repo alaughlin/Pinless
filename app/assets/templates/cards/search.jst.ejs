@@ -1,0 +1,8 @@
+<li class="card content-list-item">
+  <ul class="card-details content-list-item-details">
+    <li><img src="<%= card.image %>" width="150" class="card-image" data-id="<%= card.id %>"></li>
+    <li class="card-title"><%= card.title %></li>
+    <li><a href="#/boards/<%= card.board_id %>" class="card-board">Posted on: <%= card.board_title %></a></li>
+    <li><a href="#/users/<%= card.user_id %>" class="card-user">Posted by: <%= card.user_username %></a></li>
+  </ul>
+</li>
