@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :boards, only: [:create, :destroy]
     resources :cards, only: [:create, :destroy]
-    resources :friendships, only: :create
+    resources :friendships, only: [:create, :destroy]
 
     delete '/friendships', to: 'friendships#destroy'
     get '/boards/:id/cards', to: 'cards#board_cards'
@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     get '/checkforrequest/:id', to: 'users#check_for_request'
     get '/currentuser', to: 'users#get_current_user'
     get '/search', to: 'search#search'
+    post '/board_likes', to: 'board_likes#board_like'
   end
 end

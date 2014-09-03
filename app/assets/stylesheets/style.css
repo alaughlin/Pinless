@@ -328,8 +328,7 @@ a {
 .friend-button,
 .unfriend-button,
 .pending-friend-button,
-.like-button,
-.unlike-button {
+.board-like-button {
   padding: 5px 10px;
   font-size: 12px;
   color: #fff;
@@ -342,7 +341,7 @@ a {
 .friend-button:hover,
 .unfriend-button:hover,
 .pending-friend-button,
-.like-button:hover {
+.board-like-button:hover,{
   background: #60BBD6;
 }
 
