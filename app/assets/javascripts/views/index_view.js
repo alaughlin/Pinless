@@ -2,9 +2,7 @@ Pinless.Views.Index = Backbone.View.extend({
   initialize: function () {
     this.subViews = [];
     this.cards = this.collection;
-    this.listenTo(this.cards, 'sync add remove reset', function() {
-      this.render();
-    });
+    this.listenTo(this.cards, 'sync add remove reset', this.render);
   },
 
   tagName: "ul",

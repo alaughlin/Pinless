@@ -3,8 +3,9 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
 
   initialize: function () {
     this.cards = this.collection;
-    this.listenTo(Pinless.users.models[0].cards_liked, 'all', function () {
+    this.listenTo(Pinless.currentUser.cards_liked, 'remove', function () {
       console.log("fired");
+      this.render();
     });
   },
 

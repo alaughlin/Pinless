@@ -33,8 +33,10 @@ Pinless.Views.CardModal = Backbone.View.extend({
       success: function (data) {
         if (data.action === "created") {
           that.model.set('likes_card', true);
+          Pinless.currentUser.cards_liked.add(that.model);
         } else {
           that.model.set('likes_card', false);
+          Pinless.currentUser.cards_liked.remove(that.model);
         }
       }
     });

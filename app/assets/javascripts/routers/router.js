@@ -39,15 +39,13 @@ Pinless.Routers.Router = Backbone.Router.extend({
     this.$el.html("");
     this.$subHeader.html("");
     var that = this;
-    var user = Pinless.users.getOrFetch(window.currentUserId, function (user) {
-      user.feed.fetch({
-        reset: true,
-        success: function (data) {
-          that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
-          var view = new Pinless.Views.Index({collection: data});
-          that._swapView(view);
-        }
-      });
+    Pinless.currentUser.feed.fetch({
+      reset: true,
+      success: function (data) {
+        that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
+        var view = new Pinless.Views.Index({collection: data});
+        that._swapView(view);
+      }
     });
   },
 
@@ -128,18 +126,30 @@ Pinless.Routers.Router = Backbone.Router.extend({
   showUserCardsLiked: function (id) {
     Pinless.router.hideModal();
     var that = this;
-    var user = Pinless.users.getOrFetch(id, function (data) {
-      var user = data;
-      data.cards_liked.fetch({
+    if (id === Pinless.currentUser.id) {
+      Pinless.currentUser.cards_liked.fetch({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that._swapView(view);
-          that.userHeader(user);
+          that.userHeader(Pinless.currentUser);
           $('.user-liked-cards-link').addClass('user-links-selected');
         }
       });
-    });
+    } else {
+      var user = Pinless.users.getOrFetch(id, function (data) {
+        var user = data;
+        user.cards_liked.fetch({
+          reset: true,
+          success: function (data) {
+            var view = new Pinless.Views.CardsIndex({collection: data});
+            that._swapView(view);
+            that.userHeader(user);
+            $('.user-cards-link').addClass('user-links-selected');
+          }
+        });
+      });      
+    }
   },
 
   showUser: function (id) {

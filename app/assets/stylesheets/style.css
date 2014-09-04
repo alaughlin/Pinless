@@ -641,7 +641,6 @@ a {
 .card-modal {
   margin: auto;
   visibility: hidden;
-  width: 800px;
   border-radius: 5px;
   position: fixed;
   top: 50%;
