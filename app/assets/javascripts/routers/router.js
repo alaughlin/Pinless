@@ -56,6 +56,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
           });
         }
       });
+      that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
       var view = new Pinless.Views.Index({collection: Pinless.feed});
       that.$el.html(view.render().$el);
     });
