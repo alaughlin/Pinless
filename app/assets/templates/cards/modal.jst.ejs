@@ -1,7 +1,9 @@
 <ul>
   <li><img src="<%= card.escape('image') %>" width="800"></li>
-  <li class="card-title"><%= card.escape('title') %></li>
-  <li><a href="#/boards/<%= card.escape('board_id') %>">Posted on: <%= card.escape('board_title') %></a></li>
-  <li><a href="#/users/<%= card.escape('user_id') %>">Posted by: <%= card.escape('user_username') %></a></li>
+  <ul class="card-modal-details">
+    <li class="card-title"><%= card.escape('title') %></li>
+    <li><a href="#/boards/<%= card.escape('board_id') %>" class="card-board">Posted on: <%= card.escape('board_title') %></a></li>
+    <li><a href="#/users/<%= card.escape('user_id') %>" class="card-user">Posted by: <%= card.escape('user_username') %></a></li>
+  </ul>
   <a href="#" class='close-modal-link'><img src="<%= card.escape('close_button') %>" class="close-card-modal-image"></a>
 </ul>

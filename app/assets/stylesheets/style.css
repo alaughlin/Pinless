@@ -611,9 +611,23 @@ a {
 }
 
 .close-modal-image:hover,
-.close-card-modal-image:hover {
+.card-modal .close-card-modal-image:hover {
   opacity: 1.0;
   cursor: pointer;
+}
+
+.card-modal {
+  margin: auto;
+  visibility: hidden;
+  width: 800px;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-modal-show {
+  visibility: visible;
 }
 
 .card-modal .close-card-modal-image {
@@ -627,31 +641,24 @@ a {
   opacity: 0.8;
 }
 
-.card-modal {
-  position: absolute;
-  margin: auto;
-  visibility: hidden;
-  width: 800px;
-  height: 500px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.card-modal ul > li > img {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.card-modal > ul > li {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.card-modal-details > li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.card-modal-details {
   background: #fff;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.card-modal-show {
-  visibility: visible;
-}
-
-.card-modal li {
-  border: none;
-  margin: 0;
-  width: 100%;
-}
-
-.card-modal img {
-  border-radius: 4px;
 }
