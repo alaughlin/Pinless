@@ -46,7 +46,7 @@ Pinless.Views.Index = Backbone.View.extend({
           break;
       }
 
-      view = new Pinless.Views.CardShow({model: card});
+      var view = new Pinless.Views.CardShow({model: card});
       col.append(view.render().$el);
 
       that.subViews.push(view);
@@ -62,4 +62,12 @@ Pinless.Views.Index = Backbone.View.extend({
 
     return this;
   },
+
+  remove: function () {
+    this.subViews.forEach(function (view) {
+      view.remove();
+    });
+
+    return Backbone.View.prototype.remove.call(this);
+  }
 });

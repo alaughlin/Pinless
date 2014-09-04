@@ -126,9 +126,9 @@ Pinless.Routers.Router = Backbone.Router.extend({
   showUserCardsLiked: function (id) {
     Pinless.router.hideModal();
     var that = this;
-    if (id === Pinless.currentUser.id) {
+    if (id == Pinless.currentUser.id) {
       Pinless.currentUser.cards_liked.fetch({
-        reset: true,
+        merge: true,
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
           that._swapView(view);
@@ -145,7 +145,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
             var view = new Pinless.Views.CardsIndex({collection: data});
             that._swapView(view);
             that.userHeader(user);
-            $('.user-cards-link').addClass('user-links-selected');
+            $('.user-liked-cards-link').addClass('user-links-selected');
           }
         });
       });      

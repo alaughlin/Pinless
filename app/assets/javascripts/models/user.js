@@ -20,8 +20,9 @@ Pinless.Models.User = Backbone.Model.extend({
     this.cards_liked.url = '/api/users/' + this.id + '/cards/liked';
     this.cards_liked.listenTo(this.cards_liked, 'change', function (card) {
       if (card.likes_card === false) {
-        console.log("card was unliked!");
         that.cards_liked.remove(card);
+      } else {
+        that.cards_liked.add(card);
       }
     });
     this.cards_liked.on("reset", this.updateCounts);

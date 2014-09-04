@@ -3,10 +3,8 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
 
   initialize: function () {
     this.cards = this.collection;
-    this.listenTo(Pinless.currentUser.cards_liked, 'remove', function () {
-      console.log("fired");
-      this.render();
-    });
+    this.listenTo(Pinless.currentUser.cards_liked, 'remove', this.render);
+    this.subViews = [];
   },
 
   tagName: 'ul',
@@ -14,7 +12,12 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
+    var that = this;
     this.$el.empty();
+
+    this.subViews.forEach(function (view) {
+      view.remove();
+    });
 
     var $col1 = $("<ul class='col1'>");
     var $col2 = $("<ul class='col2'>");
@@ -46,8 +49,10 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
           break;
       }
 
-      view = new Pinless.Views.CardShow({model: card});
+      var view = new Pinless.Views.CardShow({model: card});
       col.append(view.render().$el);
+
+      that.subViews.push(view);
 
       counter++;
     });
@@ -59,5 +64,13 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
     this.$el.append($col5);
 
     return this;
+  },
+
+  remove: function () {
+    this.subViews.forEach(function (view) {
+      view.remove();
+    });
+
+    return Backbone.View.prototype.remove.call(this);
   }
 });
