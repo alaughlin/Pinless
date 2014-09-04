@@ -203,7 +203,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       Pinless.router.$cardModal.html(view.render().$el);
       $(".overlay").addClass('overlay-show');
       $('.card-modal').addClass('card-modal-show');
-      $('body').addClass('stop-scrolling');
+      // $('body').addClass('stop-scrolling');
     });
   },
 });
