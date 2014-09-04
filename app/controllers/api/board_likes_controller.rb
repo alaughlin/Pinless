@@ -15,7 +15,7 @@ class Api::BoardLikesController < ApplicationController
       if @board_like.save
         render json: {action: "created"}
       else
-        render json: {error: "You already like this board!", status: 422}
+        render json: {error: "You already like this board!"}, status: 422
       end
     end
   end

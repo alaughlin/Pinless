@@ -2,6 +2,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$el = options.$el;
     this.$overlayContent = $('.overlay-content');
+    this.$cardModal = $('.card-modal');
     this.$subHeader = $('#sub-header');
   },
 
@@ -61,6 +62,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   hideModal: function () {
+    $('.card-modal').removeClass('card-modal-show');
+    $('.overlay-content').removeClass('overlay-content-show');
     $(".overlay").removeClass('overlay-show');
   },
 
@@ -183,5 +186,15 @@ Pinless.Routers.Router = Backbone.Router.extend({
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
     this.$subHeader.html(view.render().$el);
-  }
+  },
+
+  cardModal: function (id) {
+    var that = this;
+    var card = Pinless.cards.getOrFetch(id, function (data) {
+      var view = new Pinless.Views.CardModal({model: data});
+      Pinless.router.$cardModal.html(view.render().$el);
+      $(".overlay").addClass('overlay-show');
+      $('.card-modal').addClass('card-modal-show');
+    });
+  },
 });

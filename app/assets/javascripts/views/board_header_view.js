@@ -29,6 +29,7 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
       var view = new Pinless.Views.CardAdd({model: data});
       Pinless.router.$overlayContent.html(view.render().$el);
       $(".overlay").addClass('overlay-show');
+      $(".overlay-content").addClass('overlay-content-show');
     });
   },
 

@@ -5,6 +5,7 @@
 
 <div class="overlay">
   <div class="overlay-content"></div>
+  <div class="card-modal"></div>
 </div>
 
 <script>
@@ -42,7 +43,7 @@
     });
 
     $('#content').on('click', '.card-image', function (event) {
-      console.log("clicked");
+      Pinless.router.cardModal(event.currentTarget.dataset.id);
     });
 
     $('.search-button').on('click', function (event) { 
