@@ -58,5 +58,10 @@
         Pinless.router.hideModal();
       }
     });
+
+    $('.header-add-board').on('click', function (event) {
+      event.preventDefault();
+      Pinless.router.addBoardModal();
+    });
   });
 </script>

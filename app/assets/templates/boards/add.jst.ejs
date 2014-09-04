@@ -1,0 +1,27 @@
+<ul class="group">
+  <li class="overlay-header-left"><h3>Adding a new Board</h3></li>
+  <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="/assets/close.png" class="close-modal-image"></a></li>
+</ul>
+<form class="add-board-form overlay-form" enctype="multipart/form-data">  
+  <input type="text" placeholder="Title" name="board[title]">
+  <br>
+
+  <textarea name="board[description]" placeholder="Description" rows="5"></textarea>
+  <br>
+
+  <input type="file" name="board[avatar]" id="image-file-input">
+  <br>
+
+  <label>
+    Public
+    <input type="radio" name="board[public]" value=true>
+  </label>
+
+  <label>
+    Private
+    <input type="radio" name="board[public]" value=false>
+  </label>
+  <br>
+
+  <input type="submit" class="submit-button" value="Submit">
+</form>

@@ -198,5 +198,13 @@ Pinless.Routers.Router = Backbone.Router.extend({
     this._currentHeaderView && this._currentHeaderView.remove();
     this._currentHeaderView = view;
     this.$subHeader.html(view.render().$el);
-  }
+  },
+
+  addBoardModal: function () {
+    var view = new Pinless.Views.BoardAdd();
+    Pinless.router.$overlayContent.html(view.render().$el);
+    $(".overlay").addClass('overlay-show');
+    $(".overlay-content").addClass('overlay-content-show');
+    $('body').addClass('stop-scrolling');
+  },
 });
