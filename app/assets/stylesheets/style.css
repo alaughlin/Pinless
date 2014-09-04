@@ -3,11 +3,12 @@ html, body, header, h1, h2, h3, ul, li, a, img, hr, p {
   padding: 0;
   border: 0;
   list-style: none;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: inherit;
 }
 
 body {
   background: #eee;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 img {
@@ -20,6 +21,10 @@ input, button, textarea {
   border: 0;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, sans-serif;
   outline: none;
+}
+
+h2 {
+  font-size: 24px;
 }
 
 .group:after {
@@ -626,7 +631,7 @@ a {
   visibility: hidden;
   width: 800px;
   border-radius: 5px;
-  position: relative;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
 }
