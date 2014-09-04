@@ -1,5 +1,6 @@
 Pinless.Views.Index = Backbone.View.extend({
   initialize: function () {
+    this.subViews = [];
     this.cards = this.collection;
     this.listenTo(this.cards, 'sync add remove reset', function() {
       this.render();
@@ -11,7 +12,12 @@ Pinless.Views.Index = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
+    console.log("rendering");
+    var that = this;
     this.$el.empty();
+    this.subViews.forEach(function (view) {
+      view.remove();
+    });
 
     var $col1 = $("<ul class='col1'>");
     var $col2 = $("<ul class='col2'>");
@@ -45,6 +51,8 @@ Pinless.Views.Index = Backbone.View.extend({
 
       view = new Pinless.Views.CardShow({model: card});
       col.append(view.render().$el);
+
+      that.subViews.push(view);
 
       counter++;
     });

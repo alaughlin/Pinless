@@ -9,7 +9,9 @@ Pinless.Views.CardModal = Backbone.View.extend({
     'click .card-like-button': 'cardLikeAction'
   },
 
-  initialize: function () {},
+  initialize: function () {
+    this.listenTo(this.model, 'sync change', this.render);
+  },
 
   render: function () {
     var content = this.template({card: this.model});
@@ -20,8 +22,7 @@ Pinless.Views.CardModal = Backbone.View.extend({
 
   cardLikeAction: function (event) {
     var cardId = event.currentTarget.dataset.id;
-    var card = Pinless.cards.get(cardId);
-    var $button = $(event.currentTarget);
+    var that = this;
 
     $.ajax({
       url: '/api/card_likes',
@@ -31,11 +32,9 @@ Pinless.Views.CardModal = Backbone.View.extend({
       },
       success: function (data) {
         if (data.action === "created") {
-          card.attributes.likes_card = true;
-          $button.html("Unlike This Card");
+          that.model.set('likes_card', true);
         } else {
-          card.attributes.likes_card = true;
-          $button.html("Like This Card");
+          that.model.set('likes_card', false);
         }
       }
     });

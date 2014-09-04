@@ -30,7 +30,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         that.$subHeader.html("<h2 class='search-header'>Showing results for: " + terms + "</h2>");
         that.$el.html("");
         var view = new Pinless.Views.CardsSearch({collection: data});
-        that.$el.html(view.render().$el);
+        that._swapView(view);
       }
     });
   },
@@ -58,7 +58,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
       });
       that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
       var view = new Pinless.Views.Index({collection: Pinless.feed});
-      that.$el.html(view.render().$el);
+      // that.$el.html(view.render().$el);
+      that._swapView(view);
     });
   },
 
@@ -78,7 +79,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.UsersIndex({collection: data});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
           that.userHeader(user);
           $('.user-friends-link').addClass('user-links-selected');
         }
@@ -96,7 +97,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
         }
       });
     });
@@ -111,7 +112,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.BoardsIndex({collection: data});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
           that.userHeader(user);
           $('.user-liked-boards-link').addClass('user-links-selected');
         }
@@ -128,7 +129,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
           that.userHeader(user);
           $('.user-cards-link').addClass('user-links-selected');
         }
@@ -145,7 +146,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         reset: true,
         success: function (data) {
           var view = new Pinless.Views.CardsIndex({collection: data});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
           that.userHeader(user);
           $('.user-liked-cards-link').addClass('user-links-selected');
         }
@@ -176,7 +177,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       board.childCards.fetch({
         success: function (data) {
           var view = new Pinless.Views.BoardShow({model: board});
-          that.$el.html(view.render().$el);
+          that._swapView(view);
           var view = new Pinless.Views.BoardHeader({model: board});
           that.$subHeader.html(view.render().$el);
         }
@@ -184,30 +185,14 @@ Pinless.Routers.Router = Backbone.Router.extend({
     });
   },
 
-  // showCard: function (id) {
-  //   var that = this;
-  //   var card = Pinless.cards.getOrFetch(id, function (data) {
-  //     var view = new Pinless.Views.CardShow({model: data});
-  //     that.$el.html(view.render().$el);
-  //   });
-  // },
-
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
     this.$subHeader.html(view.render().$el);
   },
 
-  cardModal: function (id) {
-    var that = this;
-    var card = Pinless.cards.getOrFetch(id, function (data) {
-      var view = new Pinless.Views.CardModal({model: data});
-      Pinless.router.$cardModal.html(view.render().$el);
-      $(".overlay").addClass('overlay-show');
-      $('.card-modal').addClass('card-modal-show');
-      $(".card-modal").css("left", function(){
-        return ($(".overlay").width() - $(this).width()) / 2;
-      });
-      // $('body').addClass('stop-scrolling');
-    });
-  },
+  _swapView: function (view) {
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    this.$el.html(view.render().$el);
+  }
 });

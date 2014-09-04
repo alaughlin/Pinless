@@ -42,10 +42,6 @@
       Pinless.router.hideModal();
     });
 
-    $('#content').on('click', '.card-image', function (event) {
-      Pinless.router.cardModal(event.currentTarget.dataset.id);
-    });
-
     $('.search-button').on('click', function (event) { 
       var terms = $('.search-box').val();
       Pinless.router.navigate("#/search?q=" + terms, {trigger: true});
