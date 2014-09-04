@@ -56,5 +56,11 @@
         $(".search-button").click();
       }
     });
+
+    $('html').keyup(function(event){
+      if (event.keyCode == 27) {
+        Pinless.router.hideModal();
+      }
+    });
   });
 </script>
