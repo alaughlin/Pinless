@@ -40,5 +40,6 @@ Rails.application.routes.draw do
     get '/search', to: 'search#search'
     post '/board_likes', to: 'board_likes#board_like'
     post '/card_likes', to: 'card_likes#card_like'
+    get '/feed', to: 'feeds#index'
   end
 end

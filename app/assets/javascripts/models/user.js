@@ -21,5 +21,9 @@ Pinless.Models.User = Backbone.Model.extend({
     this.friends = new Pinless.Collections.Users();
     this.friends.url = "api/users/" + this.id + "/friends";
     this.friends.on("reset", this.updateCounts);
+
+    this.feed = new Pinless.Collections.Cards();
+    this.feed.url = "api/feed";
+    this.feed.on("reset", this.updateCounts);
   },
 });

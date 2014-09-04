@@ -39,27 +39,15 @@ Pinless.Routers.Router = Backbone.Router.extend({
     this.$el.html("");
     this.$subHeader.html("");
     var that = this;
-    var user = Pinless.users.getOrFetch(window.currentUserId, function (data) {
-      var user = data;
-      data.boards_liked.fetch({
+    var user = Pinless.users.getOrFetch(window.currentUserId, function (user) {
+      user.feed.fetch({
         reset: true,
         success: function (data) {
-          _.each(data.models, function(board) {
-            board.childCards.fetch({
-              reset: true,
-              success: function (data) {
-                _.each(data.models, function (card) {
-                  Pinless.feed.add(card);
-                });
-              }
-            });
-          });
+          that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
+          var view = new Pinless.Views.Index({collection: data});
+          that._swapView(view);
         }
       });
-      that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
-      var view = new Pinless.Views.Index({collection: Pinless.feed});
-      // that.$el.html(view.render().$el);
-      that._swapView(view);
     });
   },
 
