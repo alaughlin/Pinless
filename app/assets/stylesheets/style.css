@@ -28,6 +28,11 @@ input, button, textarea {
   clear: both;
 }
 
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 a {
   text-decoration: none
 }
@@ -532,7 +537,7 @@ a {
 .card-description {
   font-size: 14px;
   color: #333;
-  padding: 0 10px 5px 10px;
+  padding-top: 10px;
 }
 
 /* MODALS */

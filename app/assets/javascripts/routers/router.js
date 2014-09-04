@@ -65,9 +65,11 @@ Pinless.Routers.Router = Backbone.Router.extend({
     $('.card-modal').removeClass('card-modal-show');
     $('.overlay-content').removeClass('overlay-content-show');
     $(".overlay").removeClass('overlay-show');
+    $('body').removeClass('stop-scrolling');
   },
 
   showUserFriends: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -84,6 +86,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserBoards: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       that.userHeader(data);
@@ -99,6 +102,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserBoardsLiked: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -115,6 +119,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserCards: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -131,6 +136,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserCardsLiked: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -147,6 +153,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function (id) {
+    Pinless.router.hideModal();
     this.$el.html("");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
@@ -161,6 +168,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showBoard: function (id) {
+    Pinless.router.hideModal();
     var that = this;
     var board = Pinless.boards.getOrFetch(id, function (data) {
       var board = data;
@@ -195,6 +203,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       Pinless.router.$cardModal.html(view.render().$el);
       $(".overlay").addClass('overlay-show');
       $('.card-modal').addClass('card-modal-show');
+      $('body').addClass('stop-scrolling');
     });
   },
 });
