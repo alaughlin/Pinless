@@ -12,7 +12,6 @@ Pinless.Views.Index = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
-    console.log("rendering");
     var that = this;
     this.$el.empty();
     this.subViews.forEach(function (view) {

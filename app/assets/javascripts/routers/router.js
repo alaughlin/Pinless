@@ -151,7 +151,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       user.friends.fetch({
         success: function (data) {
           var view = new Pinless.Views.UserShow({model: user});
-          that.$subHeader.html(view.render().$el);
+          that._swapHeaderView(view);
         }
       });
     });
@@ -167,7 +167,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
           var view = new Pinless.Views.BoardShow({model: board});
           that._swapView(view);
           var view = new Pinless.Views.BoardHeader({model: board});
-          that.$subHeader.html(view.render().$el);
+          that._swapHeaderView(view);
         }
       });
     });
@@ -175,12 +175,18 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
-    this.$subHeader.html(view.render().$el);
+    this._swapHeaderView(view);
   },
 
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$el.html(view.render().$el);
+  },
+
+  _swapHeaderView: function (view) {
+    this._currentHeaderView && this._currentHeaderView.remove();
+    this._currentHeaderView = view;
+    this.$subHeader.html(view.render().$el);
   }
 });
