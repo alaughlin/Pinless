@@ -39,5 +39,6 @@ Rails.application.routes.draw do
     get '/currentuser', to: 'users#get_current_user'
     get '/search', to: 'search#search'
     post '/board_likes', to: 'board_likes#board_like'
+    post '/card_likes', to: 'card_likes#card_like'
   end
 end

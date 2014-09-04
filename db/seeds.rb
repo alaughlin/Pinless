@@ -163,7 +163,7 @@ card = Card.create(user_id: obi_wan.id, board_id: tatooine.id, title: "Meeting L
 CardLike.create(card_id: card.id, user_id: luke.id)
 CardLike.create(card_id: card.id, user_id: yoda.id)
 
-card = Card.create(user_id: obi_wan.id, board_id: rebel_alliance.id, title: "Visiting Luke on Hoth", description: "Never going back", image: File.new("#{Rails.root}/seeds/images/cards/luke_vision.jpg"))
+card = Card.create(user_id: obi_wan.id, board_id: rebel_alliance.id, title: "Visiting Luke on Hoth", description: "Scared him, I think!", image: File.new("#{Rails.root}/seeds/images/cards/luke_vision.jpg"))
 CardLike.create(card_id: card.id, user_id: luke.id)
 CardLike.create(card_id: card.id, user_id: leia.id)
 CardLike.create(card_id: card.id, user_id: yoda.id)
@@ -208,6 +208,6 @@ CardLike.create(card_id: card.id, user_id: luke.id)
 card = Card.create(user_id: boba_fett.id, board_id: tatooine.id, title: "Jabba's Palace", description: "Pretty cool place to kick it", image: File.new("#{Rails.root}/seeds/images/cards/jabba_palace.jpg"))
 CardLike.create(card_id: card.id, user_id: vader.id)
 
-card = Card.create(user_id: boba_fett.id, board_id: empire.id, title: "Chilling with Vader", description: "Never going back", image: File.new("#{Rails.root}/seeds/images/cards/boba_vader.jpeg"))
+card = Card.create(user_id: boba_fett.id, board_id: empire.id, title: "Chilling with Vader", description: "Dude is pretty cool", image: File.new("#{Rails.root}/seeds/images/cards/boba_vader.jpeg"))
 CardLike.create(card_id: card.id, user_id: vader.id)
 CardLike.create(card_id: card.id, user_id: emperor.id)

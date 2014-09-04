@@ -36,6 +36,7 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
 
   boardLikeAction: function (event) {
     var boardId = event.currentTarget.dataset.id;
+    var board = Pinless.boards.get(boardId);
     var $button = $(event.currentTarget);
 
     $.ajax({
@@ -46,8 +47,10 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
       },
       success: function (data) {
         if (data.action === "created") {
+          board.attributes.likes_board = true;
           $button.html("Unlike This Board");
         } else {
+          board.attributes.likes_board = false;
           $button.html("Like This Board");
         }
       }

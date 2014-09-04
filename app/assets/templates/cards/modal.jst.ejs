@@ -1,5 +1,12 @@
 <ul>
-  <li><img src="<%= card.escape('image') %>" width="800"></li>
+  <li class="modal-image-li">
+    <img src="<%= card.escape('image') %>" width="798">
+    <% if (card.escape('likes_card') === 'true') { %>
+      <button class="card-like-button" data-id="<%= card.escape('id') %>">Unlike Card</button>
+    <% } else { %>
+      <button class="card-like-button" data-id="<%= card.escape('id') %>">Like Card</button>
+    <% } %>
+  </li>
   <ul class="card-modal-details">
     <li class="card-title"><%= card.escape('title') %> <br> <p class='card-description'><%= card.escape('description') %></p></li>
     <li><a href="#/boards/<%= card.escape('board_id') %>" class="card-board">Posted on: <%= card.escape('board_title') %></a></li>
