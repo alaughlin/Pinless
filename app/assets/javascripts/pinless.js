@@ -16,10 +16,6 @@ window.Pinless = {
     Pinless.router = new Pinless.Routers.Router({$el: $("#content")});
     Backbone.history.start();
   },
-
-  cardModal: function (card) {
-    console.log(card);
-  }
 };
 
 $(document).ready(function(){

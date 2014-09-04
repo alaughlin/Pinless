@@ -10,4 +10,5 @@ json.array! @cards do |card|
   json.set!(:board_title, board_title)
   json.set!(:close_button, asset_path("close.png"))
   json.set!(:likes_card, likes_card)
+  json.set!(:heart, asset_path("heart.png"))
 end

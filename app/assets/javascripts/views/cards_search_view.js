@@ -3,7 +3,6 @@ Pinless.Views.CardsSearch = Backbone.View.extend({
 
   initialize: function () {
     this.cards = this.collection;
-    console.log(this.cards);
   },
 
   tagName: 'ul',
@@ -22,7 +21,6 @@ Pinless.Views.CardsSearch = Backbone.View.extend({
     var counter = 1;
 
     this.cards.forEach(function (card) {
-      console.log(card.title);
       if (counter > 5) {
         counter = 1;
       }

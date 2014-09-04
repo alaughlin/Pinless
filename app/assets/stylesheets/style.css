@@ -488,6 +488,7 @@ a {
 }
 
 .content-list-item-details {
+  position: relative;
 }
 
 /* CONTENT LIST ITEM */
@@ -546,6 +547,14 @@ a {
   font-size: 14px;
   color: #333;
   padding-top: 10px;
+}
+
+.heart {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 
 /* MODALS */

@@ -1,4 +1,6 @@
 json.set!(:close_button, asset_path("close.png"))
+json.set!(:heart, asset_path("heart.png"))
+
 
 image = card.image.url
 board_title = card.board.title

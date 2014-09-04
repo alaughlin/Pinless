@@ -3,4 +3,7 @@
   <li class="card-title"><%= card.escape('title') %></li>
   <li><a href="#/boards/<%= card.escape('board_id') %>" class="card-board">Posted on: <%= card.escape('board_title') %></a></li>
   <li><a href="#/users/<%= card.escape('user_id') %>" class="card-user">Posted by: <%= card.escape('user_username') %></a></li>
+  <% if (card.escape('likes_card') === 'true') { %>
+    <img src="<%= card.escape('heart') %>" class="heart">
+  <% } %>
 </ul>

@@ -50,7 +50,6 @@ Pinless.Views.UserShow = Backbone.View.extend({
         friend_id: friendId
       },
       success: function (data) {
-        console.log(data);
         $('.friend-btn').html("Add As Friend");
         $('.friend-btn').removeClass('unfriend-button');
         $('.friend-btn').addClass('friend-button');

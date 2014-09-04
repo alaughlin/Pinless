@@ -3,7 +3,6 @@ Pinless.Views.BoardShow = Backbone.View.extend({
 
   initialize: function () {
     this.id = this.model.escape('id');
-    console.log(this.model);
   },
 
   tagName: 'ul',
