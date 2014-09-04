@@ -1,5 +1,5 @@
 json.array! @cards do |card|
-  image = card.image.url
+  image = card.image.url(:large)
   user_username = card.user.username
   board_title = card.board.title
   likes_card = current_user.likes_card?(card)

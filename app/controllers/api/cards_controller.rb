@@ -20,13 +20,10 @@ class Api::CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
-    @card.user_id = current_user.id
-
-    puts @card
+    @card = current_user.cards.new(card_params)
 
     if @card.save
-      render json: @card
+      render :show
     end
   end
 

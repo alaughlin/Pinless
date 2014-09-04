@@ -176,7 +176,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         success: function (data) {
           var view = new Pinless.Views.BoardShow({model: board});
           that._swapView(view);
-          var view = new Pinless.Views.BoardHeader({model: board});
+          var view = new Pinless.Views.BoardHeader({model: board, collection: board.childCards});
           that._swapHeaderView(view);
         }
       });

@@ -5,6 +5,9 @@ Pinless.Models.Board = Backbone.Model.extend({
     this.childCards = new Pinless.Collections.Cards();
     this.childCards.url = '/api/boards/' + this.id + '/cards';
     this.childCards.on("reset", this.updateCounts);
+    this.childCards.comparator = function(card) {
+      return -card.get('id');
+    }
   },
 
   cards: function () {

@@ -8,11 +8,13 @@ json.set!(:likes_board, likes_board)
 username = board.user.username
 json.set!(:username, username)
 
-json.(board, :id, :title, :avatar, :description, :user_id, :created_at, :updated_at)
-json.set!(:username, username);
+avatar = board.image.url(:large)
+json.(board, :id, :title, :description, :user_id, :created_at, :updated_at)
+json.set!(:username, username)
+json.set!(:avatar, avatar)
 
 json.cards board.cards do |card|
-  image = card.image.url
+  image = card.image.url(:large)
   board_title = card.board.title
   user_username = card.user.username
 

@@ -9,6 +9,22 @@ Pinless.Views.CardsSearch = Backbone.View.extend({
 
   className: "cols group",
 
+  events: {
+    'click .card-image': 'cardModal'
+  },
+
+  cardModal: function (event) {
+    var card = Pinless.cards.get(event.currentTarget.dataset.id);
+    var view = new Pinless.Views.CardModal({model: card});
+    Pinless.router.$cardModal.html(view.render().$el);
+    $('.overlay').addClass('overlay-show');
+    $('.card-modal').addClass('card-modal-show');
+    $('.card-modal').css("left", function (){
+      return ($(".overlay").width() - $(this).width()) / 2;
+    });
+    // $('body').addClass('stop-scrolling');
+  },
+
   render: function () {
     var that = this;
     this.$el.empty();

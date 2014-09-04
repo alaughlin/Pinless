@@ -3,6 +3,9 @@ Pinless.Views.BoardShow = Backbone.View.extend({
 
   initialize: function () {
     this.id = this.model.escape('id');
+    this.listenTo(this.model.childCards, 'all', function () {
+      this.render();
+    });
   },
 
   tagName: 'ul',
@@ -10,14 +13,7 @@ Pinless.Views.BoardShow = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
-    // var that = this;
-    // this.$el.empty();
-    // this.cards.each(function (card) {
-    //   view = new Pinless.Views.CardShow({model: card});
-    //   that.$el.append(view.render().$el);
-    // });
-
-    // return this;
+    console.log
 
     this.$el.empty();
 

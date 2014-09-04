@@ -1,5 +1,5 @@
 json.array! @boards do |board|
-  image = board.avatar.url
+  image = board.avatar.url(:large)
   user_username = board.user.username
   likes_board = current_user.likes_board?(board)
   username = board.user.username

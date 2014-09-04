@@ -4,5 +4,8 @@
     <li class="card-title"><%= card.title %></li>
     <li><a href="#/boards/<%= card.board_id %>" class="card-board">Posted on: <%= card.board_title %></a></li>
     <li><a href="#/users/<%= card.user_id %>" class="card-user">Posted by: <%= card.user_username %></a></li>
+    <% if (card.likes_card) { %>
+      <img src="<%= card.heart %>" class="heart">
+    <% } %>
   </ul>
 </li>
