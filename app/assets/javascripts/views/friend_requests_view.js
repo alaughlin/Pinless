@@ -66,6 +66,9 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
     var that = this;
     var userId = Pinless.currentUser.escape('id');
     var friendId = event.currentTarget.dataset.id;
+    var $badge = $('.badge');
+    var $friendRequestLi = $('.friend-request-li');
+    var notificationCount = parseInt($badge.html());
 
     $.ajax({
       url: '/api/friendships',
@@ -80,6 +83,13 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
         console.log(friend);
         Pinless.currentUser.friends.add(friend);
         Backbone.View.prototype.remove.call(that);
+        notificationCount--;
+        $badge.html(notificationCount);
+
+        if (notificationCount < 1) {
+          $badge.hide();
+          $friendRequestLi.hide();
+        }
       }
     });
   }
