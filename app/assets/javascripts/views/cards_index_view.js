@@ -3,7 +3,7 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
 
   initialize: function () {
     this.cards = this.collection;
-    this.listenTo(Pinless.currentUser.cards_liked, 'remove', this.render);
+    this.listenTo(Pinless.currentUser.cards_liked, 'add sync remove', this.render);
     this.subViews = [];
   },
 
