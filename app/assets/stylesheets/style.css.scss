@@ -610,9 +610,7 @@ a {
 .overlay-content {
   position: absolute;
   margin: auto;
-  visibility: hidden;
   width: 400px;
-  /*height: 380px;*/
   top: 0;
   bottom: 0;
   left: 0;
@@ -620,10 +618,15 @@ a {
   background: #fff;
   border-radius: 3px;
   border: 1px solid #ccc;
+  opacity: 0;
+
+  -webkit-transition: opacity 100ms ease-in;
+  -moz-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
 }
 
 .overlay-content-show {
-  visibility: visible;
+  opacity: 1;
 }
 
 .overlay-content ul {
@@ -688,15 +691,18 @@ a {
 
 .card-modal {
   margin: auto;
-  visibility: hidden;
+  opacity: 0;
   border-radius: 5px;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
+  -webkit-transition: opacity 100ms ease-in;
+  -moz-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
 }
 
 .card-modal-show {
-  visibility: visible;
+  opacity: 1;
 }
 
 .card-modal .close-card-modal-image {
