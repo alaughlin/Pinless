@@ -39,11 +39,16 @@ Pinless.Routers.Router = Backbone.Router.extend({
           that.$subHeader.html("<h2 class='search-header'>Showing cards that match: <strong>" + terms + "</strong></h2>");
           that.$el.html("");
           var view = new Pinless.Views.CardsIndex({collection: results});
-        } else {
+        } else if (model === "board") {
           var results = new Pinless.Collections.Boards(data);
           that.$subHeader.html("<h2 class='search-header'>Showing boards that match: <strong>" + terms + "</strong></h2>");
           that.$el.html("");
           var view = new Pinless.Views.BoardsIndex({collection: results});
+        } else {
+          var results = new Pinless.Collections.Users(data);
+          that.$subHeader.html("<h2 class='search-header'>Showing users that match: <strong>" + terms + "</strong></h2>");
+          that.$el.html("");
+          var view = new Pinless.Views.UsersIndex({collection: results});
         }
 
         that._swapView(view);

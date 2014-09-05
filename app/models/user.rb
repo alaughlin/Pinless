@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_user, :against => :username
+
   validates :username, uniqueness: true
   validates :username, :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true

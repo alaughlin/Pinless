@@ -6,6 +6,7 @@
         <select class="search-model">
         <option value="card">Card</option>
         <option value="board">Board</option>
+        <option value="user">User</option>
         </select>
       </li>
       <li class="header-left"><input type="submit" class="search-button" value="Search"></li>
@@ -18,7 +19,7 @@
           <a href="#/users/<%= current_user.id %>" class="header-username">
             <%= current_user.username %> 
             <% if current_user.friend_requests.length > 0 %>
-              <%= current_user.friend_requests.length %>
+              <p class="badge"><%= current_user.friend_requests.length %></p>
             <% end %>
           </a>
         </li>

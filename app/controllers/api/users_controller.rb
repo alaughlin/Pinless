@@ -9,9 +9,9 @@ before_filter :ensure_signed_in, only: [:show]
 
   def friends
     @user = User.find(params[:id])
-    @friends = @user.friends
+    @users = @user.friends
 
-    @friends = @friends.select { |friend| @user.friendship_status(friend) == "friends"}
+    @users = @users.select { |user| @user.friendship_status(user) == "friends"}
 
     render :index
   end

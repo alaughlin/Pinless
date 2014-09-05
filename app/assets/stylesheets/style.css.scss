@@ -624,9 +624,9 @@ a {
   border: 1px solid #ccc;
   opacity: 0;
 
-  -webkit-transition: opacity 100ms ease-in;
-  -moz-transition: opacity 100ms ease-in;
-  transition: opacity 100ms ease-in;
+  -webkit-transition: opacity 2000ms ease-in;
+  -moz-transition: opacity 2000ms ease-in;
+  transition: opacity 2000ms ease-in;
 }
 
 .overlay-content-show {
