@@ -43,7 +43,7 @@ a {
 }
 
 #sub-header {
-  margin-top: 20px;
+  margin-top: 73px;
 }
 
 /* SIGNIN FORM */
@@ -153,6 +153,14 @@ a {
 .top-header {
   background: #fff;
   border-bottom: 1px solid #ccc;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 999999;
+}
+
+.wrap {
   position: relative;
 }
 
@@ -703,4 +711,5 @@ a {
   float: left;
   display: inline;
   width: 75px;
+  padding-bottom: 5px
 }
