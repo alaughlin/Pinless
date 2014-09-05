@@ -6,7 +6,8 @@ Pinless.Views.CardModal = Backbone.View.extend({
   className: "modal",
 
   events: {
-    'click .card-like-button': 'cardLikeAction'
+    'click .card-like-button':   'cardLikeAction',
+    'dblclick .card-modal-image': 'cardLikeAction'
   },
 
   initialize: function () {

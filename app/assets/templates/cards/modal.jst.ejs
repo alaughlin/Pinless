@@ -1,6 +1,6 @@
 <ul>
   <li class="modal-image-li">
-    <img src="<%= card.escape('image') %>">
+    <img src="<%= card.escape('image') %>" class="card-modal-image" data-id="<%= card.escape('id') %>">
     <% if (card.escape('likes_card') === 'true') { %>
       <button class="card-like-button" data-id="<%= card.escape('id') %>">Unlike Card</button>
     <% } else { %>
