@@ -15,7 +15,12 @@
       <ul class="user-stuff group">
         <li class="header-right-left"><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
         <li class="header-right-right">
-          <a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %> <%= current_user.friend_requests.length %></a>
+          <a href="#/users/<%= current_user.id %>" class="header-username">
+            <%= current_user.username %> 
+            <% if current_user.friend_requests.length > 0 %>
+              <%= current_user.friend_requests.length %>
+            <% end %>
+          </a>
         </li>
         <ul class="dropdown-menu">
           <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>

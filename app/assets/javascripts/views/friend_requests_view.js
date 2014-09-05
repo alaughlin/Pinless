@@ -9,6 +9,10 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
 
   className: "cols group",
 
+  events: {
+    'click .accept-request-button': 'acceptRequest'
+  },
+
   render: function () {
     var that = this;
     this.$el.empty();
@@ -56,5 +60,25 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
     this.$el.append($col5);
 
     return this;
+  },
+
+  acceptRequest: function (event) {
+    var userId = Pinless.currentUser.escape('id');
+    var friendId = event.currentTarget.dataset.id;
+
+    $.ajax({
+      url: '/api/friendships',
+      type: 'POST',
+      data: {
+        friendship: {
+          user_id: userId,
+          friend_id: friendId
+        }
+      },
+      success: function (friend) {
+        console.log(friend);
+        Pinless.currentUser.friends.add(friend);
+      }
+    });
   }
 });

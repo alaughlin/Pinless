@@ -1,7 +1,8 @@
 <li class="user content-list-item">
 <% console.log(request) %>
-  <ul class="user-details content-list-item-details">
+  <ul class="user-details content-list-item-details group">
     <li><a href="#/users/<%= request.user_id %>"><img src="<%= request.avatar %>" width="150" class="user-image"></li>
     <li class="user-title"><%= request.username %></li></a>
+    <li class="friend-request-buttons"><button class="deny-request-button" data-id="<%= request.user_id %>">Deny</button> <button class="accept-request-button" data-id="<%= request.user_id %>">Accept</button></li>
   </ul>
 </li>

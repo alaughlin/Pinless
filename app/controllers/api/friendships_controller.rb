@@ -1,9 +1,10 @@
 class Api::FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
+    @friend = User.find(@friendship.friend_id)
 
     if @friendship.save
-      render json: @friendship
+      render json: @friend
     else
       render json: @friendship.errors.full_messages
     end

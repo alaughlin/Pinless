@@ -390,7 +390,9 @@ a {
 .unfriend-button,
 .pending-friend-button,
 .board-like-button,
-.card-like-button {
+.card-like-button,
+.accept-request-button,
+.deny-request-button {
   padding: 5px 10px;
   font-size: 12px;
   color: #fff;
@@ -404,7 +406,9 @@ a {
 .unfriend-button:hover,
 .pending-friend-button,
 .board-like-button:hover,
-.card-like-button:hover {
+.card-like-button:hover,
+.accept-request-button:hover,
+.deny-request-button:hover {
   background: #60BBD6;
 }
 
@@ -759,4 +763,9 @@ a {
   display: inline;
   width: 75px;
   padding-bottom: 5px
+}
+
+.friend-request-buttons {
+  float: right;
+  padding: 10px;
 }
