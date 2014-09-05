@@ -1,4 +1,6 @@
 class Board < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_board, :against => [:title, :description]
   validates :title, :user_id, :avatar, presence: true
   validates :public, inclusion: { in: [true, false] }
 

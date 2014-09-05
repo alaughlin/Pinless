@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:title, :description]
+  pg_search_scope :search_by_card, :against => [:title, :description]
 
   validates :title, :board_id, :user_id, :image, presence: true
 
