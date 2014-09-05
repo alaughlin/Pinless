@@ -16,10 +16,10 @@ class FriendshipsController < ApplicationController
     @friend = @friendship.friend
     @friendship_reverse = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
 
-    if @friendship.destroy && (@friendship_reverse.destroy if @friendship_reverse)
+    if @friendship.destroy && @friendship_reverse.destroy
       redirect_to user_url(@friend)
     end
-  endships
+  end
 
   private
 
