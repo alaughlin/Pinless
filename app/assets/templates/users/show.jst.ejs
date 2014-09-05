@@ -1,5 +1,5 @@
 <ul class="user-profile group">
-  <li><img src="<%= user.escape('image') %>" height="100" class="user-profile-avatar"></li>
+  <li><img src="<%= user.escape('avatar') %>" height="100" class="user-profile-avatar"></li>
   <li><h2 class="profile-title"><%= user.escape('username') %></h2></li>
   
   <% if (user.escape('id') !== Pinless.currentUser.escape('id')) { %>

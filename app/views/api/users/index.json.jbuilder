@@ -1,6 +1,6 @@
 json.array! @friends do |friend|
-  image = friend.avatar.url
+  avatar = friend.avatar.url
 
   json.(friend, :id, :username, :created_at, :updated_at)
-  json.set!(:image, image)
+  json.set!(:avatar, avatar)
 end

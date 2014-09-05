@@ -15,7 +15,7 @@ Pinless.Views.CardsIndex = Backbone.View.extend({
     var that = this;
     this.$el.empty();
 
-    this.subViews.each(function (view) {
+    this.subViews.forEach(function (view) {
       view.remove();
     });
 

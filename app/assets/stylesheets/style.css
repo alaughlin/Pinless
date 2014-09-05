@@ -325,15 +325,16 @@ a {
 }
 
 .profile-title {
-  padding: 10px 20px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 .friend-button-li,
 .like-button-li,
 .card-like-button {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 10px;
 }
 
 .friend-button,
@@ -399,18 +400,16 @@ a {
 
 .board-info {
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 10px;
 }
 
 .board-profile {
   background: #fff;
   width: 700px;
-  margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 20px;
   position: relative;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .board-profile > li > ul {
@@ -419,27 +418,27 @@ a {
   width: 500px;
 }
 
-.board-profile > li {
+.board-profile-info {
+  margin-left: 10px;
+  margin-top: 5px;
   float: left;
 }
 
 .board-profile p {
   font-size: 14px;
+  text-align: left;
 }
 
 .board-profile-avatar {
   height: 150px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  float: left;
 }
 
 .board-profile-title {
+  text-align: left;
   padding-bottom: 5px;
-}
-
-.board-profile-owner {
-  position: absolute;
-  bottom: 10px;
 }
 
 /* CONTENT */

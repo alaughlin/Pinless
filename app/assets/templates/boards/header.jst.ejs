@@ -1,17 +1,15 @@
-<ul class="board-profile group">
-  <li><img src="<%= board.escape('avatar') %>" height="100" class="board-profile-avatar"></li>
-  <li>
-    <ul>
-      <li><h2 class="board-profile-title"><%= board.escape('title') %></h2></li>
-      <li><p><%= board.escape('description') %></p></li>
-      <li class="board-profile-owner"><p>Owned by: <a href="/#/users/<%= board.escape('user_id') %>"><%= board.escape('username') %></a></p></li>
-      <% if (board.escape('likes_board') === 'true') { %>
-        <li class="like-button-li"><button class="board-like-button" data-id="<%= board.escape('id') %>">Unlike This Board<button></li>
-      <% } else { %> 
-        <li class="like-button-li"><button class="board-like-button" data-id="<%= board.escape('id') %>">Like This Board<button></li>
-      <% } %>
-    </ul>
-  </li>
-</ul>
+<section class="board-profile group">
+  <img src="<%= board.escape('avatar') %>" height="100" class="board-profile-avatar">
+  <section class="board-profile-info">
+    <h2 class="board-profile-title"><%= board.escape('title') %></h2>
+    <p><%= board.escape('description') %></p>
+    <p class="board-profile-owner">Owned by: <a href="/#/users/<%= board.escape('user_id') %>"><%= board.escape('username') %></a></p>
+    <% if (board.escape('likes_board') === 'true') { %>
+      <button class="like-button-li board-like-button" data-id="<%= board.escape('id') %>">Unlike This Board<button>
+    <% } else { %> 
+      <button class="board-like-button like-button-li" data-id="<%= board.escape('id') %>">Like This Board<button>
+    <% } %>
+  </section>
+</section>
 
 <a href="#" class="add-card-link" data-id="<%= board.escape('id') %>">Add A Card!</a>
