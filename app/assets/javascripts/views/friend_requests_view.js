@@ -66,9 +66,7 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
   acceptRequest: function (event) {
     var that = this;
     var friendId = event.currentTarget.dataset.id;
-    var $badge = $('.badge');
-    var $friendRequestLi = $('.friend-request-li');
-    var notificationCount = parseInt($badge.html());
+    var $card = $('.card-' + parseInt(friendId));
 
     $.ajax({
       url: '/api/friendships',
@@ -79,9 +77,8 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
         }
       },
       success: function (friend) {
-        console.log(friend);
         Pinless.currentUser.friends.add(friend);
-        Backbone.View.prototype.remove.call(that);
+        $card.remove();
         that.changeNotificationCount();
       }
     });
@@ -90,6 +87,7 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
   denyRequest: function (event) {
     var that = this;
     var friendId = event.currentTarget.dataset.id;
+    var $card = $('.card-' + parseInt(friendId));
 
     $.ajax({
       url: '/api/friendships/requests',
@@ -100,9 +98,7 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
         }
       },
       success: function (friend) {
-        console.log(friend);
-        Pinless.currentUser.friends.add(friend);
-        Backbone.View.prototype.remove.call(that);
+        $card.remove();
         that.changeNotificationCount();
       }
     });
