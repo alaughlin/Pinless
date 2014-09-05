@@ -8,6 +8,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "":                          "index",
+    "requests":                  "requests",
     "users/:id/friends":         "showUserFriends",
     "users/:id/boards/liked":    "showUserBoardsLiked",
     "users/:id/boards":          "showUserBoards",
@@ -60,6 +61,16 @@ Pinless.Routers.Router = Backbone.Router.extend({
         that._swapView(view);
       }
     });
+  },
+
+  requests: function () {
+    Pinless.router.hideModal();
+    var that = this;
+    var user = Pinless.currentUser;
+    var view = new Pinless.Views.FriendRequests({collection: user.attributes.requests});
+    that._swapView(view);
+    that.userHeader(user);
+    $('.user-requests-link').addClass('user-links-selected');
   },
 
   hideModal: function () {

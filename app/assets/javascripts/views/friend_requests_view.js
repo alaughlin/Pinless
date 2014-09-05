@@ -1,8 +1,8 @@
-Pinless.Views.UsersIndex = Backbone.View.extend({
-  // template: JST['users/index'],
+Pinless.Views.FriendRequests = Backbone.View.extend({
+  template: JST['users/request'],
 
   initialize: function () {
-    this.users = this.collection;
+    this.requests = this.collection;
   },
 
   tagName: "ul",
@@ -10,6 +10,7 @@ Pinless.Views.UsersIndex = Backbone.View.extend({
   className: "cols group",
 
   render: function () {
+    var that = this;
     this.$el.empty();
 
     var $col1 = $("<ul class='col1'>");
@@ -19,7 +20,7 @@ Pinless.Views.UsersIndex = Backbone.View.extend({
     var $col5 = $("<ul class='col5'>");
     var counter = 1;
 
-    this.users.models.forEach(function (user) {
+    this.requests.forEach(function (request) {
       if (counter > 5) {
         counter = 1;
       }
@@ -30,7 +31,7 @@ Pinless.Views.UsersIndex = Backbone.View.extend({
           break;
         case 2:
           var col = $col2
-          break;
+          break;s
         case 3:
           var col = $col3
           break;
@@ -42,8 +43,8 @@ Pinless.Views.UsersIndex = Backbone.View.extend({
           break;
       }
 
-      view = new Pinless.Views.User({model: user});
-      col.append(view.render().$el);
+      content = that.template({request: request});
+      col.append(content);
 
       counter++;
     });

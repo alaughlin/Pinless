@@ -13,31 +13,6 @@
   window.currentUserId = <%= current_user.id %>;
 
   $(document).ready(function () {
-    $('#sub-header').on('click', '.user-boards-link', function (event) {
-      event.preventDefault();
-      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards", {trigger: true});
-    });
-
-    $('#sub-header').on('click', '.user-cards-link', function (event) {
-      event.preventDefault();
-      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards", {trigger: true});
-    });
-
-    $('#sub-header').on('click', '.user-liked-boards-link', function (event) {
-      event.preventDefault();
-      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/boards/liked", {trigger: true});
-    });
-
-    $('#sub-header').on('click', '.user-liked-cards-link', function (event) {
-      event.preventDefault();
-      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/cards/liked", {trigger: true});
-    });
-
-    $('#sub-header').on('click', '.user-friends-link', function (event) {
-      event.preventDefault();
-      Pinless.router.navigate("#/users/" + event.currentTarget.dataset.id + "/friends", {trigger: true});
-    });
-
     $('.overlay').on('click', '.close-modal-link', function (event) {
       event.preventDefault();
       Pinless.router.hideModal();

@@ -14,9 +14,14 @@
     <li class="header-right">
       <ul class="user-stuff group">
         <li class="header-right-left"><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
-        <li class="header-right-right"><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
+        <li class="header-right-right">
+          <a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %> <%= current_user.friend_requests.length %></a>
+        </li>
         <ul class="dropdown-menu">
           <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
+          <% if current_user.friend_requests.length > 0 %>
+            <li class="friend-request-li"><a href="#/requests">Friend Requests: <%= current_user.friend_requests.length %></a></li>
+          <% end %>
           <li><a href="#" class="header-add-board">Add A Board</a></li>
           <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
         </ul>
