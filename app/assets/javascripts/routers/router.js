@@ -27,9 +27,11 @@ Pinless.Routers.Router = Backbone.Router.extend({
         q: terms
       },
       success: function (data) {
+        var results = new Pinless.Collections.Cards(data);
+        console.log(results);
         that.$subHeader.html("<h2 class='search-header'>Showing results for: " + terms + "</h2>");
         that.$el.html("");
-        var view = new Pinless.Views.CardsSearch({collection: data});
+        var view = new Pinless.Views.CardsIndex({collection: results});
         that._swapView(view);
       }
     });
