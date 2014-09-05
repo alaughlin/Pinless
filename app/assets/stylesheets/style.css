@@ -25,6 +25,10 @@ input, button, textarea {
 
 select {
   -webkit-appearance: none;
+  /* prevents FF from showing default arrow */
+  -moz-appearence: none;
+  text-indent: 0.01px;
+  text-overflow: '';
 }
 
 strong {
@@ -186,7 +190,6 @@ a {
   background: #fff;
   padding: 5px;
   width: 62px;
-  height: 29px;
   border: 0;
   font: inherit;
   font-size: 14px;
