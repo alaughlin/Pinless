@@ -236,6 +236,11 @@ a {
   border-left: none;
 }
 
+.search-model.search-button-focus {
+  border: 1px solid #60BBD6;
+  border-right: none;
+}
+
 .header-right {
   float: right;
   padding: 10px 20px 10px 0;
