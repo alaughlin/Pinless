@@ -3,7 +3,7 @@ Pinless.Views.BoardAdd = Backbone.View.extend({
 
   tagName: 'section',
 
-  className: 'modal-stuff',
+  className: 'add-board-modal modal-stuff',
 
   events: {
     'submit .add-board-form': 'addBoard',

@@ -563,7 +563,7 @@ a {
   margin: auto;
   visibility: hidden;
   width: 400px;
-  height: 380px;
+  /*height: 380px;*/
   top: 0;
   bottom: 0;
   left: 0;
@@ -691,4 +691,16 @@ a {
 
 .modal-image-li {
   position: relative;
+}
+
+.add-board-form > ul {
+  background: transparent;
+  color: #777;
+  padding: 0;
+}
+
+.add-board-form ul > li {
+  float: left;
+  display: inline;
+  width: 75px;
 }

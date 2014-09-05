@@ -3,7 +3,7 @@ Pinless.Views.CardAdd = Backbone.View.extend({
 
   tagName: 'section',
 
-  className: 'modal-stuff',
+  className: 'ad-card-modal modal-stuff',
 
   events: {
     'submit .add-card-form': 'addCard',

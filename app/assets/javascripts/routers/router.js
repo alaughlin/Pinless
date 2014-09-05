@@ -205,6 +205,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     Pinless.router.$overlayContent.html(view.render().$el);
     $(".overlay").addClass('overlay-show');
     $(".overlay-content").addClass('overlay-content-show');
+    $('.overlay-content').height(400);
     $('body').addClass('stop-scrolling');
   },
 });
