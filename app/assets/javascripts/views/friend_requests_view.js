@@ -10,7 +10,8 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
   className: "cols group",
 
   events: {
-    'click .accept-request-button': 'acceptRequest'
+    'click .accept-request-button': 'acceptRequest',
+    'click .deny-request-button': 'denyRequest'
   },
 
   render: function () {
@@ -64,7 +65,6 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
 
   acceptRequest: function (event) {
     var that = this;
-    var userId = Pinless.currentUser.escape('id');
     var friendId = event.currentTarget.dataset.id;
     var $badge = $('.badge');
     var $friendRequestLi = $('.friend-request-li');
@@ -75,7 +75,6 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
       type: 'POST',
       data: {
         friendship: {
-          user_id: userId,
           friend_id: friendId
         }
       },
@@ -83,14 +82,43 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
         console.log(friend);
         Pinless.currentUser.friends.add(friend);
         Backbone.View.prototype.remove.call(that);
-        notificationCount--;
-        $badge.html(notificationCount);
-
-        if (notificationCount < 1) {
-          $badge.hide();
-          $friendRequestLi.hide();
-        }
+        that.changeNotificationCount();
       }
     });
+  },
+
+  denyRequest: function (event) {
+    var that = this;
+    var friendId = event.currentTarget.dataset.id;
+
+    $.ajax({
+      url: '/api/friendships/requests',
+      type: 'DELETE',
+      data: {
+        friendship: {
+          friend_id: friendId
+        }
+      },
+      success: function (friend) {
+        console.log(friend);
+        Pinless.currentUser.friends.add(friend);
+        Backbone.View.prototype.remove.call(that);
+        that.changeNotificationCount();
+      }
+    });
+  },
+
+  changeNotificationCount: function () {
+    var $badge = $('.badge');
+    var $friendRequestLi = $('.friend-request-li');
+    var notificationCount = parseInt($badge.html());
+
+    notificationCount--;
+    $badge.html(notificationCount);
+
+    if (notificationCount < 1) {
+      $badge.hide();
+      $friendRequestLi.hide();
+    }
   }
 });
