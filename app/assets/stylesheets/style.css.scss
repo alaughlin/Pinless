@@ -199,7 +199,8 @@ a {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   border-radius: 0;
-  background: url('/assets/arrow.png') no-repeat;
+  background-image: image-url('arrow.png');
+  background-repeat: no-repeat;
   background-position: right 5px center;
   background-size: 10px;
 }
