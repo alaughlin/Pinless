@@ -23,6 +23,10 @@ input, button, textarea {
   outline: none;
 }
 
+select {
+  -webkit-appearance: none;
+}
+
 strong {
   font-weight: 700;
 }
@@ -168,9 +172,30 @@ a {
   position: relative;
 }
 
-.header-left {
+.header-left,
+.header-left-select {
   padding: 10px 0px 10px 20px;
   float: left;
+}
+
+.header-left-select {
+  padding-left: 0;
+}
+
+.search-model {
+  background: #fff;
+  padding: 5px;
+  width: 55px;
+  height: 29px;
+  border: 0;
+  font: inherit;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0
 }
 
 .search-box {

@@ -1,20 +1,28 @@
 <header class="top-header group">
   <div class="wrap">
-  <li class="header-left"><input type="text" class="search-box"></li>
-  <li class="header-left"><input type="submit" class="search-button" value="Search"></li>
+    <form class="search-form">
+      <li class="header-left"><input type="text" class="search-box"></li>
+      <li class="header-left-select">
+        <select class="search-model">
+        <option value="card">Card</option>
+        <option value="board">Board</option>
+        </select>
+      </li>
+      <li class="header-left"><input type="submit" class="search-button" value="Search"></li>
+    </form>
 
-  <li class="header-right">
-    <ul class="user-stuff group">
-      <li class="header-right-left"><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
-      <li class="header-right-right"><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
-      <ul class="dropdown-menu">
-        <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
-        <li><a href="#" class="header-add-board">Add A Board</a></li>
-        <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
+    <li class="header-right">
+      <ul class="user-stuff group">
+        <li class="header-right-left"><img src="<%= current_user.avatar.url %>" height="30px" class="header-avatar"></li>
+        <li class="header-right-right"><a href="#/users/<%= current_user.id %>" class="header-username"><%= current_user.username %></a></li>
+        <ul class="dropdown-menu">
+          <li><a href="#/users/<%= current_user.id %>">Your Profile</a></li>
+          <li><a href="#" class="header-add-board">Add A Board</a></li>
+          <li><%= button_to "Logout", session_url, method: :delete, class: 'logout-button' %></li>
+        </ul>
       </ul>
-    </ul>
-  </li>
-  <a href="/#/"><h2 class="logo">Pinless</h2></a>
+    </li>
+    <a href="/#/"><h2 class="logo">Pinless</h2></a>
   <div>
 </header>
 

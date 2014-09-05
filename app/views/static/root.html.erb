@@ -43,15 +43,11 @@
       Pinless.router.hideModal();
     });
 
-    $('.search-button').on('click', function (event) { 
+    $('.search-form').on('submit', function (event) { 
+      event.preventDefault();
+      var model = $('.search-model').val();
       var terms = $('.search-box').val();
-      Pinless.router.navigate("#/search?q=" + terms, {trigger: true});
-    });
-
-    $(".search-box").keyup(function(event){
-      if (event.keyCode == 13) {
-        $(".search-button").click();
-      }
+      Pinless.router.navigate("#/search?m=" + model + "&q=" + terms, {trigger: true});
     });
 
     $('html').keyup(function(event){
