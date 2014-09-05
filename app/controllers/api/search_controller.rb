@@ -1,10 +1,16 @@
 class Api::SearchController < ApplicationController
   def search
-    results = PgSearch.multisearch(params[:q])
-    @cards = []
+    model = params[:m]
+    terms = params[:q]
 
-    results.each { |result| @cards << Card.find(result.searchable_id) }
+    if model == "card"
+      @cards = Card.search_by_card(terms)
 
-    render 'api/cards/index'
+      render 'api/cards/index'
+    else
+      @boards = Board.search_by_board(terms)
+
+      render 'api/boards/index'
+    end
   end
 end

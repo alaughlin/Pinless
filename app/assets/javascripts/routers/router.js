@@ -7,30 +7,44 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "":                       "index",
-    "users/:id/friends":      "showUserFriends",
-    "users/:id/boards/liked": "showUserBoardsLiked",
-    "users/:id/boards":       "showUserBoards",
-    "users/:id/cards/liked":  "showUserCardsLiked",
-    "users/:id/cards":        "showUserCards",
-    "users/:id":              "showUser",
-    "boards/:id":             "showBoard",
-    "search?q=:terms":        "search"
+    "":                          "index",
+    "users/:id/friends":         "showUserFriends",
+    "users/:id/boards/liked":    "showUserBoardsLiked",
+    "users/:id/boards":          "showUserBoards",
+    "users/:id/cards/liked":     "showUserCardsLiked",
+    "users/:id/cards":           "showUserCards",
+    "users/:id":                 "showUser",
+    "boards/:id":                "showBoard",
+    "search?m=:model&q=:terms":  "search"
   },
 
-  search: function (terms) {
+  search: function (model, terms) {
+    var model = model;
+    var terms = terms;
     var that = this;
+
     $.ajax({
       url: '/api/search',
       type: 'GET',
       data: {
+        m: model,
         q: terms
       },
       success: function (data) {
-        var results = new Pinless.Collections.Cards(data);
-        that.$subHeader.html("<h2 class='search-header'>Showing results for: " + terms + "</h2>");
-        that.$el.html("");
-        var view = new Pinless.Views.CardsIndex({collection: results});
+        console.log(that.model);
+        if (model === "card") {
+          console.log(data);
+          var results = new Pinless.Collections.Cards(data);
+          that.$subHeader.html("<h2 class='search-header'>Showing cards that match: <strong>" + terms + "</strong></h2>");
+          that.$el.html("");
+          var view = new Pinless.Views.CardsIndex({collection: results});
+        } else {
+          var results = new Pinless.Collections.Boards(data);
+          that.$subHeader.html("<h2 class='search-header'>Showing boards that match: <strong>" + terms + "</strong></h2>");
+          that.$el.html("");
+          var view = new Pinless.Views.BoardsIndex({collection: results});
+        }
+
         that._swapView(view);
       }
     });
