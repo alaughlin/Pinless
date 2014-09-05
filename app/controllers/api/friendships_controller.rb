@@ -1,29 +1,30 @@
 class Api::FriendshipsController < ApplicationController
   def create
-    @friendship = Friendship.new(friendship_params)
+    @friendship = current_user.friendships.new(friendship_params)
     @friend = User.find(@friendship.friend_id)
 
     if @friendship.save
-      render json: @friend
+      render json: {}
     else
       render json: @friendship.errors.full_messages
     end
   end
 
   def destroy
-    @friendship = current_user.friendships.where(friend_id = params[friend_id]).first
-    puts @friendship
-    @friendship_reverse = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
-    puts @friendship_reverse
+    @friend = User.find(params[:friend_id])
+    @friendship = current_user.friendships.find_by(friend_id: @friend.id)
+    @friendship_reverse = @friend.friendships.find_by(friend_id: current_user.id)
 
     if @friendship.destroy && @friendship_reverse.destroy
       render json: {}
+    else
+      render json: {errors: @friendship.errors.full_messages}
     end
   end
 
   private
 
   def friendship_params
-    params.require(:friendship).permit(:user_id, :friend_id)
+    params.require(:friendship).permit(:friend_id)
   end
 end

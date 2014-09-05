@@ -10,7 +10,10 @@ Pinless.Views.UserShow = Backbone.View.extend({
     'click .unfriend-button': 'deleteFriend'
   },
 
-  initialize: function (user) {},
+  initialize: function () {
+    console.log(this.model);
+    this.listenTo(this.model, 'sync change reset', this.render)
+  },
 
   render: function () {
     var content = this.template({user: this.model});
@@ -20,6 +23,7 @@ Pinless.Views.UserShow = Backbone.View.extend({
   },
 
   addFriend: function (event) {
+    var that = this;
     var userId = Pinless.currentUser.escape('id');
     var friendId = event.currentTarget.dataset.id;
 
@@ -28,14 +32,11 @@ Pinless.Views.UserShow = Backbone.View.extend({
       type: 'POST',
       data: {
         friendship: {
-          user_id: userId,
           friend_id: friendId
         }
       },
       success: function (data) {
-        $('.friend-btn').html("Pending Request");
-        $('.friend-btn').removeClass('friend-button');
-        $('.friend-btn').addClass('pending-friend-button');
+        that.model.set('friendship_status', 'pending');
       }
     });
   },

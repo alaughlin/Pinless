@@ -63,6 +63,7 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
   },
 
   acceptRequest: function (event) {
+    var that = this;
     var userId = Pinless.currentUser.escape('id');
     var friendId = event.currentTarget.dataset.id;
 
@@ -78,6 +79,7 @@ Pinless.Views.FriendRequests = Backbone.View.extend({
       success: function (friend) {
         console.log(friend);
         Pinless.currentUser.friends.add(friend);
+        Backbone.View.prototype.remove.call(that);
       }
     });
   }
