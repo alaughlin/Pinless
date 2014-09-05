@@ -185,17 +185,20 @@ a {
 .search-model {
   background: #fff;
   padding: 5px;
-  width: 55px;
+  width: 62px;
   height: 29px;
   border: 0;
   font: inherit;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   outline: none;
   border-left: 1px solid #ccc;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  border-radius: 0
+  border-radius: 0;
+  background: url('arrow.png') no-repeat;
+  background-position: right 5px center;
+  background-size: 10px;
 }
 
 .search-box {
