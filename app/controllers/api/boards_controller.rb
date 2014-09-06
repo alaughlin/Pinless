@@ -2,12 +2,18 @@ class Api::BoardsController < ApplicationController
   def show
     @board = Board.includes(:cards).find(params[:id])
 
-    render :show
+    if @board.public || @board.user == current_user
+      render :show
+    else
+      render json: {error: "Yeah, not happening"}
+    end
   end
 
   def index
     @user = User.find(params[:user_id])
     @boards = @user.boards
+
+    @boards = @boards.select { |board| board.public || board.user == current_user}
 
     render :index
   end

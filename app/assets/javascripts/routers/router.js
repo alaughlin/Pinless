@@ -16,7 +16,12 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id/cards":           "showUserCards",
     "users/:id":                 "showUser",
     "boards/:id":                "showBoard",
-    "search?m=:model&q=:terms":  "search"
+    "search?m=:model&q=:terms":  "search",
+    "*path":                     "notFound"
+  },
+
+  notFound: function () {
+    this.$el.html("Not found");
   },
 
   search: function (model, terms) {
@@ -201,14 +206,21 @@ Pinless.Routers.Router = Backbone.Router.extend({
     var that = this;
     var board = Pinless.boards.getOrFetch(id, function (data) {
       var board = data;
-      board.childCards.fetch({
-        success: function (data) {
-          var view = new Pinless.Views.BoardShow({model: board});
-          that._swapView(view);
-          var view = new Pinless.Views.BoardHeader({model: board, collection: board.childCards});
-          that._swapHeaderView(view);
-        }
-      });
+      if (board.attributes.error) {
+        that.$subHeader.html("");
+        var view = new Pinless.Views.Error({message: data});
+        that._swapView(view);
+      } else {
+        var board = data;
+        board.childCards.fetch({
+          success: function (data) {
+            var view = new Pinless.Views.BoardShow({model: board});
+            that._swapView(view);
+            var view = new Pinless.Views.BoardHeader({model: board, collection: board.childCards});
+            that._swapHeaderView(view);
+          }
+        });
+      }
     });
   },
 
