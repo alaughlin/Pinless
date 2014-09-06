@@ -37,9 +37,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
         q: terms
       },
       success: function (data) {
-        console.log(that.model);
         if (model === "card") {
-          console.log(data);
           var results = new Pinless.Collections.Cards(data);
           that.$subHeader.html("<h2 class='search-header'>Showing cards that match: <strong>" + terms + "</strong></h2>");
           that.$el.html("");
@@ -66,7 +64,6 @@ Pinless.Routers.Router = Backbone.Router.extend({
     Pinless.currentUser.feed.fetch({
       reset: true,
       success: function (data) {
-        console.log(data);
         if (data.length < 1) {
           that.$subHeader.html("");
           that.$el.html("<h2>Oops, looks like there's nothing in your feed! Try searching for boards!</h2>");

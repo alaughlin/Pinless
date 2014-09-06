@@ -1,5 +1,5 @@
 Pinless.Views.BoardShow = Backbone.View.extend({
-  template: JST['boards/show'],
+  template: JST['boards/board'],
 
   initialize: function () {
     this.id = this.model.escape('id');

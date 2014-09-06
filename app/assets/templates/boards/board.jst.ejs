@@ -2,6 +2,6 @@
   <ul class="board-details content-list-item-details">
     <a href="#/boards/<%= board.escape('id') %>"><li><img src="<%= board.escape('avatar_large') %>" class="board-image"></li>
     <li class="board-title"><%= board.escape('title') %></li></a>
-    <a href="#/users/<%= board.escape('user_id') %>" class="board-user"><li>Owned by: <%= board.escape('user_username') %></li></a>
+    <a href="#/users/<%= board.escape('user_id') %>" class="board-user"><li><img src="<%= board.escape('user_avatar') %>" class="avatar-thumb"><p class="avatar-title"><%= board.escape('user_username') %></p></li></a>
   </ul>
 </li>
