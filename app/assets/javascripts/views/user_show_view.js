@@ -11,7 +11,6 @@ Pinless.Views.UserShow = Backbone.View.extend({
   },
 
   initialize: function () {
-    console.log(this.model);
     this.listenTo(this.model, 'sync change reset', this.render)
   },
 

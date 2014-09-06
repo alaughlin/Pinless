@@ -11,6 +11,9 @@
     <li class="card-title"><%= card.escape('title') %> <br> <p class='card-description'><%= card.escape('description') %></p></li>
     <li><a href="#/boards/<%= card.escape('board_id') %>" class="card-board"><img src="<%= card.escape('board_avatar') %>" class="avatar-thumb"><p class="avatar-title"><%= card.escape('board_title') %></p></a></li>
     <li><a href="#/users/<%= card.escape('user_id') %>" class="card-user"><img src="<%= card.escape('user_avatar') %>" class="avatar-thumb"><p class="avatar-title"><%= card.escape('user_username') %></p></a></li>
+    <% if (card.escape('likes_card') === 'true') { %>
+      <img src="<%= Pinless.heart %>" class="heart">
+    <% } %>
   </ul>
   <a href="#" class='close-modal-link'><img src="<%= Pinless.close %>" class="close-card-modal-image"></a>
 </ul>
