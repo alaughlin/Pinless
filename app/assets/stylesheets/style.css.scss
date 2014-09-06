@@ -76,6 +76,11 @@ input[type="file"]:required:valid {
   overflow: hidden;
 }
 
+.blurred {
+  -filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
 a {
   text-decoration: none
 }
@@ -656,6 +661,7 @@ a {
 
 .modal {
   border-bottom: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .overlay-content {

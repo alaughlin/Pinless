@@ -28,6 +28,6 @@ Pinless.Views.CardShow = Backbone.View.extend({
     $('.card-modal').css("left", function (){
       return ($(".overlay").width() - $(this).width()) / 2;
     });
-    // $('body').addClass('stop-scrolling');
+    $('#content').addClass('blurred');
   }
 });

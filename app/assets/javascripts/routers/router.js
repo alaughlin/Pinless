@@ -91,6 +91,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
     $('.overlay-content').removeClass('overlay-content-show');
     $(".overlay").removeClass('overlay-show');
     $('body').removeClass('stop-scrolling');
+    $('#content').removeClass('blurred');
+    $('#sub-header').removeClass('blurred');
   },
 
   showUserFriends: function (id) {
@@ -257,5 +259,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     $(".overlay-content").addClass('overlay-content-show');
     $('.overlay-content').height(400);
     $('body').addClass('stop-scrolling');
+    $('#content').addClass('blurred');
+    $('#sub-header').addClass('blurred');
   },
 });
