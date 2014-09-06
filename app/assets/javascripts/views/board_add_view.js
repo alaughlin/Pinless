@@ -11,7 +11,7 @@ Pinless.Views.BoardAdd = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.newModel = new Pinless.Models.Board();
+    this.model = new Pinless.Models.Board();
   },
 
   render: function () {
@@ -22,21 +22,20 @@ Pinless.Views.BoardAdd = Backbone.View.extend({
   },
 
   addBoard: function (event) {
-    console.log('hi');
     event.preventDefault();
 
     var that = this;
     var formData = $(event.currentTarget).serializeJSON();
 
-    this.newModel.save(formData.board, {
+    this.model.save(formData.board, {
       wait: true,
 
       success: function (data) {
         Pinless.boards.add(data);
         Pinless.router.hideModal();
-        that.newModel.childCards.url = '/api/boards/' + data.escape('id') + '/cards';
+        that.model.childCards.url = '/api/boards/' + data.escape('id') + '/cards';
         Pinless.router.navigate("#/boards/" + data.escape('id'), {trigger: true});
-      }
+      },
     });
   },
 
@@ -46,7 +45,7 @@ Pinless.Views.BoardAdd = Backbone.View.extend({
     var reader = new FileReader();
 
     reader.onloadend = function () {
-      that.newModel.set("avatar", this.result);
+      that.model.set("avatar", this.result);
     }
 
     if(imageFile){

@@ -3,20 +3,20 @@
   <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="<%= Pinless.close %>" class="close-modal-image"></a></li>
 </ul>
 <form class="add-board-form overlay-form" enctype="multipart/form-data">  
-  <input type="text" placeholder="Title" name="board[title]">
+  <input type="text" placeholder="Title" name="board[title]" pattern=".{3,}" required>
   <br>
 
   <textarea name="board[description]" placeholder="Description" rows="5"></textarea>
   <br>
 
-  <input type="file" name="board[avatar]" id="image-file-input">
+  <input type="file" name="board[avatar]" id="image-file-input" required>
   <br>
 
   <ul>
     <li>
       <label>
         Public
-        <input type="radio" name="board[public]" value=true>
+        <input type="radio" name="board[public]" value=true required>
       </label>
     </li>
     
