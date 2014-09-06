@@ -12,8 +12,7 @@ class Api::BoardsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @boards = @user.boards
-
-    @boards = @boards.select { |board| board.public || board.user == current_user}
+    @boards = @boards.select { |board| board.public || board.user == current_user }
 
     render :index
   end

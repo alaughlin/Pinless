@@ -9,7 +9,7 @@ class Api::SearchController < ApplicationController
       render 'api/cards/index'
     elsif model == "board"
       @boards = Board.search_by_board(terms)
-      @boards = @boards.select { |board| board.public || board.user == current_user}
+      @boards = @boards.select { |board| board.public || board.user == current_user }
 
       render 'api/boards/index'
     else
