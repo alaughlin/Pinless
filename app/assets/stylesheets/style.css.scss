@@ -81,6 +81,7 @@ a {
 
 .signin-form {
   padding: 20px;
+  text-align: center;
 }
 
 .signin-form h2 {
@@ -166,6 +167,13 @@ a {
 .fb-signin img:active {
   position: relative;
   top: 2px;
+}
+
+.error {
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: red;
 }
 
 /* HEADER */
