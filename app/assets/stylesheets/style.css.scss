@@ -11,6 +11,10 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.comic {
+  font-family: "Comic Sans MS";
+}
+
 img {
   display: block;
 }
@@ -616,7 +620,6 @@ a {
 /* MODALS */
 
 .overlay-content {
-  position: absolute;
   margin: auto;
   width: 400px;
   top: 0;
@@ -626,15 +629,14 @@ a {
   background: #fff;
   border-radius: 3px;
   border: 1px solid #ccc;
-  opacity: 0;
-
-  -webkit-transition: opacity 2000ms ease-in;
-  -moz-transition: opacity 2000ms ease-in;
-  transition: opacity 2000ms ease-in;
+  visibility: hidden;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .overlay-content-show {
-  opacity: 1;
+  visibility: visible;
 }
 
 .overlay-content ul {
@@ -699,18 +701,15 @@ a {
 
 .card-modal {
   margin: auto;
-  opacity: 0;
+  visibility: hidden;
   border-radius: 5px;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  -webkit-transition: opacity 100ms ease-in;
-  -moz-transition: opacity 100ms ease-in;
-  transition: opacity 100ms ease-in;
 }
 
 .card-modal-show {
-  opacity: 1;
+  visibility: visible
 }
 
 .card-modal .close-card-modal-image {

@@ -10,6 +10,7 @@ window.Pinless = {
     Pinless.users.getOrFetch(Pinless.userId, function (user) {
       Pinless.currentUser = user;
       Pinless.currentUser.cards_liked.fetch();
+      Pinless.currentUser.boards_liked.fetch();
       Pinless.router = new Pinless.Routers.Router({$el: $("#content")});
       Backbone.history.start();
     });
@@ -18,5 +19,7 @@ window.Pinless = {
 
 $(document).ready(function () {
   Pinless.userId = window.currentUserId;
+  Pinless.heart = window.heart;
+  Pinless.close = window.close;
   Pinless.initialize();
 });

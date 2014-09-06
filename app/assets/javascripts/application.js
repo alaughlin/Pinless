@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require backbone.subset
+//= require mousetrap.min
 //= require pinless
 //= require_tree ../templates
 //= require_tree ./models

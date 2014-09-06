@@ -11,6 +11,8 @@
 
 <script>
   window.currentUserId = <%= current_user.id %>;
+  window.heart = "<%= asset_path("heart.png") %>";
+  window.close = "<%= asset_path("close.png") %>";
 
   $(document).ready(function () {
     $('.overlay').on('click', '.close-modal-link', function (event) {
@@ -34,6 +36,10 @@
     $('.header-add-board').on('click', function (event) {
       event.preventDefault();
       Pinless.router.addBoardModal();
+    });
+
+    Mousetrap.bind('command+shift+k', function(e) {
+      $('body').toggleClass("comic");
     });
   });
 </script>

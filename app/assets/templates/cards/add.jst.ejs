@@ -1,6 +1,6 @@
 <ul class="group">
   <li class="overlay-header-left"><h3>Adding a card to <%= board.escape('title') %></h3></li>
-  <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="<%= board.escape('close_button') %>" class="close-modal-image"></a></li>
+  <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="<%= Pinless.close %>" class="close-modal-image"></a></li>
 </ul>
 <form class="add-card-form overlay-form" enctype="multipart/form-data">
   <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
