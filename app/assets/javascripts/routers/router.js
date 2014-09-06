@@ -198,12 +198,18 @@ Pinless.Routers.Router = Backbone.Router.extend({
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
-      user.friends.fetch({
-        success: function (data) {
-          var view = new Pinless.Views.UserShow({model: user});
-          that._swapHeaderView(view);
-        }
-      });
+      if(user.attributes.error) {
+        that.$subHeader.html("");
+        var view = new Pinless.Views.Error({message: data});
+        that._swapView(view);
+      } else {
+        user.friends.fetch({
+          success: function (data) {
+            var view = new Pinless.Views.UserShow({model: user});
+            that._swapHeaderView(view);
+          }
+        });
+      }
     });
   },
 

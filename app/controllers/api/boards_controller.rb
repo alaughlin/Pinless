@@ -1,11 +1,16 @@
 class Api::BoardsController < ApplicationController
+  before_filter :ensure_signed_in, only: [:show, :index, :create, :liked_boards]
   def show
-    @board = Board.includes(:cards).find(params[:id])
+    begin
+      @board = Board.includes(:cards).find(params[:id])
 
-    if @board.public || @board.user == current_user
-      render :show
-    else
-      render json: {error: "Yeah, not happening"}
+      if @board && (@board.public || @board.user == current_user)
+        render :show
+      else
+        render json: {error: "You seem lost. Is everything alright?"}
+      end
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "You seem lost. Is everything alright?" }
     end
   end
 
@@ -23,7 +28,7 @@ class Api::BoardsController < ApplicationController
     if @board.save
       render :show
     else
-      render json: {error: @board.errors.full_messages}
+      render json: { error: @board.errors.full_messages }
     end
   end
 

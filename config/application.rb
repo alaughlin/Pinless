@@ -30,8 +30,5 @@ module Pinless
         :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']          
       }                                                             
     }
-
-    require Rails.root.join("lib/custom_public_exceptions")
-    config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
   end
 end
