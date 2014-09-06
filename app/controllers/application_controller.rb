@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
   def ensure_signed_in
     redirect_to new_session_url unless signed_in?
   end
+
+  def ensure_signed_in_api
+    render json: { error: "not signed in" } unless signed_in?
+  end
 end
