@@ -1,5 +1,12 @@
+<div class="form-wrap">
 <form class="signin-form" action="<%= session_url %>" method="post">
   <h2>Sign In</h2>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  <% end %>
+
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input id="signin-username" class="signin-text" placeholder="Username" type="text" name="user[username]" value="<%= @user.username %>">
@@ -16,3 +23,4 @@
 
   <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
 </form>
+</div>
