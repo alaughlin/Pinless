@@ -12,34 +12,5 @@
 <script>
   window.currentUserId = <%= current_user.id %>;
   window.heart = "<%= asset_path("heart.png") %>";
-  window.close = "<%= asset_path("close.png") %>";
-
-  $(document).ready(function () {
-    $('.overlay').on('click', '.close-modal-link', function (event) {
-      event.preventDefault();
-      Pinless.router.hideModal();
-    });
-
-    $('.search-form').on('submit', function (event) { 
-      event.preventDefault();
-      var model = $('.search-model').val();
-      var terms = $('.search-box').val();
-      Pinless.router.navigate("#/search?m=" + model + "&q=" + terms, {trigger: true});
-    });
-
-    $('html').keyup(function(event){
-      if (event.keyCode == 27) {
-        Pinless.router.hideModal();
-      }
-    });
-
-    $('.header-add-board').on('click', function (event) {
-      event.preventDefault();
-      Pinless.router.addBoardModal();
-    });
-
-    Mousetrap.bind('command+shift+k', function(e) {
-      $('body').toggleClass("comic");
-    });
-  });
+  window.close = "<%= asset_path("close.png") %>"; 
 </script>
