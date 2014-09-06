@@ -290,12 +290,14 @@ a {
 }
 
 .logo {
+  height: 60px;
   position: absolute;
   left: 50%;
-  margin-left: -37px;
+  margin-left: -73px;
   color: #333;
-  margin-top: 10px;
   font-weight: 100;
+  display: block;
+  margin-top: -10px;
 }
 
 .user-stuff {
@@ -540,7 +542,6 @@ a {
   width: 960px;
   margin: 0 auto;
   position: relative;
-  text-align: center;
 }
 
 .search-header {
@@ -651,6 +652,10 @@ a {
 }
 
 /* MODALS */
+
+.modal {
+  border-bottom: 1px solid #ccc;
+}
 
 .overlay-content {
   margin: auto;
