@@ -8,7 +8,6 @@ Pinless.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "":                          "index",
-    "requests":                  "requests",
     "users/:id/friends":         "showUserFriends",
     "users/:id/boards/liked":    "showUserBoardsLiked",
     "users/:id/boards":          "showUserBoards",
@@ -17,6 +16,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id":                 "showUser",
     "boards/:id":                "showBoard",
     "search?m=:model&q=:terms":  "search",
+    "requests":                  "requests",
     "*path":                     "notFound"
   },
 
@@ -77,7 +77,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   requests: function () {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var user = Pinless.currentUser;
     var view = new Pinless.Views.FriendRequests({collection: user.attributes.requests});
@@ -86,17 +86,8 @@ Pinless.Routers.Router = Backbone.Router.extend({
     $('.user-requests-link').addClass('user-links-selected');
   },
 
-  hideModal: function () {
-    $('.card-modal').removeClass('card-modal-show');
-    $('.overlay-content').removeClass('overlay-content-show');
-    $(".overlay").removeClass('overlay-show');
-    $('body').removeClass('stop-scrolling');
-    $('#content').removeClass('blurred');
-    $('#sub-header').removeClass('blurred');
-  },
-
   showUserFriends: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -113,7 +104,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserBoards: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       that.userHeader(data);
@@ -129,7 +120,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserBoardsLiked: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -146,7 +137,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserCards: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
       var user = data;
@@ -163,7 +154,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUserCardsLiked: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     if (id == Pinless.currentUser.id) {
       Pinless.currentUser.cards_liked.fetch({
@@ -192,7 +183,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     this.$el.html("");
     var that = this;
     var user = Pinless.users.getOrFetch(id, function (data) {
@@ -213,7 +204,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   showBoard: function (id) {
-    Pinless.router.hideModal();
+    Util.hideModal();
     var that = this;
     var board = Pinless.boards.getOrFetch(id, function (data) {
       var board = data;
@@ -235,6 +226,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     });
   },
 
+  // helpers for routing functions
   userHeader: function (user) {
     var view = new Pinless.Views.UserShow({model: user});
     this._swapHeaderView(view);
@@ -250,16 +242,5 @@ Pinless.Routers.Router = Backbone.Router.extend({
     this._currentHeaderView && this._currentHeaderView.remove();
     this._currentHeaderView = view;
     this.$subHeader.html(view.render().$el);
-  },
-
-  addBoardModal: function () {
-    var view = new Pinless.Views.BoardAdd();
-    Pinless.router.$overlayContent.html(view.render().$el);
-    $(".overlay").addClass('overlay-show');
-    $(".overlay-content").addClass('overlay-content-show');
-    $('.overlay-content').height(400);
-    $('body').addClass('stop-scrolling');
-    $('#content').addClass('blurred');
-    $('#sub-header').addClass('blurred');
   },
 });
