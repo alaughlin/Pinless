@@ -31,7 +31,6 @@ Pinless.Views.BoardHeader = Backbone.View.extend({
       $(".overlay").addClass('overlay-show');
       $(".overlay-content").addClass('overlay-content-show');
       $('.overlay-content').height(380);
-      $('body').addClass('stop-scrolling');
     });
   },
 

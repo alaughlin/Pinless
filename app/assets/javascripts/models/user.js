@@ -18,6 +18,9 @@ Pinless.Models.User = Backbone.Model.extend({
 
     this.cards_liked = new Backbone.Subset([], {parentCollection: Pinless.cards});
     this.cards_liked.url = '/api/users/' + this.id + '/cards/liked';
+    this.cards_liked.comparator = function(card) {
+      return -card.get('id');
+    }
     this.cards_liked.listenTo(this.cards_liked, 'change', function (card) {
       if (card.likes_card === false) {
         that.cards_liked.remove(card);
