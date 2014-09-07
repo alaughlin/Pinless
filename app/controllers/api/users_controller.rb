@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  #before_filter :ensure_signed_in, only: [:show, :friends]
+  before_filter :ensure_signed_in, only: [:show, :friends]
 
   def show
     begin
