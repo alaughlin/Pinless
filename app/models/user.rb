@@ -103,6 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_by_fb_auth_hash(auth_hash)
+    puts auth_hash
     user = self.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
 
     unless user

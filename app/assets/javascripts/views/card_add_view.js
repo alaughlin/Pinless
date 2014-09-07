@@ -33,7 +33,7 @@ Pinless.Views.CardAdd = Backbone.View.extend({
       success: function (data) {
         console.log(data);
         that.model.childCards.add(that.newModel);
-        Pinless.router.hideModal();
+        Util.hideModal();
       }
     });
   },

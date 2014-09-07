@@ -43,6 +43,10 @@ h2 {
   font-size: 24px;
 }
 
+.error-or-warning {
+  text-align: center;
+}
+
 .req-data:required:invalid, .req-data:focus:invalid {
   background-image: url('invalid.png');
   background-size: 22px;

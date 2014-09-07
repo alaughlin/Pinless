@@ -70,7 +70,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
       success: function (data) {
         if (data.length < 1) {
           that.$subHeader.html("");
-          that.$el.html("<h2>Oops, looks like there's nothing in your feed! Try searching for boards!</h2>");
+          that.$el.html("<h2 class='error-or-warning'>Oops, looks like there's nothing in your feed! Try searching for boards!</h2>");
         } else {
           that.$subHeader.html("<h2 class='search-header'>Latest Pins</h2)>");
           var view = new Pinless.Views.Index({collection: data});

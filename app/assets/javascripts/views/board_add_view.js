@@ -32,7 +32,7 @@ Pinless.Views.BoardAdd = Backbone.View.extend({
 
       success: function (data) {
         Pinless.boards.add(data);
-        Pinless.router.hideModal();
+        Util.hideModal();
         that.model.childCards.url = '/api/boards/' + data.escape('id') + '/cards';
         Pinless.router.navigate("#/boards/" + data.escape('id'), {trigger: true});
       },
