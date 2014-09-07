@@ -43,25 +43,25 @@ h2 {
   font-size: 24px;
 }
 
-input:required:invalid, input:focus:invalid {
+.req-data:required:invalid, .req-data:focus:invalid {
   background-image: url('invalid.png');
   background-size: 22px;
   background-position: right 5px top 3px;
   background-repeat: no-repeat;
 }
 
-input[type="file"]:required:invalid {
+.req-data[type="file"]:required:invalid {
   background-position: right 5px top 4px;
 }
 
-input:required:valid {
+.req-data:required:valid {
   background-image: url('valid.png');
   background-size: 20px;
   background-position: right 5px top 6px;
   background-repeat: no-repeat;
 }
 
-input[type="file"]:required:valid {
+.req-data[type="file"]:required:valid {
   background-position: right 5px top 8px;
 }
 
@@ -89,7 +89,7 @@ a {
   margin-top: 73px;
 }
 
-/* SIGNIN FORM */
+/* FORM STUFF */
 
 .form-wrap {
   position: absolute;
@@ -104,8 +104,17 @@ a {
   transform: translateY(-50%);
 }
 
+.edit-form-wrap {
+  position: fixed;
+}
+
+#post-image-preview {
+  width: 210px;
+}
+
 .signin-form,
-.signup-form {
+.signup-form,
+.edit-profile-form {
   padding: 20px;
   text-align: center;
 }
@@ -137,7 +146,9 @@ a {
 }
 
 .signin-button,
-.signup-button {
+.signup-button,
+.signup-link,
+.signin-link {
   padding: 10px 15px;
   font-size: 16px;
   display: block;
@@ -151,19 +162,35 @@ a {
 }
 
 .signin-button:hover,
-.signup-button:hover {
+.signup-button:hover,
+.signup-link:hover,
+.signin-link:hover {
   background: #60BBD6;
 }
 
 .signin-button:focus,
-.signup-button:focus {
+.signup-button:focus,
+.singup-link:focus,
+.signin-link:focus {
   outline: none;
 }
 
 .signin-button:active,
-.signup-button:active {
+.signup-button:active,
+.signup-link:active,
+.signin-link:active {
   position: relative;
   top: 2px;
+}
+
+.signup-link,
+.signin-link {
+  font-size: 12px;
+  width: 45px;
+  float: right;
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 .line-and-or {
@@ -207,6 +234,14 @@ a {
   font-weight: bold;
   font-size: 14px;
   color: red;
+}
+
+#edit-image-file-input {
+  padding: 10px;
+}
+
+#post-image-preview {
+  padding: 10px 0 20px 0;
 }
 
 /* HEADER */

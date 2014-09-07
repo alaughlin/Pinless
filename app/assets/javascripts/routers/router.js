@@ -17,11 +17,19 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "boards/:id":                "showBoard",
     "search?m=:model&q=:terms":  "search",
     "requests":                  "requests",
+    "edit":                      "editProfile",
     "*path":                     "notFound"
   },
 
   notFound: function () {
     this.$el.html("<h2>Not found</h2>");
+  },
+
+  editProfile: function () {
+    var view = new Pinless.Views.EditProfile({model: Pinless.currentUser});
+    Util.hideModal();
+    this.$subHeader.html("");
+    this._swapView(view);
   },
 
   search: function (model, terms) {

@@ -5,13 +5,13 @@
 <form class="add-card-form overlay-form" enctype="multipart/form-data">
   <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
   
-  <input type="text" placeholder="Title" name="card[title]" pattern=".{3,}" required>
+  <input type="text" placeholder="Title" name="card[title]" pattern=".{3,}" class="req-data" required>
   <br>
 
   <textarea name="card[description]" placeholder="Description" rows="5"></textarea>
   <br>
 
-  <input type="file" name="card[image]" id="image-file-input" required>
+  <input type="file" name="card[image]" id="image-file-input" class="req-data" required>
   <br>
 
   <input type="submit" class="submit-button" value="Submit">

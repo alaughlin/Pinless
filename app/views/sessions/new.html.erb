@@ -1,5 +1,8 @@
 <div class="form-wrap">
 <form class="signin-form" action="<%= session_url %>" method="post">
+  <ul class="group">
+    <li><a href="/users/new" class="signup-link">Sign Up</a></li>
+  </ul>
   <h2>Sign In</h2>
   <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>

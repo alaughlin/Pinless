@@ -1,5 +1,8 @@
 <div class="form-wrap">
 <form class="signup-form" action="<%= users_url %>" method="post">
+  <ul class="group">
+    <li><a href="/session/new" class="signin-link">Sign In</a></li>
+  </ul>
   <h2>Sign Up</h2>
   <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
@@ -13,7 +16,7 @@
 
   <input id="signup-password" class="signup-text" type="password" placeholder="Password" name="user[password]" value="<%= @user.password %>">
 
-  <input id="signup-password" class="signup-text" type="email" placeholder="Email" name="user[email]" value="<%= @user.email %>">
+  <input id="signup-email" class="signup-text" type="email" placeholder="Email" name="user[email]" value="<%= @user.email %>">
 
   <button class="signup-button">Sign Up</button>
   <br>

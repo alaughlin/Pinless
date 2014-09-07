@@ -1,0 +1,12 @@
+<div class="form-wrap edit-form-wrap">
+<form class="edit-profile-form">
+  <h2>Edit Your Profile</h2>
+
+  <input type="file" name="user[avatar]" id="edit-image-file-input" required>
+
+  <label class="preview-label">Current Avatar</label>
+  <img src="<%= user.escape('avatar_thumb') %>" id="post-image-preview">
+
+  <button class="signup-button">Finish</button>
+</form>
+</div>

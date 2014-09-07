@@ -38,4 +38,8 @@ Pinless.Models.User = Backbone.Model.extend({
     this.feed.url = "api/feed";
     this.feed.on("reset", this.updateCounts);
   },
+
+  toJSON: function () {
+    return { user: _.clone(this.attributes) }
+  }
 });

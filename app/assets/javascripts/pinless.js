@@ -38,8 +38,8 @@ $(document).ready(function () {
     Pinless.router.navigate("#/search?m=" + model + "&q=" + terms, {trigger: true});
   });
 
-  $('html').keyup(function(event){
-    if (event.keyCode == 27) Pinless.router.hideModal();
+  $('html').keyup(function (event) {
+    if (event.keyCode == 27) Util.hideModal();
   });
 
   // hah

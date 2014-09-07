@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   validates :username, :email, uniqueness: true
   validates :username, :email, :password_digest, presence: true
+  validates :username, length: { minimum: 3 }
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_attached_file :avatar, :styles => { :large => "800x500>", :thumb => "150" }, :default_url => ActionController::Base.helpers.asset_path('missing.gif')
