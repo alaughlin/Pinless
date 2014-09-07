@@ -1,25 +1,28 @@
-<h2>Sign Up</h2>
+<div class="form-wrap">
+<form class="signup-form" action="<%= users_url %>" method="post">
+  <h2>Sign Up</h2>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p class="error"><%= error %></p>
+    <% end %>
+  <% end %>
 
-<form action="<%= users_url %>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>
-    Username
-    <input type="text" name="user[username]" value="<%= @user.username %>">
-  </label>
+  <input id="signup-username" class="signup-text" placeholder="Username" type="text" name="user[username]" value="<%= @user.username %>">
+
+  <input id="signup-password" class="signup-text" type="password" placeholder="Password" name="user[password]" value="<%= @user.password %>">
+
+  <input id="signup-password" class="signup-text" type="email" placeholder="Email" name="user[email]" value="<%= @user.email %>">
+
+  <button class="signup-button">Sign Up</button>
   <br>
 
-  <label>
-    Password
-    <input type="password" name="user[password]" value="<%= @user.password %>">
-  </label>
-  <br>
+  <div class="line-and-or">
+    <hr>
+    <p class="or">OR</p>
+  </div>
 
-  <label>
-    Avatar
-    <input type="file" name="user[avatar]">
-  </label>
-  <br>
-
-  <button>Sign Up</button>
+  <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
 </form>
+</div>

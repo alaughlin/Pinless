@@ -51,4 +51,14 @@ $(document).ready(function () {
     event.preventDefault();
     Util.addBoardModal();
   });
+
+ $('.search-box').on('focus', function (event) {
+    $('.search-button').addClass('search-button-focus');
+    $('.search-model').addClass('search-button-focus');
+  });
+
+  $('.search-box').on('blur', function (event) {
+    $('.search-button').removeClass('search-button-focus');
+    $('.search-model').removeClass('search-button-focus');
+  });
 });

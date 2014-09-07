@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :ensure_signed_in, only: [:show, :create, :destroy]
+  before_filter :ensure_signed_in, only: [:show, :destroy]
 
   def show
     @user = User.find(params[:id])
@@ -27,13 +27,13 @@ class UsersController < ApplicationController
       sign_in!(@user)
     else
       flash[:errors] = @user.errors.full_messages
-      render :new
+      redirect_to new_user_url
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :avatar)
+    params.require(:user).permit(:username, :password, :email, :avatar)
   end
 end

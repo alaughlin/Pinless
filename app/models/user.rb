@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_by_user, :against => :username
 
-  validates :username, uniqueness: true
-  validates :username, :password_digest, presence: true
+  validates :username, :email, uniqueness: true
+  validates :username, :email, :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_attached_file :avatar, :styles => { :large => "800x500>", :thumb => "150" }  
+  has_attached_file :avatar, :styles => { :large => "800x500>", :thumb => "150" }, :default_url => ActionController::Base.helpers.asset_path('missing.gif')
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :boards, class_name: "Board", foreign_key: :user_id
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64
   end
 
-  def reset_session_token!
+  def reset_session_token
     self.session_token = User.generate_session_token
     self.save
 
@@ -109,6 +109,7 @@ class User < ActiveRecord::Base
         uid: auth_hash[:uid],
         provider: auth_hash[:provider],
         username: auth_hash[:info][:name],
+        email: auth_hash[:info][:email],
         password_digest: SecureRandom::urlsafe_base64(16),
         avatar: self.process_uri(auth_hash[:info][:image])
       )
