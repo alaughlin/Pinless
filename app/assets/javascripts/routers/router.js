@@ -22,17 +22,22 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   notFound: function () {
-    this.$el.html("<h2>Not found</h2>");
+    Util.hideModal();
+    this.$subHeader.html("");
+    var view = new Pinless.Views.Error({message: "You seem lost. Is everything alright?"});
+    this._swapView(view);
   },
 
   editProfile: function () {
-    var view = new Pinless.Views.EditProfile({model: Pinless.currentUser});
     Util.hideModal();
+    var view = new Pinless.Views.EditProfile({model: Pinless.currentUser});
     this.$subHeader.html("");
     this._swapView(view);
   },
 
   search: function (model, terms) {
+    Util.hideModal();
+
     var model = model;
     var terms = terms;
     var that = this;
@@ -64,6 +69,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
+    Util.hideModal();
     var that = this;
     Pinless.currentUser.feed.fetch({
       reset: true,

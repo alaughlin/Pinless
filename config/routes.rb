@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
   root to: 'static#root'
 
-  resources :users do
-    resources :boards , shallow: true do
-      resources :cards
-    end
+  # resources :users do
+  #   resources :boards , shallow: true do
+  #     resources :cards
+  #   end
     
-    resources :cards, shallow: true
-  end
+  #   resources :cards, shallow: true
+  # end
 
-  resources :boards, only: :index
+  # resources :boards, only: :index
 
+  resources :users, only: [:new, :create, :destroy]
   resource :session, only: [:new, :create, :destroy]
 
-  resources :board_likes, only: [:create, :destroy]
-  resources :card_likes, only: [:create, :destroy]
-  resources :friendships, only: [:create, :destroy]
+  # resources :board_likes, only: [:create, :destroy]
+  # resources :card_likes, only: [:create, :destroy]
+  # resources :friendships, only: [:create, :destroy]
 
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
 
