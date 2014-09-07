@@ -1,5 +1,5 @@
 class Api::CardsController < ApplicationController
-  before_filter :ensure_signed_in_api, only: [:show, :index, :board_cards, :liked_cards]
+  #before_filter :ensure_signed_in_api, only: [:show, :index, :create, :board_cards, :liked_cards]
   def show
     @card = Card.includes(:board, :user).find(params[:id])
 
