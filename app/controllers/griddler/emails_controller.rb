@@ -1,6 +1,6 @@
 class Griddler::EmailsController < ActionController::Base
-  skip_before_filter :check_if_signed_in
-  
+  skip_before_filter :check_if_signed_in, :verify_authenticity_token
+
   def create
     normalized_params.each do |p|
       process_email Griddler::Email.new(p)
