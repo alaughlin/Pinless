@@ -1,4 +1,6 @@
 class Griddler::EmailsController < ActionController::Base
+  skip_before_filter :check_if_signed_in
+  
   def create
     normalized_params.each do |p|
       process_email Griddler::Email.new(p)
