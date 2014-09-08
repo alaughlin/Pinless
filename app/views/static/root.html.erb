@@ -26,16 +26,16 @@
 
     // Some useful debug msgs
     pusher.connection.bind('connecting', function() {
-      $('div#status').text('Connecting to Pusher...');
+      //$('div#status').text('Connecting to Pusher...');
     });
     pusher.connection.bind('connected', function() {
-      $('div#status').text('Connected to Pusher!');
+      //$('div#status').text('Connected to Pusher!');
     });
     pusher.connection.bind('failed', function() {
-      $('div#status').text('Connection to Pusher failed :(');
+      //$('div#status').text('Connection to Pusher failed :(');
     });
     channel.bind('subscription_error', function(status) {
-      $('div#status').text('Pusher subscription_error');
+      //$('div#status').text('Pusher subscription_error');
     });
 
     channel.bind('new_message', function (data) {
@@ -54,13 +54,10 @@
     };
 
     function changeNotificationCount (request) {
-      console.log(request);
       Pinless.currentUser.attributes.requests.push(request);
       var $badge = $('.badge');
       var $friendRequestLi = $('.friend-request-li');
       var notificationCount = parseInt($badge.first().html());
-
-      console.log(notificationCount);
 
       if (_.isNaN(notificationCount)) {
         notificationCount = 1;
