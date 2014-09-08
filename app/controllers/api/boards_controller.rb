@@ -1,5 +1,4 @@
 class Api::BoardsController < ApplicationController
-  #before_filter :ensure_signed_in_api, only: [:show, :index, :create, :liked_boards]
   def show
     begin
       @board = Board.includes(:cards).find(params[:id])
