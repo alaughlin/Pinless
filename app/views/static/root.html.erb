@@ -58,14 +58,22 @@
       Pinless.currentUser.attributes.requests.push(request);
       var $badge = $('.badge');
       var $friendRequestLi = $('.friend-request-li');
-      var notificationCount = parseInt($badge.html());
+      var notificationCount = parseInt($badge.first().html());
 
-      if (notificationCount === "") {
+      console.log(notificationCount);
+
+      if (_.isNaN(notificationCount)) {
         notificationCount = 1;
       } else {
         notificationCount++;
       }
-      $badge.html(notificationCount);
+
+      if ($('.friend-request-li').length === 0) {
+        $('.dropdown-menu li:eq(0)').after('<li class="friend-request-li"><a href="#/requests">Friend Requests: <p class="badge"></p></a></li>');
+      }
+      
+      $badge = $('.badge');
+      $badge.html(notificationCount); 
     };
   });
 </script>
