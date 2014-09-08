@@ -60,7 +60,11 @@
       var $friendRequestLi = $('.friend-request-li');
       var notificationCount = parseInt($badge.html());
 
-      notificationCount++;
+      if (notificationCount === "") {
+        notificationCount = 1;
+      } else {
+        notificationCount++;
+      }
       $badge.html(notificationCount);
     };
   });
