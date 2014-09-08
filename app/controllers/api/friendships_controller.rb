@@ -10,7 +10,7 @@ class Api::FriendshipsController < ApplicationController
       if current_user.are_friends?(@friend)
         Pusher["private-#{@friend.id}"].trigger('friendship_created', {id: current_user.id})
       else current_user.are_friends?(@friend)
-        Pusher["private-#{@friend.id}"].trigger('new_message', {
+        Pusher["private-#{@friend.id}"].trigger('friend_request', {
           :from => current_user.username,
           :subject => " has sent a friend request",
           :request => {
