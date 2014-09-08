@@ -25,11 +25,10 @@ Pinless.Views.EditProfile = Backbone.View.extend({
       patch: true,
 
       success: function (user) {
-        console.log(user);
         that.model.set({avatar_thumb: user.escape('avatar_thumb')});
         that.model.set({avatar_large: user.escape('avatar_large')});
         $('.header-avatar').attr('src', user.escape('avatar_thumb'));
-        console.log(that.model);
+        $('.message').html("Avatar updated!");
       },
     });
   },

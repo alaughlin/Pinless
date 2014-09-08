@@ -233,11 +233,17 @@ a {
   top: 2px;
 }
 
-.error {
+.error,
+.message {
   padding-bottom: 10px;
   font-weight: bold;
   font-size: 14px;
   color: red;
+}
+
+.message {
+  color: green;
+  padding-top: 10px;
 }
 
 #edit-image-file-input {
