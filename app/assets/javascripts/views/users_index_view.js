@@ -3,6 +3,7 @@ Pinless.Views.UsersIndex = Backbone.View.extend({
 
   initialize: function () {
     this.users = this.collection;
+    this.listenTo(this.collection, 'sync add remove reset change', this.render);
   },
 
   tagName: "ul",

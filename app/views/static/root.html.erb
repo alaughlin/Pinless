@@ -39,9 +39,21 @@
     });
 
     channel.bind('new_message', function (data) {
-      msg = data.from + data.subject;
+      var msg = data.from + data.subject;
       // dom_notify(msg);
       changeNotificationCount(data.request);
+    });
+
+    channel.bind('friendship_created', function (data) {
+      console.log('fired');
+      var friend = Pinless.users.getOrFetch(data.id, function (user) {
+        Pinless.currentUser.friends.add(user);
+      });
+    });
+
+    channel.bind('deleted_friendship', function (data) {
+      var friend = Pinless.currentUser.friends.where({id: data.friend_id});
+      Pinless.currentUser.friends.remove(friend);
     });
 
     function dom_notify (msg) {

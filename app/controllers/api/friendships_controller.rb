@@ -7,7 +7,9 @@ class Api::FriendshipsController < ApplicationController
 
     if @friendship.save
       render json: {}
-      unless current_user.are_friends?(@friend)
+      if current_user.are_friends?(@friend)
+        Pusher["private-#{@friend.id}"].trigger('friendship_created', {id: current_user.id})
+      else current_user.are_friends?(@friend)
         Pusher["private-#{@friend.id}"].trigger('new_message', {
           :from => current_user.username,
           :subject => " has sent a friend request",
@@ -32,6 +34,7 @@ class Api::FriendshipsController < ApplicationController
 
     if @friendship.destroy && @friendship_reverse.destroy
       render json: {}
+      Pusher["private-#{@friend.id}"].trigger('deleted_friendship', {friend_id: current_user.id})
     else
       render json: {errors: @friendship.errors.full_messages}
     end
