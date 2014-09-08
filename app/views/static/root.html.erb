@@ -40,6 +40,7 @@
 
     channel.bind('new_message', function (data) {
       msg = data.from + data.subject;
+      console.log(data);
       // dom_notify(msg);
       changeNotificationCount(data.request);
     });
