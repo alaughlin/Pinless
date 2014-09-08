@@ -40,7 +40,6 @@
 
     channel.bind('new_message', function (data) {
       msg = data.from + data.subject;
-      console.log(data);
       // dom_notify(msg);
       changeNotificationCount(data.request);
     });
@@ -55,6 +54,7 @@
     };
 
     function changeNotificationCount (request) {
+      console.log(request);
       Pinless.currentUser.attributes.requests.push(request);
       var $badge = $('.badge');
       var $friendRequestLi = $('.friend-request-li');
