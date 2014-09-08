@@ -1,29 +1,30 @@
+<ul class="group">
+  <li><a href="/users/new" class="signup-link">Sign Up</a></li>
+</ul>
 <div class="form-wrap">
-<form class="signin-form" action="<%= session_url %>" method="post">
-  <ul class="group">
-    <li><a href="/users/new" class="signup-link">Sign Up</a></li>
-  </ul>
-  <h2>Sign In</h2>
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-      <p class="error"><%= error %></p>
+  <form class="signin-form" action="<%= session_url %>" method="post">
+    <a href="/#/"><img src="<%= asset_path('logo.png') %>" height="50px" class="form-logo"></a>
+    <h2>Sign In</h2>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <p class="error"><%= error %></p>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input id="signin-username" class="signin-text" placeholder="Username" type="text" name="user[username]" value="<%= @user.username %>">
+    <input id="signin-username" class="signin-text" placeholder="Username" type="text" name="user[username]" value="<%= @user.username %>">
 
-  <input id="signin-password" class="signin-text" type="password" placeholder="Password" name="user[password]" value="<%= @user.password %>">
+    <input id="signin-password" class="signin-text" type="password" placeholder="Password" name="user[password]" value="<%= @user.password %>">
 
-  <button class="signin-button">Sign In</button>
-  <br>
+    <button class="signin-button">Sign In</button>
+    <br>
 
-  <div class="line-and-or">
-    <hr>
-    <p class="or">OR</p>
-  </div>
+    <div class="line-and-or">
+      <hr>
+      <p class="or">OR</p>
+    </div>
 
-  <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
-</form>
+    <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
+  </form>
 </div>

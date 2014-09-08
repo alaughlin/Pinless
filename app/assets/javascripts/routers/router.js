@@ -13,7 +13,7 @@ Pinless.Routers.Router = Backbone.Router.extend({
     "users/:id/boards":          "showUserBoards",
     "users/:id/cards/liked":     "showUserCardsLiked",
     "users/:id/cards":           "showUserCards",
-    "users/:id":                 "showUser",
+    "users/:id":                 "showUserCards",
     "boards/:id":                "showBoard",
     "search?m=:model&q=:terms":  "search",
     "requests":                  "requests",

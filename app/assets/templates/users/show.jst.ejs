@@ -22,10 +22,10 @@
 </ul>
 
 <ul class="user-links group">
-  <li><a href="#/users/<%= user.escape('id') %>/boards" class="user-boards-link user-nav-link">Boards</a></li>
   <li><a href="#/users/<%= user.escape('id') %>/cards" class="user-cards-link user-nav-link">Cards</a></li>
-  <li><a href="#/users/<%= user.escape('id') %>/boards/liked" class="user-liked-boards-link user-nav-link">Liked Boards</a></li>
+  <li><a href="#/users/<%= user.escape('id') %>/boards" class="user-boards-link user-nav-link">Boards</a></li>
   <li><a href="#/users/<%= user.escape('id') %>/cards/liked" class="user-liked-cards-link user-nav-link">Liked Cards</a></li>
+  <li><a href="#/users/<%= user.escape('id') %>/boards/liked" class="user-liked-boards-link user-nav-link">Liked Boards</a></li>
   <li><a href="#/users/<%= user.escape('id') %>/friends" class="user-friends-link user-nav-link">Friends</a></li>
   <% if (user.escape('id') == Pinless.currentUser.id) { %>
     <li><a href="#/requests" class="user-requests-link user-nav-link">Friend Requests</a></li>

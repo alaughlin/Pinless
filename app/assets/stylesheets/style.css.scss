@@ -112,6 +112,12 @@ a {
   position: fixed;
 }
 
+.form-logo {
+  margin: 0 auto;
+  height: 60px;
+  margin-top: -20px;
+}
+
 #post-image-preview {
   width: 210px;
 }
@@ -180,21 +186,20 @@ a {
 }
 
 .signin-button:active,
-.signup-button:active,
-.signup-link:active,
-.signin-link:active {
+.signup-button:active {
   position: relative;
   top: 2px;
 }
 
 .signup-link,
 .signin-link {
-  font-size: 12px;
-  width: 45px;
+  font-size: 16px;
   float: right;
+  width: 60px;
   display: block;
-  margin-bottom: 10px;
-  padding: 5px;
+  margin: 10px 10px 0 0;
+  padding: 5px 10px;
+  text-align: center;
 }
 
 .line-and-or {
