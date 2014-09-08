@@ -1,6 +1,6 @@
 class Api::FriendshipsController < ApplicationController
   before_filter :check_if_signed_in
-  
+
   def create
     @friendship = current_user.friendships.new(friendship_params)
     @friend = User.find(@friendship.friend_id)
@@ -13,7 +13,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friend = User.find(params[:friendship][:friend_id])
+    @friend = User.find(params[:friend_id])
     @friendship = current_user.friendships.find_by(friend_id: @friend.id)
     @friendship_reverse = @friend.friendships.find_by(friend_id: current_user.id)
 

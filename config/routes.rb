@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
     resources :boards, only: [:create, :destroy]
     resources :cards, only: [:create, :destroy]
-    resources :friendships, only: :create,
+    resources :friendships, only: :create
 
     delete '/friendships/requests', to: 'friendships#destroy_request'
     delete '/friendships', to: 'friendships#destroy'
