@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :ensure_signed_in, only: [:show, :destroy]
 
+  skip_before_filter :ensure_signed_in, only: [:new, :create]
+
   def show
     @user = User.find(params[:id])
     if @user == current_user
