@@ -1,4 +1,6 @@
 class Api::SearchController < ApplicationController
+  before_filter :check_if_signed_in
+  
   def search
     model = params[:m]
     terms = params[:q]

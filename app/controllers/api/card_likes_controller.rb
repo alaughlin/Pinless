@@ -1,4 +1,6 @@
 class Api::CardLikesController < ApplicationController
+  before_filter :check_if_signed_in
+  
   def card_like
     @card = Card.find(params[:card_id])
 

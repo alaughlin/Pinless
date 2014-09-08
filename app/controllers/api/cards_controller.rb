@@ -1,4 +1,6 @@
 class Api::CardsController < ApplicationController
+  before_filter :check_if_signed_in
+  
   def show
     @card = Card.includes(:board, :user).find(params[:id])
 

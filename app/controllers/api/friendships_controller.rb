@@ -1,4 +1,6 @@
 class Api::FriendshipsController < ApplicationController
+  before_filter :check_if_signed_in
+  
   def create
     @friendship = current_user.friendships.new(friendship_params)
     @friend = User.find(@friendship.friend_id)

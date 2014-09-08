@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
-  before_filter :ensure_signed_in, only: [:show, :friends]
-
+  before_filter :check_if_signed_in
+  
   def show
     begin
       @user = User.find(params[:id])

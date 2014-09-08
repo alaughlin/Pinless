@@ -1,4 +1,6 @@
 class Api::BoardLikesController < ApplicationController
+  before_filter :check_if_signed_in
+  
   def board_like
     @board = Board.find(params[:board_id])
 
