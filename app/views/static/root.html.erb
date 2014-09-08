@@ -48,6 +48,7 @@
       console.log('fired');
       var friend = Pinless.users.getOrFetch(data.id, function (user) {
         Pinless.currentUser.friends.add(user);
+        user.set({friendship_status: 'friends'});
       });
     });
 
