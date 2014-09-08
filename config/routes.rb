@@ -47,5 +47,6 @@ Rails.application.routes.draw do
     post '/board_likes', to: 'board_likes#board_like'
     post '/card_likes', to: 'card_likes#card_like'
     get '/feed', to: 'feeds#index'
+    get '/url_extractor', to: 'url_extractor#parse'
   end
 end
