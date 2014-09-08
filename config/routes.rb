@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'static#root'
 
+  mount_griddler
+
   # resources :users do
   #   resources :boards , shallow: true do
   #     resources :cards
