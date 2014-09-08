@@ -1,6 +1,7 @@
 <%= render partial: "static/header" %>
 
 <div id="sub-header"></div>
+<div id="status"></div>
 <div id="content" class="group"></div>
 
 <div class="overlay">
@@ -13,4 +14,53 @@
   window.currentUserId = <%= current_user.id %>;
   window.heart = "<%= asset_path("heart.png") %>";
   window.close = "<%= asset_path("close.png") %>"; 
+
+  $(function() {
+    // If your Heroku application is within the EU region,
+    // uncomment the following lines
+    // Pusher.host = 'ws-eu.pusher.com';
+    // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
+
+    var pusher = new Pusher('<%= Pusher.key %>'); // Replace with your app key
+    var channel = pusher.subscribe('private-'+<%= current_user.id %>);
+
+    // Some useful debug msgs
+    pusher.connection.bind('connecting', function() {
+      $('div#status').text('Connecting to Pusher...');
+    });
+    pusher.connection.bind('connected', function() {
+      $('div#status').text('Connected to Pusher!');
+    });
+    pusher.connection.bind('failed', function() {
+      $('div#status').text('Connection to Pusher failed :(');
+    });
+    channel.bind('subscription_error', function(status) {
+      $('div#status').text('Pusher subscription_error');
+    });
+
+    channel.bind('new_message', function (data) {
+      msg = data.from + data.subject;
+      // dom_notify(msg);
+      changeNotificationCount(data.request);
+    });
+
+    function dom_notify (msg) {
+      $('#status').text(msg);
+      $('#status').fadeIn();
+      setTimeout(function() {
+        $('#status').fadeOut
+        ();
+      }, 2000);
+    };
+
+    function changeNotificationCount (request) {
+      Pinless.currentUser.attributes.requests.push(request);
+      var $badge = $('.badge');
+      var $friendRequestLi = $('.friend-request-li');
+      var notificationCount = parseInt($badge.html());
+
+      notificationCount++;
+      $badge.html(notificationCount);
+    };
+  });
 </script>

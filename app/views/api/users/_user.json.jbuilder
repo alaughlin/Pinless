@@ -5,9 +5,6 @@ json.set!(:friendship_status, current_user.friendship_status(user.id))
 
 if user == current_user
   json.requests user.friend_requests do |request|
-    json.(request, :id, :user_id)
-    json.set!(:username, request.user.username)
-    json.set!(:avatar_large, request.user.avatar.url(:large))
-    json.set!(:avatar_thumb, request.user.avatar.url(:thumb))
+    json.partial! 'api/users/request', request: request
   end
 end

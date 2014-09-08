@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   mount_griddler
 
+  post 'pusher/auth'
+
   # resources :users do
   #   resources :boards , shallow: true do
   #     resources :cards

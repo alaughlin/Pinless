@@ -11,8 +11,7 @@
       </li>
       <li class="header-left"><input type="submit" class="search-button" value="Search"></li>
     </form>
-
-    <!-- <a href="/"><h2 class="logo">Pinless</h2></a> -->
+    
     <a href="/#/"><img src="<%= asset_path('logo.png') %>" height="50px" class="logo"></a>
 
     <li class="header-right">
@@ -23,6 +22,8 @@
             <%= current_user.username %> 
             <% if current_user.friend_requests.length > 0 %>
               <p class="badge"><%= current_user.friend_requests.length %></p>
+            <% else %>
+              <p class="badge"></p>
             <% end %>
           </a>
         </li>

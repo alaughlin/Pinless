@@ -7,6 +7,17 @@ class Api::FriendshipsController < ApplicationController
 
     if @friendship.save
       render json: {}
+      Pusher["private-#{@friend.id}"].trigger('new_message', {
+        :from => current_user.username,
+        :subject => " has sent a friend request",
+        :request => {
+          avatar_large: current_user.avatar(:large),
+          avatar_small: current_user.avatar(:small),
+          id: @friendship.id,
+          user_id: current_user.id,
+          username: current_user.username
+        }
+      })
     else
       render json: @friendship.errors.full_messages
     end
