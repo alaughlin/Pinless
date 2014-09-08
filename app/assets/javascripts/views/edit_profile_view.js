@@ -15,7 +15,6 @@ Pinless.Views.EditProfile = Backbone.View.extend({
 
   editProfile: function (event) {
     event.preventDefault();
-    console.log(this.model);
 
     var that = this;
     var formData = $(event.currentTarget).serializeJSON();
@@ -26,6 +25,7 @@ Pinless.Views.EditProfile = Backbone.View.extend({
       patch: true,
 
       success: function (user) {
+        console.log(user);
         that.model.set({avatar_thumb: user.escape('avatar_thumb')});
         that.model.set({avatar_large: user.escape('avatar_large')});
         $('.header-avatar').attr('src', user.escape('avatar_thumb'));

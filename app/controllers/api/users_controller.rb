@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update_attribute(:avatar, params[:user][:avatar])
-    render json: {}
+    render :show
   end
 
   def user_params
