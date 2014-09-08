@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :username, length: { minimum: 3 }
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_attached_file :avatar, :styles => { :large => "800x500>", :thumb => "150" }, :default_url => lambda { |avatar| ActionController::Base.helpers.asset_path('missing.gif') }
+  has_attached_file :avatar, :styles => { :large => "800x500>", :thumb => "250" }, :default_url => lambda { |avatar| ActionController::Base.helpers.asset_path('missing.gif') }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :boards, class_name: "Board", foreign_key: :user_id
