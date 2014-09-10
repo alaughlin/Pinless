@@ -4,6 +4,6 @@ class Api::UrlExtractorController < ApplicationController
   def parse
     page = MetaInspector.new(params[:url])
 
-    render json: {title: page.title, description: page.description, image: page.image}
+    render json: {title: page.title, description: page.description, image: page.image, images: page.images}
   end
 end
