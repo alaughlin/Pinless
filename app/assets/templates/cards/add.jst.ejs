@@ -2,7 +2,24 @@
   <li class="overlay-header-left"><h3>Adding a card to <%= board.escape('title') %></h3></li>
   <li class="overlay-header-right"><a href="#" class="close-modal-link"><img src="<%= Pinless.close %>" class="close-modal-image"></a></li>
 </ul>
-<form class="add-card-form overlay-form" enctype="multipart/form-data">
+
+<ul class="form-selectors group">
+    <li>
+      <label>
+        Upload
+        <input type="radio" class="form-selector" data-id="add-card-form" name="card-type" checked>
+      </label>
+    </li>
+    
+    <li>
+      <label>
+        URL
+        <input type="radio" class="form-selector" data-id="add-url-form" name="card-type">
+      </label>
+    </li>
+  </ul>
+
+<form class="add-card-form overlay-form group" enctype="multipart/form-data">
   <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
   
   <input type="text" placeholder="Title" name="card[title]" pattern=".{3,}" class="req-data" required>
@@ -15,4 +32,24 @@
   <br>
 
   <input type="submit" class="submit-button" value="Submit">
+</form>
+
+<form class="add-url-form overlay-form group">
+  <input type="hidden" name="card[board_id]" value="<%= board.escape('id') %>">
+
+  <input type="url" class="url" placeholder="URL">
+  <br>
+
+  <button class="get-url">Get URL</button>
+  <br>
+  
+  <input type="text" class="title" placeholder="Title" name="card[title]" pattern=".{3,}" class="req-data" required>
+  <br>
+
+  <textarea class="description" name="card[description]" placeholder="Description" rows="5"></textarea>
+  <br>
+
+  <img class="preview-image">
+
+  <input type="submit" class="submit-url-button" value="Submit">
 </form>

@@ -27,7 +27,17 @@
 
     <a href="/auth/facebook" class="fb-signin"><%= image_tag "fb_signin.png" %></a>
     <br>
-
-    <h3>Guest Account:<br>Luke / 123456</h3>
   </form>
+
+  <button class="guest-account-btn">Guest Account</button>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $('.guest-account-btn').on('click', function () {
+      $('#signin-username').val('Luke');
+      $('#signin-password').val('123456');
+      $('.signin-button').click();
+    });
+  });
+</script>

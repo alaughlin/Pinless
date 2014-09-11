@@ -3,10 +3,12 @@ Pinless.Views.CardAdd = Backbone.View.extend({
 
   tagName: 'section',
 
-  className: 'ad-card-modal modal-stuff',
+  className: 'add-card-modal modal-stuff',
 
   events: {
-    'submit .add-card-form': 'addCard',
+    'click .form-selector':     'showForm',
+    'click .get-url':           'getURL',
+    'submit .add-card-form':    'addCard',
     'change #image-file-input': 'fileSelect'
   },
 
@@ -19,6 +21,30 @@ Pinless.Views.CardAdd = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  showForm: function () {
+    console.log(event.target);
+    $form = $('.' + event.target.dataset.id);
+    $('.overlay-form').hide();
+    $form.show();
+  },
+
+  getURL: function () {
+    var url = $('.url').val();
+
+    $.ajax({
+      url: '/api/url_extractor',
+      type: 'GET',
+      data: {
+        url: url
+      },
+      success: function (data) {
+        $('.title').val(data["title"]);
+        $('.description').html(data["description"]);
+        $('.preview-image').attr('src', data['image']);
+      }
+    });
   },
 
   addCard: function (event) {

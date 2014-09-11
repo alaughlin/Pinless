@@ -23,6 +23,7 @@ class Api::CardsController < ApplicationController
 
   def create
     @card = current_user.cards.new(card_params)
+    @card.image = URI.parse(params[:image_url]) if params[:image_url]
 
     if @card.save
       render :show

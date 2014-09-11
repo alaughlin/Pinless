@@ -19,7 +19,7 @@ img {
   display: block;
 }
 
-input, button, textarea {
+input, button, textarea, submit {
   margin: 0;
   padding: 0;
   border: 0;
@@ -162,7 +162,8 @@ a {
 .signin-button,
 .signup-button,
 .signup-link,
-.signin-link {
+.signin-link,
+.guest-account-btn {
   padding: 10px 15px;
   font-size: 16px;
   display: block;
@@ -178,19 +179,22 @@ a {
 .signin-button:hover,
 .signup-button:hover,
 .signup-link:hover,
-.signin-link:hover {
+.signin-link:hover,
+.guest-account-btn:hover {
   background: #60BBD6;
 }
 
 .signin-button:focus,
 .signup-button:focus,
 .singup-link:focus,
-.signin-link:focus {
+.signin-link:focus,
+.guest-account-btn:focus {
   outline: none;
 }
 
 .signin-button:active,
-.signup-button:active {
+.signup-button:active,
+.guest-account-btn:active {
   position: relative;
   top: 2px;
 }
@@ -240,6 +244,10 @@ a {
 .fb-signin img:active {
   position: relative;
   top: 2px;
+}
+
+.guest-account-btn {
+  margin-bottom: 20px;
 }
 
 .error,
@@ -747,7 +755,7 @@ a {
 }
 
 .overlay-content ul {
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   background: #60BBD6;
   color: #fff;
 }
@@ -769,7 +777,6 @@ a {
   display: block;
   font-size: 16px;
   padding: 5px 30px 5px 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
 }
 
@@ -777,7 +784,9 @@ a {
   border: 1px solid #60BBD6;
 }
 
-.overlay-form .submit-button {
+.overlay-form .submit-button,
+.overlay-form .submit-url-button,
+.overlay-form .get-url {
   font-size: 16px;
   display: block;
   width: 100px;
@@ -791,8 +800,22 @@ a {
   padding: 5px 10px;
 }
 
+.overlay-form .get-url {
+  font-size: 14px;
+  padding: 3px 8px;
+  float: left;
+}
+
+.overlay-form .submit-url-button {
+}
+
 .overlay-form .submit-button:hover {
   background: #60BBD6;
+}
+
+.preview-image {
+  width: 100px;
+  float: left;
 }
 
 .close-modal-image,
@@ -894,4 +917,13 @@ a {
   display: inline-block;
   margin-right: 10px;
   border-radius: 15px;
+}
+
+.form-selectors > li {
+  float: left;
+  padding: 0 10px 0 0;
+}
+
+.add-url-form {
+  display: none;
 }
