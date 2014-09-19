@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require jquery.serializejson
 //= require underscore
-//= require backbone
-//= require backbone.subset
 //= require mousetrap.min
 //= require pusher.min
 //= require utils
